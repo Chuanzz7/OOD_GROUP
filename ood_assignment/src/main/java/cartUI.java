@@ -16,20 +16,21 @@ import java.util.ArrayList;
 public class cartUI extends JFrame implements ActionListener {
    
     JPanel panelList = new JPanel();
-    public cartUI(){
+    JButton addButton = new JButton("Add");
+    public cartUI( ArrayList<cartItem> _cartItemArray){
+        setLayout (new FlowLayout());
         setSize(500,200);
         setTitle("Cart");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        add(addButton);
+        add(panelList);
+        addButton.addActionListener(this);
     }
     
-   public void updateUI(){
-     panelList.add(new JLabel(""));
-    }
-    
-    
-    
-      public void actionPerformed(ActionEvent e){;}
+      public void actionPerformed(ActionEvent e){
+          panelList.add(new JLabel("Test"));
+          validate();}
           
 }
 

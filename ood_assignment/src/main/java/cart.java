@@ -14,7 +14,7 @@ public class cart
 {
     ArrayList<cartItem> cartItemArray  = new ArrayList<>();
    
-    cartUI cartUI1 = new cartUI();
+    
     
     
     
@@ -28,7 +28,7 @@ public class cart
     
     public void addItem(String _itemName , double _itemPrice , int _itemQuantity){
         cartItemArray.add(new cartItem(_itemName , _itemPrice , _itemQuantity));
-        cartUI.updateUI();
+        cartUI cartUI1 = new cartUI(cartItemArray);
     }
     
    
