@@ -14,6 +14,7 @@ public class test {
     System.out.println("Chuan here");
     System.out.println("live test");
     System.out.println("Chuan is Gay");
+    System.out.println("MIN IS MORE GAY");
     }
     
     
