@@ -7,7 +7,9 @@
  *
  * @author chngk
  */
-
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class cart
@@ -18,17 +20,17 @@ public class cart
     
     
     
-    public double calculateTotal(){
+    public String calculateTotal(){
         double totalPrice = 0;
         for (int i = 0; i < cartItemArray.size(); i++){
         totalPrice += cartItemArray.get(i).calculateTotalItem();
           }
-    return totalPrice;
+    return String.valueOf(totalPrice);
     }
     
     public void addItem(String _itemName , double _itemPrice , int _itemQuantity){
         cartItemArray.add(new cartItem(_itemName , _itemPrice , _itemQuantity));
-        cartUI cartUI1 = new cartUI(cartItemArray);
+        start.panelList.add(new JLabel("Test"));
     }
     
    

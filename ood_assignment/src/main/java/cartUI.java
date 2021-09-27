@@ -14,10 +14,10 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class cartUI extends JFrame implements ActionListener {
-   
+    cart cart1 = new cart();
     JPanel panelList = new JPanel();
     JButton addButton = new JButton("Add");
-    public cartUI( ArrayList<cartItem> _cartItemArray){
+    public cartUI(){
         setLayout (new FlowLayout());
         setSize(500,200);
         setTitle("Cart");
@@ -29,7 +29,9 @@ public class cartUI extends JFrame implements ActionListener {
     }
     
       public void actionPerformed(ActionEvent e){
-          panelList.add(new JLabel("Test"));
+          cart1.addItem("test1", 10, 5);
+          panelList.add(new JLabel(cart1.cartItemArray.toString()));
+          panelList.add(new JLabel(cart1.calculateTotal()));
           validate();}
           
 }
