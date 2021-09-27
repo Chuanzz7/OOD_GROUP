@@ -8,14 +8,10 @@
  * @author chngk
  */
 public class test {
-    public static void main(String[] args){
-    System.out.println("Test");
-    System.out.println("Alex Here");
-    System.out.println("Chuan here");
-    System.out.println("live test");
-    System.out.println("Chuan is Gay");
-    System.out.println("MIN IS MORE GAY");
+    public static void main(String[] args) {
+        cart showcart = new cart(); //Create the frame
     }
+    
     
     
 }

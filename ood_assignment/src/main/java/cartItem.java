@@ -26,9 +26,13 @@ public class cartItem {
         this.itemQuantity = this.itemQuantity - sameItem.itemQuantity;
     }
      
-     public double calculateTotalItem(cartItem item){
+     public double calculateTotalItem(){
         return (this.itemQuantity * this.itemPrice) ;
     }
     
+     public String toString()
+     {
+      return this.itemName + " " + this.itemQuantity + " "  + calculateTotalItem();
+     }
     
 }
