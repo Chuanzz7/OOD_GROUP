@@ -7,17 +7,19 @@
  *
  * @author chngk
  */
-public class cartItem {
+public class cartItem extends cart{
     private String itemName;
     private double itemPrice;
     private int itemQuantity;
+    private double itemTotal;
     
-    public cartItem(String _itemName , double _itemPrice , int _itemQuantity , double _totalCost){
+    public cartItem(String _itemName , double _itemPrice , int _itemQuantity){
         this.itemName= _itemName;
         this.itemPrice = _itemPrice;
         this.itemQuantity = _itemQuantity;
     }
-    
+
+   
     public void addQuantiy(cartItem sameItem){
         this.itemQuantity = this.itemQuantity + sameItem.itemQuantity;
     }
@@ -27,9 +29,10 @@ public class cartItem {
     }
      
      public double calculateTotalItem(){
-        return (this.itemQuantity * this.itemPrice) ;
+        itemTotal = this.itemQuantity * this.itemPrice;
+        return itemTotal;
     }
-    
+
      public String toString()
      {
       return this.itemName + " " + this.itemQuantity + " "  + calculateTotalItem();

@@ -7,11 +7,16 @@
  *
  * @author chngk
  */
+import java.util.ArrayList;
 public class test {
-    public static void main(String[] args) {
-        cart showcart = new cart(); //Create the frame
+    public static void main(String[] args) {        
+        cart cart1 = new cart(); //Create the frame
+        cart1.addItem("item1", 10, 2);
+        System.out.println(cart1.cartItemArray.get(0).calculateTotalItem());
+        
+     }
     }
     
     
     
-}
+

@@ -7,24 +7,34 @@
  *
  * @author chngk
  */
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
 
-public class cart extends JFrame implements ActionListener
-{;
-        
-    public cart(){
-        setSize(500,200);
-        setTitle("Cart");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-    }
-        
+import java.util.ArrayList;
+
+public class cart
+{
+    ArrayList<cartItem> cartItemArray  = new ArrayList<>();
+   
+    cartUI cartUI1 = new cartUI();
     
-        
-    public void actionPerformed(ActionEvent e){;}
-          
+    
+    
+    public double calculateTotal(){
+        double totalPrice = 0;
+        for (int i = 0; i < cartItemArray.size(); i++){
+        totalPrice += cartItemArray.get(i).calculateTotalItem();
+          }
+    return totalPrice;
+    }
+    
+    public void addItem(String _itemName , double _itemPrice , int _itemQuantity){
+        cartItemArray.add(new cartItem(_itemName , _itemPrice , _itemQuantity));
+        cartUI.updateUI();
+    }
+    
+   
+    
+   
+            
 }
 
 
