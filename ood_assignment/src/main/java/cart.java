@@ -15,11 +15,7 @@ import java.util.ArrayList;
 public class cart
 {
     ArrayList<cartItem> cartItemArray  = new ArrayList<>();
-   
-    
-    
-    
-    
+       
     public String calculateTotal(){
         double totalPrice = 0;
         for (int i = 0; i < cartItemArray.size(); i++){

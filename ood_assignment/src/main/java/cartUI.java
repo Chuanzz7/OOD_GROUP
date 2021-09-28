@@ -32,6 +32,7 @@ public class cartUI extends JFrame implements ActionListener {
           cart1.addItem("test1", 10, 5);
           panelList.add(new JLabel(cart1.cartItemArray.toString()));
           panelList.add(new JLabel(cart1.calculateTotal()));
+          panelList.add(new JButton("Delete"));
           validate();}
           
 }
