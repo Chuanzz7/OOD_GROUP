@@ -9,7 +9,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class GeneratePDF {
     
-    public static void main(String args[])  {
+    public static void main1(String args[])  {
     Document doc = new Document();
     
            

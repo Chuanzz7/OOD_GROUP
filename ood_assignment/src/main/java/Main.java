@@ -8,7 +8,7 @@
  * @author chngk
  */
 import java.util.ArrayList;
-public class test {
+public class Main {
     public static void main(String[] args) {     
         
        cartUI start = new cartUI();

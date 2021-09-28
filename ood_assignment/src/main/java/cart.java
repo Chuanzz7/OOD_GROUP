@@ -30,7 +30,6 @@ public class cart
     
     public void addItem(String _itemName , double _itemPrice , int _itemQuantity){
         cartItemArray.add(new cartItem(_itemName , _itemPrice , _itemQuantity));
-        start.panelList.add(new JLabel("Test"));
     }
     
    
