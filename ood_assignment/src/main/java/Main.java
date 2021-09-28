@@ -3,10 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 
-/**
- *
- * @author chngk
- */
+
+import java.io.File;
+import java.io.IOException;
+
 public class Main {
 
     /**
@@ -16,6 +16,19 @@ public class Main {
         // TODO code application logic here
         
         cartUI start = new cartUI();
+        
+        try{
+            File createFile = new File("C:\Users\Quah Jin Min\Desktop\OOD\Chuan.txt");
+            if(createFile.createNewFile()){
+                System.out.println("CHUAN IS GAY" + createFile.getName());
+            }else{
+                System.out.println("CHUAN IS VERY GAY");
+            }
+        }catch (IOException e)
+        {
+            System.out.println("CHUAN GAYNESS MADE ERROR");
+            e.printStackTrace();
+        }
     }
     
 }
