@@ -15,25 +15,41 @@ import java.util.ArrayList;
 
 public class cartUI extends JFrame implements ActionListener {
     cart cart1 = new cart();
-    JPanel panelList = new JPanel();
+    JPanel pl_ItemList = new JPanel();
+    JPanel pl_TotalPrice = new JPanel();
     JButton addButton = new JButton("Add");
+    
+    JLabel lb_TotalPrice = new JLabel("");
+    JLabel lb_ItemList = new JLabel("Item list:");
+    
     public cartUI(){
-        setLayout (new FlowLayout());
+        setLayout (new BorderLayout());
         setSize(500,200);
         setTitle("Cart");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        add(pl_ItemList);
         add(addButton);
-        add(panelList);
+       
+        
+        
+        pl_ItemList.add(lb_ItemList, BorderLayout.NORTH);
+        
+        pl_TotalPrice.add(lb_TotalPrice, BorderLayout.SOUTH);
+        
+        add(pl_TotalPrice);
         addButton.addActionListener(this);
     }
     
       public void actionPerformed(ActionEvent e){
           cart1.addItem("test1", 10, 5);
-          panelList.add(new JLabel(cart1.cartItemArray.toString()));
-          panelList.add(new JLabel(cart1.calculateTotal()));
-          panelList.add(new JButton("Delete"));
-          validate();}
+          pl_ItemList.add(new JLabel(cart1.cartItemArray.toString()));
+          pl_ItemList.add(new JButton("Delete"));
+          
+          
+          lb_TotalPrice.setText(cart1.calculateTotal());
+          validate();
+      }
           
 }
 
