@@ -14,31 +14,35 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class cartUI extends JFrame implements ActionListener {
-    cart cart1 = new cart();
+     cart cart1 = new cart();
+     
+   
     JPanel pl_ItemList = new JPanel();
     JPanel pl_TotalPrice = new JPanel();
+   
     JButton addButton = new JButton("Add");
     
-    JLabel lb_TotalPrice = new JLabel("");
+    JLabel lb_TotalPrice = new JLabel("Price =");
     JLabel lb_ItemList = new JLabel("Item list:");
     
     public cartUI(){
-        setLayout (new BorderLayout());
-        setSize(500,200);
+        
+        setSize(500,400);
         setTitle("Cart");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-        add(pl_ItemList);
         add(addButton);
-       
-        
-        
-        pl_ItemList.add(lb_ItemList, BorderLayout.NORTH);
-        
-        pl_TotalPrice.add(lb_TotalPrice, BorderLayout.SOUTH);
-        
-        add(pl_TotalPrice);
         addButton.addActionListener(this);
+      
+        
+        
+        pl_ItemList.add(lb_ItemList);
+        add(pl_ItemList);
+        
+        
+        pl_TotalPrice.add(lb_TotalPrice);
+        add(pl_TotalPrice);
+        
     }
     
       public void actionPerformed(ActionEvent e){
