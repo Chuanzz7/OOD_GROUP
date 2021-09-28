@@ -16,9 +16,11 @@ import java.util.ArrayList;
 public class cartUI extends JFrame implements ActionListener {
      cart cart1 = new cart();
      
-   
-    JPanel pl_ItemList = new JPanel();
-    JPanel pl_TotalPrice = new JPanel();
+  
+     
+    JPanel pl_Top_Label = new JPanel();
+    JPanel pl_Middle_ItemList = new JPanel();
+    JPanel pl_Bottom_TotalPrice = new JPanel();
    
     JButton addButton = new JButton("Add");
     
@@ -30,30 +32,41 @@ public class cartUI extends JFrame implements ActionListener {
         setSize(500,400);
         setTitle("Cart");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-        add(addButton);
+        
+        
         addButton.addActionListener(this);
       
+        pl_Top_Label.add(addButton);
+        pl_Top_Label.add(lb_ItemList);
+        
+        add("North",pl_Top_Label);
+        
+        pl_Middle_ItemList.setLayout(new BoxLayout(pl_Middle_ItemList, BoxLayout.Y_AXIS));
+        pl_Middle_ItemList.add(lb_ItemList);
+        add("Center",pl_Middle_ItemList);
         
         
-        pl_ItemList.add(lb_ItemList);
-        add(pl_ItemList);
         
         
-        pl_TotalPrice.add(lb_TotalPrice);
-        add(pl_TotalPrice);
-        
+        pl_Bottom_TotalPrice.add(lb_TotalPrice);
+        add("South",pl_Bottom_TotalPrice);
+         setVisible(true);
     }
     
       public void actionPerformed(ActionEvent e){
           cart1.addItem("test1", 10, 5);
-          pl_ItemList.add(new JLabel(cart1.cartItemArray.toString()));
-          pl_ItemList.add(new JButton("Delete"));
+          pl_Middle_ItemList.add(new JLabel(cart1.cartItemArray.toString()));
+          pl_Middle_ItemList.add(new JButton("Delete"));
+          
           
           
           lb_TotalPrice.setText(cart1.calculateTotal());
+         
           validate();
       }
+      
+      public void generateItem(){
+          ;}
           
 }
 
