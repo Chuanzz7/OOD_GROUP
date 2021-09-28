@@ -4,8 +4,7 @@
  */
 
 
-import java.io.File;
-import java.io.IOException;
+
 
 public class Main {
 
@@ -17,18 +16,13 @@ public class Main {
         
         cartUI start = new cartUI();
         
-        try{
-            File createFile = new File("C:\Users\Quah Jin Min\Desktop\OOD\Chuan.txt");
-            if(createFile.createNewFile()){
-                System.out.println("CHUAN IS GAY" + createFile.getName());
-            }else{
-                System.out.println("CHUAN IS VERY GAY");
-            }
-        }catch (IOException e)
-        {
-            System.out.println("CHUAN GAYNESS MADE ERROR");
-            e.printStackTrace();
-        }
+        CreateTxtBox txtBox = new CreateTxtBox();
+        
+        txtBox.CreateFile();
+        txtBox.WriteFile();
+      
+        
+  
     }
     
 }
