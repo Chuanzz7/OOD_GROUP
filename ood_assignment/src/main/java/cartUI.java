@@ -14,10 +14,10 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class cartUI extends JFrame implements ActionListener {
-     cart cart1 = new cart();
-     
+    cart cart1 = new cart();
+    
   
-     
+    
     JPanel pl_Top_Label = new JPanel();
     JPanel pl_Middle_ItemList = new JPanel();
     JPanel pl_Bottom_TotalPrice = new JPanel();
@@ -26,6 +26,9 @@ public class cartUI extends JFrame implements ActionListener {
     
     JLabel lb_TotalPrice = new JLabel("Price =");
     JLabel lb_ItemList = new JLabel("Item list:");
+    
+    String[] columnNames = {"Item Name" , "Item Quantity"}
+    JTable table = new JTable();
     
     public cartUI(){
         
@@ -47,7 +50,6 @@ public class cartUI extends JFrame implements ActionListener {
         
         
         
-        
         pl_Bottom_TotalPrice.add(lb_TotalPrice);
         add("South",pl_Bottom_TotalPrice);
          setVisible(true);
@@ -55,7 +57,7 @@ public class cartUI extends JFrame implements ActionListener {
     
       public void actionPerformed(ActionEvent e){
           cart1.addItem("test1", 10, 5);
-          pl_Middle_ItemList.add(new JLabel(cart1.cartItemArray.toString()));
+         ;
           pl_Middle_ItemList.add(new JButton("Delete"));
           
           
@@ -64,6 +66,13 @@ public class cartUI extends JFrame implements ActionListener {
          
           validate();
       }
+      
+      public void updateArray(){
+         for (int i = 0 ; i < cart1.cartItemArray.size(); i ++) {
+             String temp = cart1.getName(i);
+             list_ItemList.add(cart1.cartItemArray);
+         }
+        }
       
       public void generateItem(){
           ;}
