@@ -13,6 +13,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+
 public class cartUI extends JFrame implements ActionListener {
     cart cart1 = new cart();
     
@@ -28,7 +29,9 @@ public class cartUI extends JFrame implements ActionListener {
     JLabel lb_ItemList = new JLabel("Item list:");
     
     String[] columnNames = {"Item Name" , "Item Quantity"};
-    JTable table = new JTable();
+    String row[][] = {{"test","test2", "test3"}};
+    String column[] = {"Name","Quantity", "Total Price"};
+    JTable table = new JTable(new DefaultTableModel(new Object[]{"Column1", "Column2"}));
     
     public cartUI(){
         
@@ -57,7 +60,8 @@ public class cartUI extends JFrame implements ActionListener {
     
       public void actionPerformed(ActionEvent e){
           cart1.addItem("test1", 10, 5);
-         ;
+          pl_Middle_ItemList.add(table);
+           
           pl_Middle_ItemList.add(new JButton("Delete"));
           
           
@@ -68,14 +72,13 @@ public class cartUI extends JFrame implements ActionListener {
       }
       
       public void updateArray(){
-         for (int i = 0 ; i < cart1.cartItemArray.size(); i ++) {
-             String temp = cart1.getName(i);
-             list_ItemList.add(cart1.cartItemArray);
+            //for(int i=0; i < cart1.cartItemArray.size() )
+             
          }
         }
       
-      public void generateItem(){
-          ;}
+      //public void generateItem(){
+         
           
-}
+
 
