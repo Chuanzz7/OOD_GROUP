@@ -27,7 +27,7 @@ public class cartUI extends JFrame implements ActionListener {
     JLabel lb_TotalPrice = new JLabel("Price =");
     JLabel lb_ItemList = new JLabel("Item list:");
     
-    String[] columnNames = {"Item Name" , "Item Quantity"}
+    String[] columnNames = {"Item Name" , "Item Quantity"};
     JTable table = new JTable();
     
     public cartUI(){
