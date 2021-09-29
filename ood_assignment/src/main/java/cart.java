@@ -15,7 +15,8 @@ import java.util.ArrayList;
 public class cart
 {
     ArrayList<cartItem> cartItemArray  = new ArrayList<>();
-       
+    ArrayList<String[]> cartItemString = new ArrayList<>();
+
     public String calculateTotal(){
         double totalPrice = 0;
         for (int i = 0; i < cartItemArray.size(); i++){
@@ -28,6 +29,18 @@ public class cart
         cartItemArray.add(new cartItem(_itemName , _itemPrice , _itemQuantity));
     }
     
+    public String[] getItem(int _index){
+        return cartItemArray.get(_index).getArray();
+    }
+    
+    /*public String[][] refreshStringArray(){
+        cartItemString.clear();
+        for(int i = 0 ; i < cartItemArray.size(); i++){
+            cartItemString.add(getItem(i));
+        }
+        //return cartItemString;
+*/
+    }
    
     
    
