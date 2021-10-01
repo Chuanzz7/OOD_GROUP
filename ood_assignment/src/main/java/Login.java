@@ -8,13 +8,11 @@ public class Login extends JFrame
         implements ActionListener
 {
 
-    JPanel Panel;
     JLabel Welcome_Title, Username, Password;
     JTextField Username_Input;
     JPasswordField Password_Input;
     JButton Login_Button;
     JOptionPane Message;
-    static JFrame Frame;
     
     public static void main(String[] args) 
     {
@@ -24,18 +22,27 @@ public class Login extends JFrame
     
     public Login()
     {
+        JPanel Top = new JPanel();
+        Top.setLayout(new FlowLayout());
+        JPanel Middle = new JPanel();
+        Middle.setLayout(new FlowLayout());
+        JPanel Bottom = new JPanel();
+        Bottom.setLayout(new FlowLayout());
+        
         Font Design_1 = new Font("TimesRoman", Font.PLAIN, 20);
         Font Design_2 = new Font("Courier", Font.PLAIN, 30);
         
-        //Title (Shop Name)
+        //Title (Shop Name)  
         Welcome_Title = new JLabel("WELCOME TO WAVY HAIR SALON");
         Welcome_Title.setFont(Design_2);
-         //Allow Admin To Enter The Username
+        
+         //Allow Admin To Enter The Username      
         Username = new JLabel();
         Username.setText("Username: ");
         Username.setFont(Design_1);
         Username_Input = new JTextField();
         Username_Input.setPreferredSize(new Dimension(160, 18));
+
         
         //Allow Admin To Enter Password
         Password = new JLabel();
@@ -43,19 +50,24 @@ public class Login extends JFrame
         Password.setFont(Design_1);
         Password_Input = new JPasswordField();
         Password_Input.setPreferredSize(new Dimension(160, 18));
+
         
         //Login
         Login_Button = new JButton("Login");
-        Panel = new JPanel();
-        
-        Panel.add(Welcome_Title);
-        Panel.add(Username);
-        Panel.add(Username_Input);
-        Panel.add(Password);
-        Panel.add(Password_Input);
-        Panel.add(Login_Button);
+
+        Top.add(Welcome_Title);
+        add("North", Top);
+        Middle.add(Username);
+        add("Center", Middle);
+        Middle.add(Username_Input);
+        add("Center", Middle);
+        Middle.add(Password);
+        add("Center", Middle);
+        Middle.add(Password_Input);
+        add("Center", Middle);
+        Bottom.add(Login_Button);
+        add("South", Bottom);
         Login_Button.addActionListener(this);
-        add(Panel, BorderLayout.CENTER);
         setSize(600,600);
         setTitle("Login Page");
         //Center the Windows
