@@ -14,6 +14,7 @@ public class Login extends JFrame
     JPasswordField Password_Input;
     JButton Login_Button;
     JOptionPane Message;
+    static JFrame Frame;
     
     public static void main(String[] args) 
     {
@@ -63,16 +64,18 @@ public class Login extends JFrame
         setVisible(true);
         
     }
-    
-    public void actionPerformed(ActionEvent e)
+    public void actionPerformed(ActionEvent e)         
     {
         String Input_Username = Username_Input.getText();
         String Input_Password = Password_Input.getText();
         
         if(Input_Username.equals("Admin01") && Input_Password.equals("abc123"))
         {
-            //Popout another window with message
-            JOptionPane.showMessageDialog(null,"Login Success!");
+            //When the Username & Password is correct, it will proceed to the Main Menu and close the previous Window. 
+            MainMenu Proceed = new MainMenu();
+            Proceed.GUI();
+            setVisible(false);
+            Frame.dispose();
             
             
         } 
