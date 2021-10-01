@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MainMenu {
     static private JFrame frame;
-    static private JButton Product_Btn, Service_Btn, Back_Btn, Order_Btn;
+    static private JButton Product_Btn, Service_Btn, Back_Btn, AddToCart_Btn;
     static private JTextField Text;
     static private GridBagConstraints Grid; 
     private JTable Table;
@@ -46,6 +46,43 @@ public class MainMenu {
 	frame.getContentPane().setLayout(null);
 	frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        
+        Product_Btn = new JButton();
+        Service_Btn = new JButton();
+        Table = new JTable();
+        Back_Btn = new JButton();
+        AddToCart_Btn = new JButton();
+        dtm = new DefaultTableModel(0,0);
+        final String header[] = new String[] 
+        {
+            "Item", "Quantity", "Price", "Spinner"
+        };
+        dtm.setColumnIdentifiers(header);
+        dtm.addRow(header);
+        
+        //Create Table
+        Table = new JTable();
+	Table.setModel(dtm);
+        
+        // int x, int y, int width, int height
+	Table.setBounds(475, 31, 1, 1); 
+        
+        // width,height
+	Table.setSize(245, 300); 
+	Table.getColumnModel().getColumn(0).setPreferredWidth(80);
+	Table.getColumnModel().getColumn(1).setPreferredWidth(30);
+	Table.getColumnModel().getColumn(2).setPreferredWidth(30);
+        
+        // hide spinner
+	Table.getColumnModel().getColumn(3).setMinWidth(0); 
+        Table.getColumnModel().getColumn(3).setMaxWidth(0); 
+        
+        // remove cell boarder
+        Table.setShowGrid(false); 
+        
+        //add table to GUI
+        frame.getContentPane().add(Table);
+        
         
     }
 
