@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MainMenu {
     static private JFrame frame;
-    static private JButton Product_Btn, Service_Btn, Back_Btn, AddToCart_Btn;
+    static private JButton Product_Btn, Service_Btn, Exit_Btn, Checkout_Btn;
     static private JTextField Text;
     static private GridBagConstraints Grid; 
     private JTable Table;
@@ -42,16 +42,20 @@ public class MainMenu {
     {
         frame = new JFrame("Main Menu");
         frame.setBounds(100,100,750,550);
+        frame.setSize(800,600);
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.getContentPane().setLayout(null);
 	frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         
+        
+        
         Product_Btn = new JButton();
         Service_Btn = new JButton();
         Table = new JTable();
-        Back_Btn = new JButton();
-        AddToCart_Btn = new JButton();
+        Exit_Btn = new JButton();
+        Checkout_Btn = new JButton();
         dtm = new DefaultTableModel(0,0);
         final String header[] = new String[] 
         {
@@ -82,8 +86,28 @@ public class MainMenu {
         
         //add table to GUI
         frame.getContentPane().add(Table);
+        JLabel Total = new JLabel("Total: RM");
+        Total.setBounds(585, 340, 86, 20);
+        Text = new JTextField();
+	Text.setBounds(585, 340, 86, 20);
+	frame.getContentPane().add(Text);
+	Text.setColumns(12);
+        Checkout_Btn = new JButton("Checkout");
+        Checkout_Btn.setBounds(500, 385, 89, 23);
+        frame.getContentPane().add(Checkout_Btn);
+        Exit_Btn = new JButton("Exit");
+	Exit_Btn.setBounds(610, 385, 89, 23);
+	frame.getContentPane().add(Exit_Btn);
+        
+        JPanel Category = new JPanel();
+        Category.setBackground(Color.BLACK);
+        Category.setBounds(0,0,45,388);
+        Category.setSize(45,500);
+        frame.getContentPane().add(Category);
+        Category.setLayout(null);
         
         
+	frame.setVisible(true);
     }
 
     
