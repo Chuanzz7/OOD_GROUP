@@ -86,6 +86,7 @@ public class Login extends JFrame
             //When the Username & Password is correct, it will proceed to the Main Menu and close the previous Window. 
             MainMenu Proceed = new MainMenu();
             Proceed.GUI();
+            this.dispose();
             setVisible(false);
             
             
