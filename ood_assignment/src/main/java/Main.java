@@ -5,7 +5,6 @@
 
 
 
-
 public class Main {
 
     /**
@@ -20,8 +19,8 @@ public class Main {
         
         txtBox.CreateFile();
         txtBox.WriteFile();
-      
         
+  
   
     }
     

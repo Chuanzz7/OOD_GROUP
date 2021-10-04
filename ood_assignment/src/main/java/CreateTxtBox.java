@@ -25,7 +25,7 @@ try{
 
 public void WriteFile(){
     try{
-        FileWriter writeFile = new FileWriter("C:\\Users\\Quah Jin Min\\Desktop\\OOD\\Chuan.txt");
+        FileWriter writeFile = new FileWriter("C:\\Users\\Quah Jin Min\\Desktop\\OOD\\Chuan.txt"); 
         writeFile.write("Chuan is very GAY");
         writeFile.close();
         System.out.println("Wrote Chuan is GAY");
@@ -33,8 +33,8 @@ public void WriteFile(){
     }catch(IOException e)
     {
         System.out.println("Gayness made ERROR");
-        e.printStackTrace();
-    }
+        e.printStackTrace(); 
+   }
 }
     
 }
