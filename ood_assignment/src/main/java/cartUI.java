@@ -8,76 +8,97 @@
  * @author chngk
  */
 
+
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.ArrayList;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.JScrollPane;
 
-
-public class cartUI extends JFrame implements ActionListener {
-    cart cart1 = new cart();
+public class cartUI{
     
-  
-    
-    JPanel pl_Top_Label = new JPanel();
-    JPanel pl_Middle_ItemList = new JPanel();
-    JPanel pl_Bottom_TotalPrice = new JPanel();
-   
+    int time = 0;
+    JFrame frame = new JFrame();
     JButton addButton = new JButton("Add");
-    
-    JLabel lb_TotalPrice = new JLabel("Price =");
+    JButton delButton = new JButton("Delete");
+    JLabel lb_TotalPrice = new JLabel("Price ");
     JLabel lb_ItemList = new JLabel("Item list:");
     
-    String[] columnNames = {"Item Name" , "Item Quantity"};
-    String row[][] = {{"test","test2", "test3"}};
-    String column[] = {"Name","Quantity", "Total Price"};
-    JTable table = new JTable(new DefaultTableModel(new Object[]{"Column1", "Column2"}));
+   
+ 
+    JTable table = new JTable();
+    DefaultTableModel model = new DefaultTableModel();
+    Object[] columns = {"Name","Quantity", "Price", "Button"};
+    Object[] row = new Object[4];
+    
+    JScrollPane panel = new  JScrollPane(table);
+    
+     
     
     public cartUI(){
+       
+        frame.setLayout(new FlowLayout());
+        model.setColumnIdentifiers(columns);
+        table.setModel(model);
+        table.setBackground(Color.LIGHT_GRAY);
+        table.setForeground(Color.black);
         
-        setSize(500,400);
-        setTitle("Cart");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
-        addButton.addActionListener(this);
-      
-        pl_Top_Label.add(addButton);
-        pl_Top_Label.add(lb_ItemList);
-        
-        add("North",pl_Top_Label);
-        
-        pl_Middle_ItemList.setLayout(new BoxLayout(pl_Middle_ItemList, BoxLayout.Y_AXIS));
-        pl_Middle_ItemList.add(lb_ItemList);
-        add("Center",pl_Middle_ItemList);
-        
-        
-        
-        pl_Bottom_TotalPrice.add(lb_TotalPrice);
-        add("South",pl_Bottom_TotalPrice);
-         setVisible(true);
-    }
+        frame.setSize(1000,800);
+        frame.setTitle("Cart");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+   
+       
+        addButton.setPreferredSize(new Dimension(100, 100));
     
-      public void actionPerformed(ActionEvent e){
-          cart1.addItem("test1", 10, 5);
-          pl_Middle_ItemList.add(table);
-           
-          pl_Middle_ItemList.add(new JButton("Delete"));
-          
-          
-          
-          lb_TotalPrice.setText(cart1.calculateTotal());
+        frame.add(addButton);
+        frame.add(panel);
+        frame.add(lb_TotalPrice);
+        frame.setSize(900,400);
+        frame.setVisible(true);
+        
+         addButton.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+             time++;
+                row[0] = "test"+time;
+                row[1] = "test";
+                row[2] = "test";
+                row[3] = "delete";
+                
+                // add row to the model
+                model.addRow(row);
+            }
+            });
          
-          validate();
-      }
-      
-      public void updateArray(){
-            //for(int i=0; i < cart1.cartItemArray.size() )
-             
-         }
+          ButtonColumn buttonColumn = new ButtonColumn(table, delete, 3);
+
         }
+    
+
+ Action delete = new AbstractAction()
+{
+    public void actionPerformed(ActionEvent e)
+    {
+        JTable table = (JTable)e.getSource();
+        int modelRow = Integer.valueOf( e.getActionCommand() );
+        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+    }
+}; 
+
+    
+  
+
+  
+ }
+    
+     
+
+
+ 
       
-      //public void generateItem(){
+
          
           
 
