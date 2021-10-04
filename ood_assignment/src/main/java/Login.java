@@ -87,7 +87,8 @@ public class Login extends JFrame
             MainMenu Proceed = new MainMenu();
             Proceed.GUI();
             setVisible(false);
-            Frame.dispose();
+            
+            
             
             
         } 
