@@ -42,7 +42,7 @@ public class MainMenu {
     {
         frame = new JFrame("Main Menu");
         frame.setBounds(100,100,750,550);
-        frame.setSize(800,600);
+        frame.setSize(1920,1080);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.getContentPane().setLayout(null);
@@ -69,7 +69,7 @@ public class MainMenu {
 	Table.setModel(dtm);
         
         // int x, int y, int width, int height
-	Table.setBounds(475, 31, 1, 1); 
+	Table.setBounds(1485, 75, 100, 25); 
         
         // width,height
 	Table.setSize(245, 300); 
@@ -87,26 +87,43 @@ public class MainMenu {
         //add table to GUI
         frame.getContentPane().add(Table);
         JLabel Total = new JLabel("Total: RM");
-        Total.setBounds(585, 340, 86, 20);
+        Total.setBounds(1350, 700, 100, 25);
         Text = new JTextField();
-	Text.setBounds(585, 340, 86, 20);
+	Text.setBounds(1400, 700, 100, 25);
 	frame.getContentPane().add(Text);
 	Text.setColumns(12);
         Checkout_Btn = new JButton("Checkout");
-        Checkout_Btn.setBounds(500, 385, 89, 23);
+        Checkout_Btn.setBounds(1455, 770, 100, 25);
         frame.getContentPane().add(Checkout_Btn);
         Exit_Btn = new JButton("Exit");
-	Exit_Btn.setBounds(610, 385, 89, 23);
+	Exit_Btn.setBounds(1690, 770, 100, 25);
 	frame.getContentPane().add(Exit_Btn);
         
         JPanel Category = new JPanel();
         Category.setBackground(Color.BLACK);
-        Category.setBounds(0,0,45,388);
-        Category.setSize(45,500);
+        Category.setBounds(0,0,200,1080);
+        //Category.setSize(45,500);
         frame.getContentPane().add(Category);
+        
+        
+        
         Category.setLayout(null);
         
+        Product_Btn = new JButton("Product");
+        Product_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 24));
+        Product_Btn.setForeground(Color.WHITE);
+        Product_Btn.setBackground(Color.BLACK);
+        Product_Btn.setBounds(30, 235, 160, 50);
+        Service_Btn = new JButton("Service");
+        Category.add(Product_Btn);
+        Product_Btn.setVisible(true);
         
+        Service_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 24));
+        Service_Btn.setForeground(Color.WHITE);
+        Service_Btn.setBackground(Color.BLACK);
+        Service_Btn.setBounds(30, 420, 160, 50);
+        Category.add(Service_Btn);
+        Service_Btn.setVisible(true);
 	frame.setVisible(true);
     }
 
