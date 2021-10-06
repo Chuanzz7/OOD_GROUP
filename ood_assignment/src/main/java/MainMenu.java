@@ -47,7 +47,7 @@ public class MainMenu {
     void GUI()
     {
         frame = new JFrame("Main Menu");
-        frame.setBounds(100,100,750,550);
+        //frame.setBounds(100,100,750,550);
         frame.setSize(1920,1080);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -156,13 +156,19 @@ public class MainMenu {
         //Mainpanel.setBackground(Color.GREEN);
         //Mainpanel.setVisible(true);
         //frame.add(Mainpanel);
+        JPanel panel_1 = new JPanel();
+        panel_1.setBackground(Color.yellow);
+        panel_1.setBounds(300, 120,1000,800);
+        panel_1.setVisible(false);
+        //GridBagConstraints gbc = new GridBagConstraints();
         
+        frame.add(panel_1);
      Service_Btn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
         
                 try {
-                    Service_Page();
+                    Service_Page(panel_1);
                 } catch (IOException ex) {
                     System.out.println(ex);
                 }
@@ -174,15 +180,18 @@ public class MainMenu {
     }
     
     
-    void Service_Page() throws IOException{
+    void Service_Page(JPanel panel_1) throws IOException{
     {
-        JPanel panel_1 = new JPanel();
-        panel_1.setBackground(Color.yellow);
-        panel_1.setBounds(300, 120,1000,800);
+        panel_1.setVisible(true);
+        //JPanel panel_1 = new JPanel();
+        //panel_1.setBackground(Color.yellow);
+        //panel_1.setBounds(300, 120,1000,800);
         //GridBagConstraints gbc = new GridBagConstraints();
         
-        frame.add(panel_1);
-        panel_1.setVisible(true);
+        //frame.add(panel_1);
+        //panel_1.setVisible(true);
+        //JOptionPane.showMessageDialog(null, "Can Function");
+        //frame.validate();
         //gbc.insets = new Insets(10, 0, 0, 0);
         //Service_Image = new JLabel[Services];
         //Service_Label = new JLabel[Services];
@@ -197,7 +206,7 @@ public class MainMenu {
         //Service_Label[1] = new JLabel("Testing_2");
         //Total_Price[0] = 5.50;
         //Total_Price[1] = 10.90;
-        //JOptionPane.showMessageDialog(null, "Can Function");
+        
         
         
         //for(int i = 0; i < Services; i++)
