@@ -19,9 +19,7 @@ import javax.swing.JScrollPane;
 
 public class cartUI {
     ArrayList<cartItem> cartItemArray  = new ArrayList<>();
-    ArrayList<String[]> cartItemString = new ArrayList<>();
-    
-    
+     
     int time = 0;
     JFrame frame = new JFrame();
     JButton addButton = new JButton("Add");
@@ -29,16 +27,12 @@ public class cartUI {
     JLabel lb_TotalPrice = new JLabel("Price ");
     JLabel lb_ItemList = new JLabel("Item list:");
     
-   
- 
     JTable table = new JTable();
     DefaultTableModel model = new DefaultTableModel();
-    Object[] columns = {"Name","Quantity", "Price", "Button"};
-    Object[] row = new Object[4];
+    Object[] columns = {"Name","Quantity","Unit Price", "Price", "Button"};
+    Object[] row = new Object[5];
     
     JScrollPane panel = new  JScrollPane(table);
-    
-     
     
     public cartUI(){
       
@@ -61,49 +55,47 @@ public class cartUI {
         frame.setSize(900,400);
         frame.setVisible(true);
         
+        //put tis in main menu
          addButton.addActionListener(new ActionListener(){
 
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) { 
              
-             
-             time++;
-                row[0] = "test"+time;
-                row[1] = "test";
-                row[2] = "test";
-                row[3] = "delete";
+                row[0] = "test";
+                row[1] = 2;
+                row[2] = 
+                row[3] =
+                row[4] = "delete";
+                
+                //if item is already in cart
                 
                 // add row to the model
                 model.addRow(row);
+                
             }
             });
          
           ButtonColumn buttonColumn = new ButtonColumn(table, delete, 3);
-
         }
+    
 
    
  Action delete = new AbstractAction()
 {
     public void actionPerformed(ActionEvent e)
     {
-        JTable table = (JTable)e.getSource();
+        JTable table1 = (JTable)e.getSource();
         int modelRow = Integer.valueOf( e.getActionCommand() );
-        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+        System.out.println(Integer.parseInt(table1.getValueAt(modelRow, 2).toString()));
+        int quantity = Integer.parseInt(table1.getValueAt(modelRow, 2).toString());
+        if(quantity == 1){
+        ((DefaultTableModel)table1.getModel()).removeRow(modelRow);
+        }
+        else {
+        table.setValueAt(quantity-1,modelRow,2);
+        }
     }
 };
-
- public void addItem(String _itemName , double _itemPrice , int _itemQuantity){
-        cartItemArray.add(new cartItem(_itemName , _itemPrice , _itemQuantity));
-        System.out.println("item added");
-        
-    }
- 
-
-    
-  
-
-  
  }
     
      

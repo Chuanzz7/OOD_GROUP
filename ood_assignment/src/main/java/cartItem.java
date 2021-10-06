@@ -7,7 +7,7 @@
  *
  * @author chngk
  */
-public class cartItem extends cartUI{
+public class cartItem {
     private String itemName;
     private double itemPrice;
     private int itemQuantity;
