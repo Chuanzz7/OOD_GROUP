@@ -13,10 +13,14 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.JScrollPane;
 
-public class cartUI{
+public class cartUI {
+    ArrayList<cartItem> cartItemArray  = new ArrayList<>();
+    ArrayList<String[]> cartItemString = new ArrayList<>();
+    
     
     int time = 0;
     JFrame frame = new JFrame();
@@ -37,7 +41,7 @@ public class cartUI{
      
     
     public cartUI(){
-       
+      
         frame.setLayout(new FlowLayout());
         model.setColumnIdentifiers(columns);
         table.setModel(model);
@@ -61,6 +65,8 @@ public class cartUI{
 
             @Override
             public void actionPerformed(ActionEvent e) {
+             
+             
              time++;
                 row[0] = "test"+time;
                 row[1] = "test";
@@ -75,8 +81,8 @@ public class cartUI{
           ButtonColumn buttonColumn = new ButtonColumn(table, delete, 3);
 
         }
-    
 
+   
  Action delete = new AbstractAction()
 {
     public void actionPerformed(ActionEvent e)
@@ -85,7 +91,14 @@ public class cartUI{
         int modelRow = Integer.valueOf( e.getActionCommand() );
         ((DefaultTableModel)table.getModel()).removeRow(modelRow);
     }
-}; 
+};
+
+ public void addItem(String _itemName , double _itemPrice , int _itemQuantity){
+        cartItemArray.add(new cartItem(_itemName , _itemPrice , _itemQuantity));
+        System.out.println("item added");
+        
+    }
+ 
 
     
   
