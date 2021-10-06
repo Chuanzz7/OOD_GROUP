@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.table.DefaultTableModel;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.SpinnerNumberModel;
 /*
@@ -159,7 +161,11 @@ public class MainMenu {
             public void actionPerformed(ActionEvent e)
             {
         
+                try {
                     Service_Page();
+                } catch (IOException ex) {
+                    System.out.println(ex);
+                }
                     
              
             }
@@ -168,7 +174,7 @@ public class MainMenu {
     }
     
     
-    void Service_Page()
+    void Service_Page() throws IOException{
     {
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(Color.yellow);
@@ -230,6 +236,7 @@ public class MainMenu {
 	    //gbc.gridx++;
             //Mainpanel.add(panel);
         //}
+    }
     }
 
     
