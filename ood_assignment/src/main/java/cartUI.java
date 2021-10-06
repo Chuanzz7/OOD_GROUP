@@ -13,11 +13,13 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.JScrollPane;
 
-public class cartUI{
-    
+public class cartUI {
+    ArrayList<cartItem> cartItemArray  = new ArrayList<>();
+     
     int time = 0;
     JFrame frame = new JFrame();
     JButton addButton = new JButton("Add");
@@ -25,19 +27,15 @@ public class cartUI{
     JLabel lb_TotalPrice = new JLabel("Price ");
     JLabel lb_ItemList = new JLabel("Item list:");
     
-   
- 
     JTable table = new JTable();
     DefaultTableModel model = new DefaultTableModel();
-    Object[] columns = {"Name","Quantity", "Price", "Button"};
-    Object[] row = new Object[4];
+    Object[] columns = {"Name","Quantity","Unit Price", "Price", "Button"};
+    Object[] row = new Object[5];
     
     JScrollPane panel = new  JScrollPane(table);
     
-     
-    
     public cartUI(){
-       
+      
         frame.setLayout(new FlowLayout());
         model.setColumnIdentifiers(columns);
         table.setModel(model);
@@ -57,40 +55,79 @@ public class cartUI{
         frame.setSize(900,400);
         frame.setVisible(true);
         
+        //test row
+        row[0] = "test";
+                row[1] = 2;
+                row[2] = "1";
+                row[3] = "2";
+                row[4] = "delete";
+                model.addRow(row);
+         System.out.print("error");
+        //put tis in main menu
          addButton.addActionListener(new ActionListener(){
 
             @Override
-            public void actionPerformed(ActionEvent e) {
-             time++;
-                row[0] = "test"+time;
-                row[1] = "test";
-                row[2] = "test";
-                row[3] = "delete";
+            public void actionPerformed(ActionEvent e) { 
+                int tableRowsNum = table.getRowCount();
+                row[0] = "test1";
+                row[1] = 2;
+                row[2] = "1";
+                row[3] = "2";
+                row[4] = "delete";
                 
-                // add row to the model
-                model.addRow(row);
+                //if item is already in cart
+                for(int i = 0 ; i < tableRowsNum ; i++){
+                    if("test1"  == table.getValueAt(i, 0).toString()){ 
+                    int quantity = Integer.parseInt(table.getValueAt(i, 1).toString());
+                    table.setValueAt(quantity+1,i,1);
+                    table.setValueAt(Double.parseDouble(table.getValueAt(i, 1).toString()) * Double.parseDouble(table.getValueAt(i, 2).toString()),i,3);
+                    findTotal();
+                    break;
+                    }
+
+                    // add row to the model
+                    else if(i == tableRowsNum-1){
+                    model.addRow(row); 
+                    findTotal();
+                    break;
+                    }
+                }
             }
             });
          
-          ButtonColumn buttonColumn = new ButtonColumn(table, delete, 3);
-
+          ButtonColumn buttonColumn = new ButtonColumn(table, delete, 4);
         }
-    
-
+     
+ //delete button
  Action delete = new AbstractAction()
 {
     public void actionPerformed(ActionEvent e)
     {
-        JTable table = (JTable)e.getSource();
+        JTable table1 = (JTable)e.getSource();
         int modelRow = Integer.valueOf( e.getActionCommand() );
-        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+        int quantity = Integer.parseInt(table1.getValueAt(modelRow, 1).toString());
+        if(quantity == 1){
+        ((DefaultTableModel)table1.getModel()).removeRow(modelRow);
+        findTotal();
+        }
+        else {
+        table.setValueAt(quantity-1,modelRow,1);
+        table.setValueAt(Double.parseDouble(table.getValueAt(modelRow, 1).toString()) * Double.parseDouble(table.getValueAt(modelRow, 2).toString()),modelRow,3);
+        findTotal();
+        }
     }
-}; 
-
+};
+ 
+ //update grant total
+  public void findTotal(){
+    int tableRowsNum = table.getRowCount();
+    double total = 0;
+    for(int i = 0 ; i < tableRowsNum ; i++){
+       total += Double.parseDouble(table.getValueAt(i, 3).toString());
+    }
+    lb_TotalPrice.setText(String.valueOf(total));
+    }
     
-  
-
-  
  }
     
      

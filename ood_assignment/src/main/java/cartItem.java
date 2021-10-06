@@ -7,7 +7,7 @@
  *
  * @author chngk
  */
-public class cartItem extends cart{
+public class cartItem {
     private String itemName;
     private double itemPrice;
     private int itemQuantity;
@@ -32,10 +32,17 @@ public class cartItem extends cart{
         itemTotal = this.itemQuantity * this.itemPrice;
         return itemTotal;
     }
+     
+    public String[] getArray(){
+        String[] data = {itemName, Integer.toString(itemQuantity),Integer.toString(itemQuantity)};
+        return data;
+    }
 
      public String toString()
      {
       return this.itemName + " " + this.itemQuantity + " "  + calculateTotalItem();
      }
+     
+     protected void finalize(){;}  
     
 }

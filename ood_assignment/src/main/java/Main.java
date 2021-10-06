@@ -15,10 +15,10 @@ public class Main {
         
         cartUI start = new cartUI();
         
-        CreateTxtBox txtBox = new CreateTxtBox();
+        //CreateTxtBox txtBox = new CreateTxtBox();
         
-        txtBox.CreateFile();
-        txtBox.WriteFile();
+       // txtBox.CreateFile();
+       // txtBox.WriteFile();
         
   
   
