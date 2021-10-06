@@ -2,32 +2,38 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.event.*;
+import javax.swing.JOptionPane;
+import java.text.*;
+import static javax.swing.JOptionPane.showMessageDialog;
+import java.io.File;
+import java.io.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
 
-/**
- *
- * @author Jason
- */
+
+
 
 public class Checkout extends JFrame implements ActionListener
 {
     
- 
     
-    /*private JButton paid;
+    private JButton confirm;
     private JButton cancel;
-    private JLabel Checkout_Title;
-    private JTextField cashin;
-    private JTextField change;
-    private JLabel Total;
-    private JLabel Change;*/
-    private JButton pay;
-    private JButton cancel;
-    private JLabel checkout;
-    private JTextField changetxt;
-    private JTextField paytxt;
+    private JTextField totalTxt;
+    private JTextField paidTxt;
+    private JTextField changeTxt;
     private JLabel total;
+    private JLabel paid;
     private JLabel change;
+    private JCheckBox receipt;
+    private JLabel checkout;
+    private JButton done;
 
+    private NumberFormat totalAmount;
+    
+    
+    
     public static void main(String[] args) {
         
         JFrame frame = new JFrame ("MyPanel");
@@ -37,194 +43,236 @@ public class Checkout extends JFrame implements ActionListener
         frame.setVisible (true);
     }
     
+    public class Popup
+    {
+        public void box(String error, String titleBar)
+        {
+            JOptionPane.showMessageDialog(null, error, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    
+   
+    
     public Checkout(){
         
         //construct components
-        pay = new JButton ("Pay");
+        confirm = new JButton ("Confirm");
         cancel = new JButton ("Cancel");
-        checkout = new JLabel ("Checkout");
-        changetxt = new JTextField (5);
-        paytxt = new JTextField (5);
+        totalTxt = new JTextField ("34.86", 10);
+        paidTxt = new JTextField (5);
+        changeTxt = new JTextField (5);
         total = new JLabel ("Total");
+        paid = new JLabel ("Amount Paid");
         change = new JLabel ("Change");
+        receipt = new JCheckBox ("Save Receipt");
+        checkout = new JLabel ("Checkout");
+        done = new JButton ("Done");
 
-        //set components properties
-        paytxt.setEnabled (false);
+        //disable txtbox
+        totalTxt.setEnabled (false);
+        changeTxt.setEnabled (false);
 
         //adjust size and set layout
-        setPreferredSize (new Dimension (622, 422));
+        setPreferredSize (new Dimension (744, 430));
         setLayout (null);
-        setSize(622,422);
+        setSize(744,430);
+        setTitle("Checkout");
 
         //add components
-        add (pay);
+        add (confirm);
         add (cancel);
-        add (checkout);
-        add (changetxt);
-        add (paytxt);
+        add (totalTxt);
+        add (paidTxt);
+        add (changeTxt);
         add (total);
+        add (paid);
         add (change);
+        add (receipt);
+        add (checkout);
+        add (done);
+       
+       
+        //positioning for components
+        confirm.setBounds (200, 315, 120, 40);
+        cancel.setBounds (445, 315, 120, 40);
+        totalTxt.setBounds (450, 110, 105, 35);
+        paidTxt.setBounds (450, 155, 105, 35);
+        changeTxt.setBounds (450, 200, 105, 35);
+        total.setBounds (180, 95, 165, 55);
+        paid.setBounds (180, 145, 165, 55);
+        change.setBounds (180, 195, 165, 55);
+        receipt.setBounds (450, 250, 185, 35);
+        checkout.setBounds (260, 15, 185, 70);
+        done.setBounds(325, 315, 120, 40);
+        
+        done.setVisible(false);
+        receipt.setVisible(false);
 
-        //set component bounds (only needed by Absolute Positioning)
-        pay.setBounds (175, 285, 105, 40);
-        cancel.setBounds (360, 285, 105, 40);
-        checkout.setBounds (280, 20, 110, 35);
-        changetxt.setBounds (380, 175, 125, 40);
-        paytxt.setBounds (380, 110, 125, 40);
-        total.setBounds (125, 110, 105, 30);
-        change.setBounds (125, 180, 100, 25);
-        
-        
-        
-        /*paid = new JButton("Pay");
-        cancel = new JButton("Cancel");
-        Checkout_Title = new JLabel("Checkout");
-        cashin = new JTextField(5);
-        change = new JTextField(5);
-        Total = new JLabel("Total");
-        Change = new JLabel("Change");
-        
-        change.setEnabled(false);
-        
-        setPreferredSize(new Dimension(1980,1060));        
-        setLayout(new BorderLayout());
-        setResizable(true);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(622,422);
-        setTitle("Check Out List");
-        
-        
-        add(paid);
-        add(cancel);
-        add(Checkout_Title);
-        add(cashin);
-        add(change);
-        add(Total);
-        add(Change);
-        
-        paid.setBounds (165, 285, 105, 40);
-        cancel.setBounds (360, 285, 105, 40);
-        Checkout_Title.setBounds (280, 20, 110, 35);
-        cashin.setBounds (380, 175, 125, 40);
-        change.setBounds (380, 110, 125, 40);
-        Total.setBounds (125, 110, 105, 30);
-        Change.setBounds (125, 180, 100, 25);
-        
-        Font Design_1 = new Font("TimesRoman", Font.PLAIN, 50);
-        Font Design_2 = new Font("Courier", Font.PLAIN, 75);
+        //font styles
+        Font Design_1 = new Font("TimesRoman", Font.PLAIN, 26);
+        Font Design_2 = new Font("Courier", Font.PLAIN, 36);
         Font Design_3 = new Font("TimesRoman", Font.PLAIN, 30);
+        Font Design_4 = new Font("TimesRoman", Font.PLAIN, 16);
         
-        paid.setFont(Design_1);
+        //set color
+        
+        
+        //set font
+        confirm.setFont(Design_1);
         cancel.setFont(Design_1);
-        Checkout_Title.setFont(Design_2);
-        cashin.setFont(Design_1);
-        change.setFont(Design_1);
-        Total.setFont(Design_1);
-        Change.setFont(Design_1);
+        totalTxt.setFont(Design_1);
+        paidTxt.setFont(Design_1);
+        changeTxt.setFont(Design_1);
+        total.setFont(Design_3);
+        paid.setFont(Design_3);
+        change.setFont(Design_3);
+        receipt.setFont(Design_4);
+        checkout.setFont(Design_2);
+        done.setFont(Design_1);
         
-        cashin.setPreferredSize(new Dimension(160,18));
-        Change.setPreferredSize(new Dimension(160,18));
-        Total.setPreferredSize(new Dimension(160,18));
-        
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
-        
-       /*setPreferredSize(new Dimension(1920,1080));        
-        setLayout(new BorderLayout());
-        setResizable(true);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1920,1080);
-        setTitle("Check Out List");
-        Top.setLayout(new FlowLayout());
-        
-        
-      
-        
-        
-        Checkout_Title = new JLabel ("CHECK OUT  LIST");
-        Checkout_Title.setFont(Design_2);
-        
-        Totalprice = new JLabel();
-        Totalprice.setText("         Total Price : ");
-        Totalprice.setFont(Design_1);
-        totalprice = new JTextField();
-        totalprice.setPreferredSize(new Dimension(160,18));
-        
-        
-        Cashin = new JLabel();
-        Cashin.setText("           Cash In : ");
-        Cashin.setFont(Design_1);
-        cashin = new JTextField();
-        cashin.setPreferredSize(new Dimension(160,18));
-        
-        
-        Change = new JLabel();
-        Change.setText ("       Change : ");
-        Change.setFont(Design_1);
-        change = new JTextField();
-        change.setPreferredSize(new Dimension(160,18));
-        
-        
-        cbox = new JCheckBox("Save Receipt");
-        cbox.setFont(Design_3);
-        
-        paid = new JButton("PAID");
-        paid.setFont(Design_1);
-        
-        cancel = new JButton("CANCEL");
-        cancel.setFont(Design_1);
-        
-          add(Checkout_Title);
-          add(Totalprice);
-          add(Cashin);
-          add(Change);
-          add(totalprice);
-          add(cashin);
-          add(change);
-          add(cbox);
-          add(paid);
-          add(cancel);
-   
-          Top.add(Checkout_Title);
-        add("North", Top);
+        confirm.addActionListener(this);
+        cancel.addActionListener(this);
+        done.addActionListener(this);
 
-        Middle.add(Totalprice);
-        add("West" , Middle);
-
-        Middle.add(totalprice);
-        add("West" , Middle);
-
-        Middle.add(Cashin);
-        add("West" , Middle);
-
-        Middle.add(cashin);
-        add("West" , Middle);
-
-        Middle.add(Change);
-        add("West" , Middle);
-
-        Middle.add(change);
-        add("West" , Middle);
-
-        Middle.add(cbox);
-        add("West" , Middle);
-
-        Bottom.add(paid);
-        add("South" , Bottom);
-
-        Bottom.add(cancel);
-        add("South" , Bottom);
         
-        */
+        
         
         setVisible(true);
     }
     
     public void actionPerformed(ActionEvent e){
         
-  
+        
+        if(e.getSource() == confirm)
+        {
+        //take input
+        String payment = paidTxt.getText();
+        //input into double format
+        double DoublePayment = Double.parseDouble(payment);
+        //two decimal place
+        double FinalDoublePayment = Math.round(DoublePayment*100.0)/100.0;
+
+        String totalCost = totalTxt.getText();
+        
+        double cost = Double.parseDouble(totalCost);
+        
+        double TOTALCOST = Math.round(cost*100.0)/100.0;
+
+        double FinalChange = TOTALCOST - FinalDoublePayment;
+        
+        double FinalRoundChange = Math.round(FinalChange*100.0)/100.0;
+        
+        double PositiveChange = FinalRoundChange * -1;
+        
+        System.out.println(TOTALCOST);
+        System.out.println(FinalDoublePayment);
+        System.out.println(FinalRoundChange);
+        
+        if(FinalRoundChange < 0 || FinalRoundChange == 0)
+        {
+            
+            String FRC = String.valueOf(PositiveChange); 
+           changeTxt.setText(FRC);
+           
+           confirm.setVisible(false);
+           cancel.setVisible(false);
+           done.setVisible(true);
+           receipt.setVisible(true);
+           
+        }
+        else
+        {
+           showMessageDialog(null, "Please input a valid amount");
+        }
+ 
+        }
+        
+        else if (e.getSource() == cancel)
+        {
+            MainMenu Proceed = new MainMenu();
+            Proceed.GUI();
+            this.dispose();
+            setVisible(false);
+        }
+        else if (e.getSource() == done)
+        {
+            if(receipt.isSelected())
+            {
+                System.out.println("GAY");
+                
+                File f = new File("Saloon_Receipt");
+                //search for folder if exists
+                String absolute = f.getAbsolutePath();
+                String timeStamp = new SimpleDateFormat("yyy.MM.dd.HH.mm.ss").format(new Date());
+                System.out.println(timeStamp);
+                
+                if(f.exists())
+                {
+                    System.out.println(absolute);
+                    
+                    CreateFile(absolute, timeStamp);
+                    WriteFile(absolute, timeStamp);
+                    
+                }
+                else
+                {
+                    System.out.println(absolute);
+                    File f1 = new File(absolute);
+                    f1.mkdir();
+                    CreateFile(absolute, timeStamp);
+                    WriteFile(absolute, timeStamp);
+                    
+                }
+                
+            }
+            else
+            {
+                System.out.println("NOT GAY");
+            }
+
+            MainMenu Proceed = new MainMenu();
+            Proceed.GUI();
+            this.dispose();
+            setVisible(false);
+        }
+        
+        
+        
+        
         
     }
+    
+    public void CreateFile(String absolute, String timeStamp) {
+    
+        try{
+            
+            File createFile = new File( absolute + "\\Receipt " + timeStamp + ".txt"); //input file 
+            if(createFile.createNewFile()){
+                System.out.println(createFile.getName());
+            }else{
+              
+            }
+        }catch (IOException e)
+        {
+            
+            e.printStackTrace();
+        }
+}
+ 
+public void WriteFile(String absolute, String timeStamp){
+    try{
+        FileWriter writeFile = new FileWriter( absolute + "\\Receipt " + timeStamp + ".txt"); //find and write file
+        writeFile.write("                   INVOICE                 \n=================================================\n");
+        writeFile.write("Item                   Quantity            Price");
+        writeFile.close();
+        
+        
+    }catch(IOException e)
+    {
+        e.printStackTrace(); 
+   }
+}
+    
+    
 }
