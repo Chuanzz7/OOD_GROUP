@@ -143,7 +143,7 @@ public class MainMenu {
         Exit_Btn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-        
+                    //If the user click Exit Button, it will back to Login Page.
                     Login First_Page = new Login();
                     //First_Page.main(header);
                     First_Page.setVisible(true);
@@ -156,13 +156,29 @@ public class MainMenu {
         //Mainpanel.setBackground(Color.GREEN);
         //Mainpanel.setVisible(true);
         //frame.add(Mainpanel);
+        
+        
+        
+        //Create Services Products
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(Color.yellow);
         panel_1.setBounds(300, 120,1000,800);
+        //Set it to Visible
         panel_1.setVisible(false);
-        //GridBagConstraints gbc = new GridBagConstraints();
-        
+        //GridBagConstraints gbc = new GridBagConstraints();      
         frame.add(panel_1);
+        
+        
+        JPanel panel_2 = new JPanel();
+        panel_2.setBackground(Color.BLUE);
+        panel_2.setBounds(300, 120,1000,800);
+        //Set it to Visible
+        panel_2.setVisible(false);
+        //GridBagConstraints gbc = new GridBagConstraints();      
+        frame.add(panel_2);
+        
+        
+        
      Service_Btn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
@@ -176,6 +192,16 @@ public class MainMenu {
              
             }
         });
+     Product_Btn.addActionListener (new ActionListener(){
+        public void actionPerformed(ActionEvent e)
+        {
+            try {
+                Product_Page(panel_2);
+            } catch (IOException ex) {
+                System.out.println(ex);
+            }
+        }
+     });
 	frame.setVisible(true);
     }
     
@@ -183,6 +209,7 @@ public class MainMenu {
     void Service_Page(JPanel panel_1) throws IOException{
     {
         panel_1.setVisible(true);
+        
         //JPanel panel_1 = new JPanel();
         //panel_1.setBackground(Color.yellow);
         //panel_1.setBounds(300, 120,1000,800);
@@ -247,6 +274,13 @@ public class MainMenu {
         //}
     }
     }
-
+    
+    
+    void Product_Page(JPanel panel_2) throws IOException {
+    {
+        panel_2.setVisible(true);
+        
+    }
+    }
     
 }
