@@ -5,12 +5,15 @@ import javax.swing.table.DefaultTableModel;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 /*
  * @author Alex Cheow
  */
-public class MainMenu {
+public class MainMenu{
     static private JFrame frame;
     static private JButton Product_Btn, Service_Btn, Exit_Btn, Checkout_Btn;
     static private JTextField Text;
@@ -44,7 +47,9 @@ public class MainMenu {
     double Total_Product_Price;
     double Total_Service_Price;
     
-    void GUI()
+    
+    
+    public void GUI()
     {
         frame = new JFrame("Main Menu");
         //frame.setBounds(100,100,750,550);
@@ -159,22 +164,51 @@ public class MainMenu {
         
         
         
-        //Create Services Products
-        JPanel panel_1 = new JPanel();
+        //Create Services 
+        JPanel panel_1 = new JPanel(new GridBagLayout());
         panel_1.setBackground(Color.yellow);
         panel_1.setBounds(300, 120,1000,800);
         //Set it to Visible
         panel_1.setVisible(false);
-        //GridBagConstraints gbc = new GridBagConstraints();      
+        GridBagConstraints gbc1 = new GridBagConstraints();  
+        //JLabel Header_1 = new JLabel("Services");
+        //Header_1.setBounds(300, 80, 500, 400);
+        //panel_1.add(Header_1);
+        
+        gbc1.insets = new Insets(10, 0, 0, 0);
+        Service_Image = new JLabel[Services];
+        Service_Label = new JLabel[Services];
+        Service_Spinner = new JSpinner[Services];
+        Service_files = new String[Services];
+        Total_Price = new double[Services];
+        
+        Service_files[0] = new String("/Short_Hair.jpg");
+        Service_files[1] = new String("/Short_Hair2.jpg");
+        Service_Label[0] = new JLabel("Testing_1");
+        Service_Label[1] = new JLabel("Testing_2");
+        Total_Price[0] = 5.50;
+        Total_Price[1] = 10.90;
+        
+        
         frame.add(panel_1);
         
+    
         
-        JPanel panel_2 = new JPanel();
+        
+        
+        
+   
+        
+        //Create Products
+        JPanel panel_2 = new JPanel(new GridBagLayout());
         panel_2.setBackground(Color.BLUE);
         panel_2.setBounds(300, 120,1000,800);
         //Set it to Visible
         panel_2.setVisible(false);
-        //GridBagConstraints gbc = new GridBagConstraints();      
+        GridBagConstraints gbc2 = new GridBagConstraints();  
+        //JLabel Header_2 = new JLabel("Products");
+        //Header_1.setBounds(300, 80, 500, 400);
+        //panel_2.add(Header_2);
         frame.add(panel_2);
         
         
@@ -182,12 +216,23 @@ public class MainMenu {
      Service_Btn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-        
-                try {
-                    Service_Page(panel_1);
-                } catch (IOException ex) {
-                    System.out.println(ex);
+                if(panel_1.isEnabled())
+                {
+                    panel_2.setVisible(false);
+                    panel_1.setVisible(true);
                 }
+                else if(panel_2.isEnabled())
+                {
+                    panel_1.setVisible(false);
+                    panel_2.setVisible(true);
+                }
+                
+                
+                //try {
+                    //Service_Page(panel_1);
+                //} catch (IOException ex) {
+                    //System.out.println(ex);
+                //}
                     
              
             }
@@ -195,20 +240,35 @@ public class MainMenu {
      Product_Btn.addActionListener (new ActionListener(){
         public void actionPerformed(ActionEvent e)
         {
-            try {
-                Product_Page(panel_2);
-            } catch (IOException ex) {
-                System.out.println(ex);
+            if(panel_2.isEnabled())
+            {
+                panel_1.setVisible(false);
+                panel_2.setVisible(true);
             }
+            else if(panel_1.isEnabled())
+            {
+                panel_2.setVisible(false);
+                panel_1.setVisible(true);
+            }
+            
+            
+            
+            
+            //try {
+                //Product_Page(panel_2);
+            //} catch (IOException ex) {
+                //System.out.println(ex);
+            //}
         }
      });
+     
 	frame.setVisible(true);
     }
     
     
-    void Service_Page(JPanel panel_1) throws IOException{
-    {
-        panel_1.setVisible(true);
+    //void Service_Page(JPanel panel_1) throws IOException{
+    //{
+        //panel_1.setVisible(true);
         
         //JPanel panel_1 = new JPanel();
         //panel_1.setBackground(Color.yellow);
@@ -272,15 +332,15 @@ public class MainMenu {
 	    //gbc.gridx++;
             //Mainpanel.add(panel);
         //}
-    }
-    }
+    //}
+    //}
     
     
-    void Product_Page(JPanel panel_2) throws IOException {
-    {
-        panel_2.setVisible(true);
+    //void Product_Page(JPanel panel_2) throws IOException {
+    //{
+        //panel_2.setVisible(true);
         
-    }
-    }
+    //}
+    //}
     
 }
