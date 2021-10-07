@@ -182,12 +182,53 @@ public class MainMenu{
         Service_files = new String[Services];
         Total_Price = new double[Services];
         
-        Service_files[0] = new String("/Short_Hair.jpg");
-        Service_files[1] = new String("/Short_Hair2.jpg");
+        Service_files[0] = new String("Short_Hair.jpg");
+        Service_files[1] = new String("Short_Hair2.jpg");
         Service_Label[0] = new JLabel("Testing_1");
         Service_Label[1] = new JLabel("Testing_2");
         Total_Price[0] = 5.50;
         Total_Price[1] = 10.90;
+        
+        
+        for(int i = 0; i < Services; i++)
+        {
+            System.out.println(Service_files[i]);
+            try
+            {
+                Image Test_Image = ImageIO.read(this.getClass().getResource(Service_files[i]));
+                Image ImageScaled = Test_Image.getScaledInstance(80,95,Image.SCALE_SMOOTH);
+                
+                ImageIcon imageicon_test = new ImageIcon(ImageScaled);     
+                SpinnerNumberModel Num_Model_Test = new SpinnerNumberModel(0,0,10,1);
+                Service_Spinner[i] = new JSpinner(Num_Model_Test);
+                Service_Spinner[i] = new JSpinner();
+                Service_Image[i] = new JLabel(imageicon_test);
+                
+            }catch(Exception e)
+            {
+                //System.out.println(e);
+            }
+        }
+        
+        gbc1.gridx = 0;
+        for(int i = 0; i < Services; i++)
+        {
+            
+            //if(i % 3 == 0)
+            //{
+                //gbc1.gridx += 2;
+                //gbc1.gridy = 0;
+            //}
+            //panel_1.add(Service_Image[i], gbc1);
+            //gbc1.gridy++;
+            //panel_1.add(Service_Label[i], gbc1);
+            //gbc1.gridy--;
+            //gbc1.gridx++;
+            //panel_1.add(Service_Spinner[i], gbc1);
+	    //gbc1.gridx++;
+            
+        }
+    
         
         
         frame.add(panel_1);
