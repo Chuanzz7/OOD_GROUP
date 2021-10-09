@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.io.File;
 /*
  * @author Alex Cheow
  */
@@ -64,48 +65,18 @@ public class MainMenu{
         
         Product_Btn = new JButton();
         Service_Btn = new JButton();
-        //Table = new JTable();
+        Table = new JTable();
         Exit_Btn = new JButton();
-        //Checkout_Btn = new JButton();
-        //dtm = new DefaultTableModel(0,0);
-        //final String header[] = new String[] 
-        //{
-            //"Item", "Quantity", "Price", "Spinner"
-        //};
-        //dtm.setColumnIdentifiers(header);
-        //dtm.addRow(header);
+        Checkout_Btn = new JButton();
+        dtm = new DefaultTableModel(0,0);
+        final String header[] = new String[] 
+        {
+            "Item", "Quantity", "Price", "Spinner"
+        };
+        dtm.setColumnIdentifiers(header);
+        dtm.addRow(header);
         
-        //Create Table
-        //Table = new JTable();
-	//Table.setModel(dtm);
         
-        // int x, int y, int width, int height
-	//Table.setBounds(1485, 75, 100, 25); 
-        
-        // width,height
-	//Table.setSize(245, 300); 
-	//Table.getColumnModel().getColumn(0).setPreferredWidth(80);
-	//Table.getColumnModel().getColumn(1).setPreferredWidth(30);
-	//Table.getColumnModel().getColumn(2).setPreferredWidth(30);
-        
-        // hide spinner
-	//Table.getColumnModel().getColumn(3).setMinWidth(0); 
-        //Table.getColumnModel().getColumn(3).setMaxWidth(0); 
-        
-        // remove cell boarder
-        //Table.setShowGrid(false); 
-        
-        //add table to GUI
-        //frame.getContentPane().add(Table);
-        //JLabel Total = new JLabel("Total: RM");
-        //Total.setBounds(1350, 700, 100, 25);
-        //Text = new JTextField();
-	//Text.setBounds(1400, 700, 100, 25);
-	//frame.getContentPane().add(Text);
-	//Text.setColumns(12);
-        //Checkout_Btn = new JButton("Checkout");
-        //Checkout_Btn.setBounds(1455, 770, 100, 25);
-       // frame.getContentPane().add(Checkout_Btn);
         
         
         JPanel Category = new JPanel();
@@ -156,11 +127,7 @@ public class MainMenu{
              
             }
         });
-        //JPanel Mainpanel = new JPanel(new GridBagLayout());
-        //Mainpanel.setBounds(300, 120,1000,800);
-        //Mainpanel.setBackground(Color.GREEN);
-        //Mainpanel.setVisible(true);
-        //frame.add(Mainpanel);
+        
         
         
         
@@ -168,13 +135,14 @@ public class MainMenu{
         JPanel panel_1 = new JPanel(new GridBagLayout());
         panel_1.setBackground(Color.yellow);
         panel_1.setBounds(300, 120,1000,800);
-        //Set it to Visible
+        
         panel_1.setVisible(false);
         GridBagConstraints gbc1 = new GridBagConstraints();  
         //JLabel Header_1 = new JLabel("Services");
         //Header_1.setBounds(300, 80, 500, 400);
         //panel_1.add(Header_1);
-        
+        JLabel text1 = new JLabel("Min are gay");
+        panel_1.add(text1);
         gbc1.insets = new Insets(10, 0, 0, 0);
         Service_Image = new JLabel[Services];
         Service_Label = new JLabel[Services];
@@ -182,17 +150,35 @@ public class MainMenu{
         Service_files = new String[Services];
         Total_Price = new double[Services];
         
-        Service_files[0] = new String("Short_Hair.jpg");
-        Service_files[1] = new String("Short_Hair2.jpg");
+        Service_files[0] = new String("/Short_Hair.jpg");
+        Service_files[1] = new String("/Short_Hair2.jpg");
         Service_Label[0] = new JLabel("Testing_1");
         Service_Label[1] = new JLabel("Testing_2");
         Total_Price[0] = 5.50;
         Total_Price[1] = 10.90;
         
-        
+        File f = new File("ServicesImg");
+        String absolute = f.getAbsolutePath();
+        if(f.exists())
+                {
+                    System.out.println(absolute);
+                    
+                    CreateFile(absolute);
+                    WriteFile(absolute);
+                    
+                }
+                else
+                {
+                    System.out.println(absolute);
+                    File f1 = new File(absolute);
+                    f1.mkdir();
+                    CreateFile(absolute);
+                    WriteFile(absolute);
+                    
+                }
         for(int i = 0; i < Services; i++)
         {
-            System.out.println(Service_files[i]);
+            System.out.print(Service_files[i]);
             try
             {
                 Image Test_Image = ImageIO.read(this.getClass().getResource(Service_files[i]));
@@ -201,12 +187,12 @@ public class MainMenu{
                 ImageIcon imageicon_test = new ImageIcon(ImageScaled);     
                 SpinnerNumberModel Num_Model_Test = new SpinnerNumberModel(0,0,10,1);
                 Service_Spinner[i] = new JSpinner(Num_Model_Test);
-                Service_Spinner[i] = new JSpinner();
+                //Service_Spinner[i].addChangeListener(listener);
                 Service_Image[i] = new JLabel(imageicon_test);
                 
             }catch(Exception e)
             {
-                //System.out.println(e);
+                System.out.println(e);
             }
         }
         
@@ -214,16 +200,18 @@ public class MainMenu{
         for(int i = 0; i < Services; i++)
         {
             
-            //if(i % 3 == 0)
-            //{
-                //gbc1.gridx += 2;
-                //gbc1.gridy = 0;
-            //}
+            if(i % 3 == 0)
+            {
+                gbc1.gridx += 2;
+                gbc1.gridy = 0;
+            }
             //panel_1.add(Service_Image[i], gbc1);
             //gbc1.gridy++;
-            //panel_1.add(Service_Label[i], gbc1);
-            //gbc1.gridy--;
-            //gbc1.gridx++;
+            
+            panel_1.add(Service_Label[i], gbc1);
+            gbc1.gridy--;
+            gbc1.gridx++;
+            
             //panel_1.add(Service_Spinner[i], gbc1);
 	    //gbc1.gridx++;
             
@@ -267,15 +255,7 @@ public class MainMenu{
                     panel_1.setVisible(false);
                     panel_2.setVisible(true);
                 }
-                
-                
-                //try {
-                    //Service_Page(panel_1);
-                //} catch (IOException ex) {
-                    //System.out.println(ex);
-                //}
-                    
-             
+            
             }
         });
      Product_Btn.addActionListener (new ActionListener(){
@@ -291,15 +271,7 @@ public class MainMenu{
                 panel_2.setVisible(false);
                 panel_1.setVisible(true);
             }
-            
-            
-            
-            
-            //try {
-                //Product_Page(panel_2);
-            //} catch (IOException ex) {
-                //System.out.println(ex);
-            //}
+
         }
      });
      
@@ -307,81 +279,13 @@ public class MainMenu{
     }
     
     
-    //void Service_Page(JPanel panel_1) throws IOException{
-    //{
-        //panel_1.setVisible(true);
-        
-        //JPanel panel_1 = new JPanel();
-        //panel_1.setBackground(Color.yellow);
-        //panel_1.setBounds(300, 120,1000,800);
-        //GridBagConstraints gbc = new GridBagConstraints();
-        
-        //frame.add(panel_1);
-        //panel_1.setVisible(true);
-        //JOptionPane.showMessageDialog(null, "Can Function");
-        //frame.validate();
-        //gbc.insets = new Insets(10, 0, 0, 0);
-        //Service_Image = new JLabel[Services];
-        //Service_Label = new JLabel[Services];
-        //Service_Spinner = new JSpinner[Services];
-        //Service_files = new String[Services];
-        //Total_Price = new double[Services];
-        
-        
-        //Service_files[0] = ("../Short_Hair.jpg");
-        //Service_files[1] = ("../Short_Hair2.jpg");
-        //Service_Label[0] = new JLabel("Testing_1");
-        //Service_Label[1] = new JLabel("Testing_2");
-        //Total_Price[0] = 5.50;
-        //Total_Price[1] = 10.90;
-        
-        
-        
-        //for(int i = 0; i < Services; i++)
-        //{
-            //System.out.println(Service_files[i]);
-            //try
-            //{
-                //Image Test_Image = ImageIO.read(this.getClass().getResource(Service_files[i]));
-                //Image ImageScaled = Test_Image.getScaledInstance(80,95,Image.SCALE_SMOOTH);
-                
-                //ImageIcon imageicon_test = new ImageIcon(ImageScaled);     
-                //SpinnerNumberModel Num_Model_Test = new SpinnerNumberModel(0,0,10,1);
-                //Service_Spinner[i] = new JSpinner(Num_Model_Test);
-                //Service_Spinner[i] = new JSpinner();
-                //Service_Image[i] = new JLabel(imageicon_test);
-            //}catch(Exception e)
-            //{
-                //System.out.println(e);
-            //}
-        //}
-        
-        //gbc.gridx = 0;
-        //for(int i = 0; i < Services; i++)
-        //{
-            //if(i % 3 == 0)
-            //{
-                //gbc.gridx += 2;
-                //gbc.gridy = 0;
-            //}
-            //panel.add(Service_Image[i], gbc);
-            //gbc.gridy++;
-            //panel.add(Service_Label[i], gbc);
-            //gbc.gridy--;
-            //gbc.gridx++;
-            //panel.add(Service_Spinner[i], gbc);
-	    //gbc.gridx++;
-            //Mainpanel.add(panel);
-        //}
-    //}
-    //}
-    
-    
-    //void Product_Page(JPanel panel_2) throws IOException {
-    //{
-        //panel_2.setVisible(true);
-        
-    //}
-    //}
+
+    private void CreateFile(String absolute) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void WriteFile(String absolute) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
