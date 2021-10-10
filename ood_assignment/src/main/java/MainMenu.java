@@ -55,7 +55,7 @@ public class MainMenu{
     double Total_Product_Price;
     double Total_Service_Price;
     
-    
+    private JButton button_Checkout;
         
         
     
@@ -78,7 +78,8 @@ public class MainMenu{
         
         cart1.frame.setBounds(1400, 100, 500, 500);
       
-  
+        button_Checkout = new JButton();
+        
         JPanel Category = new JPanel();
         Category.setBackground(Color.BLACK);
         Category.setBounds(0,0,200,1080);
@@ -128,7 +129,20 @@ public class MainMenu{
             }
         });
         
+        button_Checkout = new JButton("Checkout");
+        button_Checkout.setFont(new Font("TimesRoman", Font.PLAIN, 24));
+        button_Checkout.setBounds(1600, 900, 185,70);
+        frame.add(button_Checkout);
+        button_Checkout.setVisible(true);
         
+        button_Checkout.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                String total_Price = cart1.lb_TotalPrice.getText();
+                Checkout ck = new Checkout();
+                ck.Checkout(total_Price);
+            }
+    });
         
         
         //Create Services 
