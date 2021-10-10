@@ -30,9 +30,17 @@ public class cartUI {
         {
         public boolean isCellEditable(int row, int column)
         {
-          return false;//This causes all cells to be not editable
+         switch (column) {
+         case 0:
+         case 4:
+             return true;
+         default:
+             return false;
+      }
         }
+           
     };
+    
     
     Object[] columns = {"Name","Quantity","Unit Price", "Price", "Button"};
     Object[] row = new Object[5];
@@ -94,6 +102,7 @@ public class cartUI {
 {
     public void actionPerformed(ActionEvent e)
     {
+
         JTable table1 = (JTable)e.getSource();
         int modelRow = Integer.valueOf( e.getActionCommand() );
         int quantity = Integer.parseInt(table1.getValueAt(modelRow, 1).toString());
