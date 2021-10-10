@@ -251,8 +251,7 @@ public class MainMenu{
   
         
         ProductButton[0] = new JButton("Add");
-        ProductButton[0].addActionListener((ActionEvent e) -> {
-             System.out.println((Integer)Product_Spinner[0].getValue());
+        ProductButton[0].addActionListener((ActionEvent e) -> {        
              addRowtoTable("test1",(Integer)Product_Spinner[0].getValue(), 5.0 );
         });
         
@@ -371,7 +370,6 @@ public class MainMenu{
                 cart1.row[2] = _unitPrice;
                 cart1.row[3] = _itemQuantity * _unitPrice;
                 cart1.row[4] = "delete";
-
                 if (tableRowsNum == 0){
                     cart1.model.addRow(cart1.row); 
                     cart1.findTotal();
@@ -397,4 +395,5 @@ public class MainMenu{
                 }
             }
         }
+
 }
