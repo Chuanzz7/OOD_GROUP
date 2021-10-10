@@ -138,7 +138,7 @@ public class MainMenu{
         button_Checkout.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-                String total_Price = cart1.lb_TotalPrice.getText();
+                String total_Price = cart1.TextTotalP.getText();
                 Checkout ck = new Checkout();
                 ck.Checkout(total_Price);
             }
