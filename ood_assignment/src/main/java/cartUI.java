@@ -21,14 +21,19 @@ public class cartUI {
     ArrayList<cartItem> cartItemArray  = new ArrayList<>();
      
     int time = 0;
-    JFrame frame = new JFrame();
-    JButton addButton = new JButton("Add");
-    JButton delButton = new JButton("Delete");
+    Panel frame = new Panel();
     JLabel lb_TotalPrice = new JLabel("Price ");
     JLabel lb_ItemList = new JLabel("Item list:");
     
     JTable table = new JTable();
-    DefaultTableModel model = new DefaultTableModel();
+    DefaultTableModel model = new DefaultTableModel()
+        {
+        public boolean isCellEditable(int row, int column)
+        {
+          return false;//This causes all cells to be not editable
+        }
+    };
+    
     Object[] columns = {"Name","Quantity","Unit Price", "Price", "Button"};
     Object[] row = new Object[5];
     
@@ -43,28 +48,14 @@ public class cartUI {
         table.setForeground(Color.black);
         
         frame.setSize(1000,800);
-        frame.setTitle("Cart");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-   
        
-        addButton.setPreferredSize(new Dimension(100, 100));
-    
-        frame.add(addButton);
         frame.add(panel);
         frame.add(lb_TotalPrice);
         frame.setSize(900,400);
         frame.setVisible(true);
-        
-        //test row
-        row[0] = "test";
-                row[1] = 2;
-                row[2] = "1";
-                row[3] = "2";
-                row[4] = "delete";
-                model.addRow(row);
-         System.out.print("error");
+     
         //put tis in main menu
-         addButton.addActionListener(new ActionListener(){
+         /*addButton.addActionListener(new ActionListener(){
 
             @Override
             public void actionPerformed(ActionEvent e) { 
@@ -93,7 +84,7 @@ public class cartUI {
                     }
                 }
             }
-            });
+            });*/
          
           ButtonColumn buttonColumn = new ButtonColumn(table, delete, 4);
         }

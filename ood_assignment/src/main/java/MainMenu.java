@@ -15,6 +15,8 @@ import java.io.File;
  * @author Alex Cheow
  */
 public class MainMenu{
+    cartUI cart1 = new cartUI();
+    
     BufferedImage [] allImages;
     BufferedImage [] allImages2;
     static private JFrame frame;
@@ -54,6 +56,7 @@ public class MainMenu{
     
     public void GUI()
     {
+        
         frame = new JFrame("Main Menu");
         //frame.setBounds(100,100,750,550);
         frame.setSize(1920,1080);
@@ -253,9 +256,23 @@ public class MainMenu{
   
         
         ProductButton[0] = new JButton("Add");
+        ProductButton[0].addActionListener((ActionEvent e) -> {
+             System.out.println((Integer)Product_Spinner[0].getValue());
+             addRowtoTable("test1",(Integer)Product_Spinner[0].getValue(), 5.0 );
+        });
+        
         ProductButton[1] = new JButton("Add");
+        ProductButton[1].addActionListener((ActionEvent e) -> {
+             addRowtoTable("test2", (Integer)Product_Spinner[1].getValue(), 6.0 );
+        });
         ProductButton[2] = new JButton("Add");
+        ProductButton[2].addActionListener((ActionEvent e) -> {
+             addRowtoTable("test2", (Integer)Product_Spinner[2].getValue(), 6.0 );
+        });
         ProductButton[3] = new JButton("Add");
+        ProductButton[3].addActionListener((ActionEvent e) -> {
+             addRowtoTable("test2", (Integer)Product_Spinner[3].getValue(), 6.0 );
+        });
  
         
         Product_Price[0] = 5.50;
@@ -278,12 +295,9 @@ public class MainMenu{
                 Image2[i].setIcon(icon2);
                 
                 
-                SpinnerNumberModel spnummodel2 = new SpinnerNumberModel(0,0,10,1);
+                SpinnerNumberModel spnummodel2 = new SpinnerNumberModel(1,0,10,1);
                 Product_Spinner[i] = new JSpinner(spnummodel2);
-                Product_Spinner[i] = new JSpinner();
-                
-
-                
+                        
                 if(i % 3 == 0)
                 {
                   gbc2.gridx += 2;
@@ -350,9 +364,42 @@ public class MainMenu{
 
         }
      });
-     
-	frame.setVisible(true);
+     frame.add(cart1.frame);
+     frame.setVisible(true);
     }
-
     
+    public void addRowtoTable(String _itemName, int _itemQuantity, double _unitPrice){
+        if(_itemQuantity >0){
+            int tableRowsNum = cart1.table.getRowCount();
+                cart1.row[0] = _itemName;
+                cart1.row[1] = _itemQuantity;
+                cart1.row[2] = _unitPrice;
+                cart1.row[3] = _itemQuantity * _unitPrice;
+                cart1.row[4] = "delete";
+
+                if (tableRowsNum == 0){
+                    cart1.model.addRow(cart1.row); 
+                    cart1.findTotal();
+                }
+                else{
+                //if item is already in cart
+                    for(int i = 0 ; i < tableRowsNum ; i++){
+                        if( _itemName  == cart1.table.getValueAt(i, 0).toString()){ 
+                            int quantity = Integer.parseInt(cart1.table.getValueAt(i, 1).toString());
+                            cart1.table.setValueAt(quantity+_itemQuantity ,i,1);
+                            cart1.table.setValueAt(Double.parseDouble(cart1.table.getValueAt(i, 1).toString()) * Double.parseDouble(cart1.table.getValueAt(i, 2).toString()),i,3);
+                            cart1.findTotal();                    
+                            break;
+                        }
+
+                        // add row to the model
+                        else if(i == tableRowsNum-1){
+                            cart1.model.addRow(cart1.row); 
+                            cart1.findTotal();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
 }

@@ -13,7 +13,8 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        cartUI start = new cartUI();
+         MainMenu Proceed = new MainMenu();
+            Proceed.GUI();
         
         //CreateTxtBox txtBox = new CreateTxtBox();
         
