@@ -47,12 +47,12 @@ public class Checkout extends JFrame implements ActionListener
     
    
     
-    public void Checkout(){
+    public void Checkout(String TP){
         
         //construct components
         confirm = new JButton ("Confirm");
         cancel = new JButton ("Cancel");
-        totalTxt = new JTextField ("34.86", 10);
+        totalTxt = new JTextField (TP, 10);
         paidTxt = new JTextField (5);
         changeTxt = new JTextField (5);
         total = new JLabel ("Total");
