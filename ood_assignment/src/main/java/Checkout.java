@@ -183,8 +183,7 @@ public class Checkout extends JFrame implements ActionListener
         
         else if (e.getSource() == cancel)
         {
-            MainMenu Proceed = new MainMenu();
-            Proceed.GUI();
+            
             this.dispose();
             setVisible(false);
         }
@@ -224,8 +223,7 @@ public class Checkout extends JFrame implements ActionListener
                 System.out.println("");
             }
 
-            MainMenu Proceed = new MainMenu();
-            Proceed.GUI();
+           
             this.dispose();
             setVisible(false);
         }

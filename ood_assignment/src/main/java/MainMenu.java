@@ -135,6 +135,14 @@ public class MainMenu{
         frame.add(button_Checkout);
         button_Checkout.setVisible(true);
         
+        button_Checkout.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                Checkout ck = new Checkout();
+                ck.Checkout();
+            }
+    });
+        
         
         //Create Services 
         JPanel panel_1 = new JPanel(new GridBagLayout());
