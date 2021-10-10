@@ -31,7 +31,6 @@ public class cartUI {
         public boolean isCellEditable(int row, int column)
         {
          switch (column) {
-         case 0:
          case 4:
              return true;
          default:
