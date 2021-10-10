@@ -141,6 +141,7 @@ public class MainMenu{
                 String total_Price = cart1.TextTotalP.getText();
                 Checkout ck = new Checkout();
                 ck.Checkout(total_Price);
+                frame.dispose();
             }
     });
         
