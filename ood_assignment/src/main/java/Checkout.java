@@ -256,9 +256,10 @@ public void WriteFile(String absolute, String timeStamp){
         FileWriter writeFile = new FileWriter( absolute + "\\Receipt " + timeStamp + ".txt"); //find and write file
         writeFile.write("                   INVOICE                 \n=================================================\n");
         writeFile.write("Item                   Quantity            Price");
-        writeFile.write("=================================================");
-        writeFile.write("Total                                      " + totalTxt);
-        writeFile.write("Paid                                       " + );
+        writeFile.write("\n=================================================\n");
+        writeFile.write("Total                                      " + totalTxt.getText() + "\n");
+        writeFile.write("Paid                                       " + paidTxt.getText() + "\n");
+        writeFile.write("Change                                     " + changeTxt.getText() + "\n");
         writeFile.close();
         
         
