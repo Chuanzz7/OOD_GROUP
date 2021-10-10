@@ -186,6 +186,8 @@ public class Checkout extends JFrame implements ActionListener
             
             this.dispose();
             setVisible(false);
+            MainMenu menu = new MainMenu();
+            menu.GUI();
         }
         else if (e.getSource() == done)
         {
