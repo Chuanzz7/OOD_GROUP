@@ -171,7 +171,7 @@ public class MainMenu{
         
         
         
-        File path = new File("C:\\Users\\Alex Cheow\\Desktop\\SEM 5\\Object Oriented Development\\Assignment\\OOD_Assignment\\OOD_GROUP\\ood_assignment\\ServicesImg");
+        File path = new File("ServicesImg");
         File[] allFiles = path.listFiles();
         allImages = new BufferedImage[allFiles.length];
         JLabel Image[] = new JLabel[allFiles.length];
@@ -233,7 +233,7 @@ public class MainMenu{
         
         //Create Products
         JPanel panel_2 = new JPanel(new GridBagLayout());
-        panel_2.setBackground(Color.BLUE);
+        panel_2.setBackground(Color.GREEN);
         panel_2.setBounds(300, 120,1000,800);
         //Set it to Visible
         panel_2.setVisible(false);
@@ -263,7 +263,7 @@ public class MainMenu{
         Product_Price[2] = 10.90;
         Product_Price[3] = 10.90;
         
-        File path2 = new File("C:\\Users\\Alex Cheow\\Desktop\\SEM 5\\Object Oriented Development\\Assignment\\OOD_Assignment\\OOD_GROUP\\ood_assignment\\ProductsImg");
+        File path2 = new File("ProductsImg");
         File[] allFiles2 = path2.listFiles();
         allImages2 = new BufferedImage[allFiles2.length];
         JLabel Image2[] = new JLabel[allFiles2.length];
