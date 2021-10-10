@@ -11,6 +11,9 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.io.File;
+import java.util.ArrayList;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.JScrollPane;
 /*
  * @author Alex Cheow
  */
@@ -53,6 +56,9 @@ public class MainMenu{
     double Total_Service_Price;
     
     
+        
+        
+    
     
     public void GUI()
     {
@@ -65,25 +71,14 @@ public class MainMenu{
 	frame.getContentPane().setLayout(null);
 	frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        
-        
-        
+       
         Product_Btn = new JButton();
-        Service_Btn = new JButton();
-        Table = new JTable();
+        Service_Btn = new JButton();  
         Exit_Btn = new JButton();
-        Checkout_Btn = new JButton();
-        dtm = new DefaultTableModel(0,0);
-        final String header[] = new String[] 
-        {
-            "Item", "Quantity", "Price", "Spinner"
-        };
-        dtm.setColumnIdentifiers(header);
-        dtm.addRow(header);
         
-        
-        
-        
+        cart1.frame.setBounds(1400, 100, 500, 500);
+      
+  
         JPanel Category = new JPanel();
         Category.setBackground(Color.BLACK);
         Category.setBounds(0,0,200,1080);
