@@ -18,6 +18,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.JScrollPane;
 
 public class cartUI {
+    
     ArrayList<cartItem> cartItemArray  = new ArrayList<>();
      
     int time = 0;
@@ -41,7 +42,6 @@ public class cartUI {
            
     };
     
-    
     Object[] columns = {"Name","Quantity","Unit Price", "Price", "Button"};
     Object[] row = new Object[5];
     
@@ -62,39 +62,7 @@ public class cartUI {
         frame.add(TextTotalP);
         frame.setSize(900,400);
         frame.setVisible(true);
-     
-        //put tis in main menu
-         /*addButton.addActionListener(new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent e) { 
-                int tableRowsNum = table.getRowCount();
-                row[0] = "test1";
-                row[1] = 2;
-                row[2] = "1";
-                row[3] = "2";
-                row[4] = "delete";
-                
-                //if item is already in cart
-                for(int i = 0 ; i < tableRowsNum ; i++){
-                    if("test1"  == table.getValueAt(i, 0).toString()){ 
-                    int quantity = Integer.parseInt(table.getValueAt(i, 1).toString());
-                    table.setValueAt(quantity+1,i,1);
-                    table.setValueAt(Double.parseDouble(table.getValueAt(i, 1).toString()) * Double.parseDouble(table.getValueAt(i, 2).toString()),i,3);
-                    findTotal();
-                    break;
-                    }
-
-                    // add row to the model
-                    else if(i == tableRowsNum-1){
-                    model.addRow(row); 
-                    findTotal();
-                    break;
-                    }
-                }
-            }
-            });*/
-         
+      
           ButtonColumn buttonColumn = new ButtonColumn(table, delete, 4);
         }
      
@@ -127,7 +95,17 @@ public class cartUI {
        total += Double.parseDouble(table.getValueAt(i, 3).toString());
     }
     TextTotalP.setText(String.valueOf(total));
-    }
+  }
+  
+  public ArrayList exportTabletoArray(){
+      int tableRowsNum = table.getRowCount();
+      cartItemArray.clear();
+      
+       for(int i = 0 ; i < tableRowsNum ; i++){
+            cartItemArray.add(new cartItem(table.getValueAt(i, 0).toString() ,Integer.parseInt(table.getValueAt(i, 1).toString()), Double.parseDouble(table.getValueAt(i, 2).toString()),  Double.parseDouble(table.getValueAt(i, 3).toString())));            
+            }   
+  return cartItemArray;
+  }
     
  }
     
