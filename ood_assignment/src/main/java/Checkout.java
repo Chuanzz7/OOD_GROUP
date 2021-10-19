@@ -34,14 +34,7 @@ public class Checkout extends JFrame implements ActionListener
     
     
     
-    public static void main(String[] args) {
-        
-        JFrame frame = new JFrame ("MyPanel");
-        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add (new Checkout());
-        frame.pack();
-        frame.setVisible (true);
-    }
+
     
     public class Popup
     {
@@ -54,12 +47,12 @@ public class Checkout extends JFrame implements ActionListener
     
    
     
-    public Checkout(){
+    public void Checkout(String TP){
         
         //construct components
         confirm = new JButton ("Confirm");
         cancel = new JButton ("Cancel");
-        totalTxt = new JTextField ("34.86", 10);
+        totalTxt = new JTextField (TP, 10);
         paidTxt = new JTextField (5);
         changeTxt = new JTextField (5);
         total = new JLabel ("Total");
@@ -190,16 +183,17 @@ public class Checkout extends JFrame implements ActionListener
         
         else if (e.getSource() == cancel)
         {
-            MainMenu Proceed = new MainMenu();
-            Proceed.GUI();
+            
             this.dispose();
             setVisible(false);
+            MainMenu menu = new MainMenu();
+            menu.GUI();
         }
         else if (e.getSource() == done)
         {
             if(receipt.isSelected())
             {
-                System.out.println("GAY");
+                
                 
                 File f = new File("Saloon_Receipt");
                 //search for folder if exists
@@ -228,13 +222,14 @@ public class Checkout extends JFrame implements ActionListener
             }
             else
             {
-                System.out.println("NOT GAY");
+                System.out.println("");
             }
 
-            MainMenu Proceed = new MainMenu();
-            Proceed.GUI();
+           
             this.dispose();
             setVisible(false);
+            MainMenu menu = new MainMenu();
+            menu.GUI();
         }
         
         
@@ -265,6 +260,10 @@ public void WriteFile(String absolute, String timeStamp){
         FileWriter writeFile = new FileWriter( absolute + "\\Receipt " + timeStamp + ".txt"); //find and write file
         writeFile.write("                   INVOICE                 \n=================================================\n");
         writeFile.write("Item                   Quantity            Price");
+        writeFile.write("\n=================================================\n");
+        writeFile.write("Total                                      " + totalTxt.getText() + "\n");
+        writeFile.write("Paid                                       " + paidTxt.getText() + "\n");
+        writeFile.write("Change                                     " + changeTxt.getText() + "\n");
         writeFile.close();
         
         

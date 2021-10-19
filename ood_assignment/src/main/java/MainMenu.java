@@ -55,7 +55,7 @@ public class MainMenu{
     double Total_Product_Price;
     double Total_Service_Price;
     
-    
+    private JButton button_Checkout;
         
         
     
@@ -78,7 +78,8 @@ public class MainMenu{
         
         cart1.frame.setBounds(1400, 100, 500, 500);
       
-  
+        button_Checkout = new JButton();
+        
         JPanel Category = new JPanel();
         Category.setBackground(Color.BLACK);
         Category.setBounds(0,0,200,1080);
@@ -128,7 +129,21 @@ public class MainMenu{
             }
         });
         
+        button_Checkout = new JButton("Checkout");
+        button_Checkout.setFont(new Font("TimesRoman", Font.PLAIN, 24));
+        button_Checkout.setBounds(1600, 900, 185,70);
+        frame.add(button_Checkout);
+        button_Checkout.setVisible(true);
         
+        button_Checkout.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                String total_Price = cart1.TextTotalP.getText();
+                Checkout ck = new Checkout();
+                ck.Checkout(total_Price);
+                frame.dispose();
+            }
+    });
         
         
         //Create Services 
@@ -153,9 +168,21 @@ public class MainMenu{
   
         
         ServiceButton[0] = new JButton("Add");
+        ServiceButton[0].addActionListener((ActionEvent e) -> {        
+             addRowtoTable("test6",(Integer)Service_Spinner[0].getValue(), 5.0 );
+        });
         ServiceButton[1] = new JButton("Add");
+        ServiceButton[1].addActionListener((ActionEvent e) -> {        
+             addRowtoTable("test7",(Integer)Service_Spinner[1].getValue(), 10.0 );
+        });
         ServiceButton[2] = new JButton("Add");
+        ServiceButton[2].addActionListener((ActionEvent e) -> {        
+             addRowtoTable("test8",(Integer)Service_Spinner[2].getValue(), 15.0 );
+        });
         ServiceButton[3] = new JButton("Add");
+        ServiceButton[3].addActionListener((ActionEvent e) -> {        
+             addRowtoTable("test9",(Integer)Service_Spinner[3].getValue(), 20.0 );
+        });
  
         
         Service_Price[0] = 5.50;
@@ -185,7 +212,8 @@ public class MainMenu{
                 Image[i].setIcon(icon);
                 
                 
-                SpinnerNumberModel spnummodel = new SpinnerNumberModel(0,0,10,1);
+                SpinnerNumberModel spnummodel;
+                spnummodel = new SpinnerNumberModel(1,0,10,1);
                 Service_Spinner[i] = new JSpinner(spnummodel);
                 Service_Spinner[i] = new JSpinner();
                 
@@ -261,11 +289,11 @@ public class MainMenu{
         });
         ProductButton[2] = new JButton("Add");
         ProductButton[2].addActionListener((ActionEvent e) -> {
-             addRowtoTable("test2", (Integer)Product_Spinner[2].getValue(), 6.0 );
+             addRowtoTable("test3", (Integer)Product_Spinner[2].getValue(), 8.0 );
         });
         ProductButton[3] = new JButton("Add");
         ProductButton[3].addActionListener((ActionEvent e) -> {
-             addRowtoTable("test2", (Integer)Product_Spinner[3].getValue(), 6.0 );
+             addRowtoTable("test4", (Integer)Product_Spinner[3].getValue(), 15.0 );
         });
  
         

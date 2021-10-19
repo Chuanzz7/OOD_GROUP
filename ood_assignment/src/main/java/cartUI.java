@@ -22,8 +22,9 @@ public class cartUI {
      
     int time = 0;
     Panel frame = new Panel();
-    JLabel lb_TotalPrice = new JLabel("Price ");
+    JLabel lb_TotalPrice = new JLabel("Total Price: RM ");
     JLabel lb_ItemList = new JLabel("Item list:");
+    JTextField TextTotalP = new JTextField(10);
     
     JTable table = new JTable();
     DefaultTableModel model = new DefaultTableModel()
@@ -55,9 +56,10 @@ public class cartUI {
         table.setForeground(Color.black);
         
         frame.setSize(1000,800);
-       
+       TextTotalP.setEditable(false);
         frame.add(panel);
         frame.add(lb_TotalPrice);
+        frame.add(TextTotalP);
         frame.setSize(900,400);
         frame.setVisible(true);
      
@@ -124,7 +126,7 @@ public class cartUI {
     for(int i = 0 ; i < tableRowsNum ; i++){
        total += Double.parseDouble(table.getValueAt(i, 3).toString());
     }
-    lb_TotalPrice.setText(String.valueOf(total));
+    TextTotalP.setText(String.valueOf(total));
     }
     
  }
