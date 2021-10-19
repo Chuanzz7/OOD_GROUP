@@ -22,12 +22,7 @@ public class Login extends JFrame
     
     public Login()
     {
-        JPanel Top = new JPanel();
-        Top.setLayout(new FlowLayout());
-        JPanel Middle = new JPanel();
-        Middle.setLayout(new FlowLayout());
-        JPanel Bottom = new JPanel();
-        Bottom.setLayout(new FlowLayout());
+        
         
         Font Design_1 = new Font("TimesRoman", Font.PLAIN, 20);
         Font Design_2 = new Font("Courier", Font.PLAIN, 30);
@@ -66,17 +61,13 @@ public class Login extends JFrame
         Username_Input.setBounds(125, 65, 200, 30);
         Password.setBounds(35, 102, 100, 30);
         Password_Input.setBounds(125, 105, 200, 30);
+        Login_Button.setBounds(155, 150, 100, 40);
         
-        
-        
-        Top.add(Welcome_Title);
-        add("North", Top);
         
        
-        
-        Bottom.add(Login_Button);
-        add("South", Bottom);
         Login_Button.addActionListener(this);
+        setPreferredSize(new Dimension (425, 275));
+        setLayout(null);
         setSize(425,275);
         setTitle("Login Page");
         //Center the Windows
