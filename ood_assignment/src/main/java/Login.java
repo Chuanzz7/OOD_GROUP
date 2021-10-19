@@ -54,21 +54,30 @@ public class Login extends JFrame
         
         //Login
         Login_Button = new JButton("Login");
-
+        
+        add(Welcome_Title);
+        add(Username);
+        add(Username_Input);
+        add(Password);
+        add(Password_Input);
+        add(Login_Button);
+        
+        Username.setBounds(35, 60, 100, 30);
+        Username_Input.setBounds(125, 65, 200, 30);
+        Password.setBounds(35, 102, 100, 30);
+        Password_Input.setBounds(125, 105, 200, 30);
+        
+        
+        
         Top.add(Welcome_Title);
         add("North", Top);
-        Middle.add(Username);
-        add("Center", Middle);
-        Middle.add(Username_Input);
-        add("Center", Middle);
-        Middle.add(Password);
-        add("Center", Middle);
-        Middle.add(Password_Input);
-        add("Center", Middle);
+        
+       
+        
         Bottom.add(Login_Button);
         add("South", Bottom);
         Login_Button.addActionListener(this);
-        setSize(600,600);
+        setSize(425,275);
         setTitle("Login Page");
         //Center the Windows
         setLocationRelativeTo(null);
