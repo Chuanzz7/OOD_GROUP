@@ -16,10 +16,7 @@ public class Main {
          MainMenu Proceed = new MainMenu();
             Proceed.GUI();
         
-        //CreateTxtBox txtBox = new CreateTxtBox();
         
-       // txtBox.CreateFile();
-       // txtBox.WriteFile();
         
   
   

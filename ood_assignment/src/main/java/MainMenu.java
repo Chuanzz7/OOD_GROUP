@@ -14,6 +14,7 @@ import java.io.File;
 import java.util.ArrayList;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.JScrollPane;
+
 /*
  * @author Alex Cheow
  */
@@ -23,10 +24,10 @@ public class MainMenu{
     BufferedImage [] allImages;
     BufferedImage [] allImages2;
     static private JFrame frame;
-    static private JButton Product_Btn, Service_Btn, Exit_Btn, Checkout_Btn;
-    static private JTextField Text;
-    static private GridBagConstraints Grid; 
-    private JTable Table;
+    static private JButton Product_Btn, Service_Btn, Exit_Btn;
+    //static private JTextField Text;
+    //static private GridBagConstraints Grid; 
+    //private JTable Table;
     DefaultTableModel dtm;
     double[] Service_Price;
     double[] Product_Price;
@@ -38,12 +39,10 @@ public class MainMenu{
     private JSpinner[] Service_Spinner;
     static private JLabel[] Service_Label;
     static private JButton[] ServiceButton;
-    private String[] Service_files;
     
     private JSpinner[] Product_Spinner;
     static private JLabel[] Product_Label;
     static private JButton[] ProductButton;
-    private String[] Product_files;
     
     //Make it only available within the class and does not allow the variable to be changed
     private static final int Services = 4;
@@ -151,44 +150,46 @@ public class MainMenu{
         panel_1.setBackground(Color.yellow);
         panel_1.setBounds(300, 120,1000,800);
         
+        //Hide the Panel
         panel_1.setVisible(false);
         GridBagConstraints gbc1 = new GridBagConstraints();  
         gbc1.insets = new Insets(10, 10, 0, 0);
         Service_Label = new JLabel[Services];
         Service_Spinner = new JSpinner[Services];
         ServiceButton = new JButton[Services];
-        Service_files = new String[Services];
+        
+        //Create Prices and Store Them into Array
         Service_Price = new double[Services];
+        Service_Price[0] = 30;
+        Service_Price[1] = 22;
+        Service_Price[2] = 15;
+        Service_Price[3] = 12;
         
-        
-        Service_Label[0] = new JLabel("Testing_1");
-        Service_Label[1] = new JLabel("Testing_2");
-        Service_Label[2] = new JLabel("Testing_2");
-        Service_Label[3] = new JLabel("Testing_2");
+        Service_Label[0] = new JLabel("Womens' Long Hair Cut - RM 30");
+        Service_Label[1] = new JLabel("Womens' Short Hair Cut - RM 22");
+        Service_Label[2] = new JLabel("Mens' Hair Cut - RM 15");
+        Service_Label[3] = new JLabel("Children Hair Cut - RM 12");
   
         
         ServiceButton[0] = new JButton("Add");
         ServiceButton[0].addActionListener((ActionEvent e) -> {        
-             addRowtoTable("test6",(Integer)Service_Spinner[0].getValue(), 5.0 );
+             addRowtoTable("Womens' Long Hair Cut",(Integer)Service_Spinner[0].getValue(), Service_Price[0]);
         });
         ServiceButton[1] = new JButton("Add");
         ServiceButton[1].addActionListener((ActionEvent e) -> {        
-             addRowtoTable("test7",(Integer)Service_Spinner[1].getValue(), 10.0 );
+             addRowtoTable("Womens' Short Hair Cut",(Integer)Service_Spinner[1].getValue(), Service_Price[1]);
         });
         ServiceButton[2] = new JButton("Add");
         ServiceButton[2].addActionListener((ActionEvent e) -> {        
-             addRowtoTable("test8",(Integer)Service_Spinner[2].getValue(), 15.0 );
+             addRowtoTable("Mens' Hair Cut",(Integer)Service_Spinner[2].getValue(), Service_Price[2]);
         });
         ServiceButton[3] = new JButton("Add");
         ServiceButton[3].addActionListener((ActionEvent e) -> {        
-             addRowtoTable("test9",(Integer)Service_Spinner[3].getValue(), 20.0 );
+             addRowtoTable("Children Hair Cut",(Integer)Service_Spinner[3].getValue(), Service_Price[3]);
         });
  
         
-        Service_Price[0] = 5.50;
-        Service_Price[1] = 10.90;
-        Service_Price[2] = 10.90;
-        Service_Price[3] = 10.90;
+        
         
        
         
@@ -208,14 +209,13 @@ public class MainMenu{
                 
                 allImages[i] = ImageIO.read(allFiles[i]);
                 Image[i] = new JLabel();
-                ImageIcon icon = new ImageIcon(allImages[i]);
+                ImageIcon icon = new ImageIcon(allImages[i].getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
                 Image[i].setIcon(icon);
                 
                 
-                SpinnerNumberModel spnummodel;
-                spnummodel = new SpinnerNumberModel(1,0,10,1);
+                SpinnerNumberModel spnummodel = new SpinnerNumberModel(1,0,10,1);
                 Service_Spinner[i] = new JSpinner(spnummodel);
-                Service_Spinner[i] = new JSpinner();
+                
                 
 
                 
@@ -225,7 +225,8 @@ public class MainMenu{
                   gbc1.gridy = 0;
                 }
                 
-                Image[i].setPreferredSize(new Dimension(80,80));
+                
+                
                 //gridx is for row
   
                 
@@ -268,39 +269,39 @@ public class MainMenu{
         Product_Label = new JLabel[Products];
         Product_Spinner = new JSpinner[Products];
         ProductButton = new JButton[Products];
-        Product_files = new String[Products];
+        
         Product_Price = new double[Products];
+        Product_Price[0] = 86;
+        Product_Price[1] = 30;
+        Product_Price[2] = 20;
+        Product_Price[3] = 16;
         
-        
-        Product_Label[0] = new JLabel("Testing_1");
-        Product_Label[1] = new JLabel("Testing_2");
-        Product_Label[2] = new JLabel("Testing_2");
-        Product_Label[3] = new JLabel("Testing_2");
+        Product_Label[0] = new JLabel("Royal Spa Hair Shampoo - RM 86");
+        Product_Label[1] = new JLabel("Roreal Paris Hair Oil - RM 30");
+        Product_Label[2] = new JLabel("JOICE Hair Conditioner - RM 20");
+        Product_Label[3] = new JLabel("Roreal Paris Hair Spray - RM 16");
   
         
         ProductButton[0] = new JButton("Add");
         ProductButton[0].addActionListener((ActionEvent e) -> {        
-             addRowtoTable("test1",(Integer)Product_Spinner[0].getValue(), 5.0 );
+             addRowtoTable("Royal Spa Hair Shampoo",(Integer)Product_Spinner[0].getValue(), Product_Price[0]);
         });
         
         ProductButton[1] = new JButton("Add");
         ProductButton[1].addActionListener((ActionEvent e) -> {
-             addRowtoTable("test2", (Integer)Product_Spinner[1].getValue(), 6.0 );
+             addRowtoTable("Roreal Paris Hair Oil", (Integer)Product_Spinner[1].getValue(), Product_Price[1]);
         });
         ProductButton[2] = new JButton("Add");
         ProductButton[2].addActionListener((ActionEvent e) -> {
-             addRowtoTable("test3", (Integer)Product_Spinner[2].getValue(), 8.0 );
+             addRowtoTable("JOICE Hair Conditioner", (Integer)Product_Spinner[2].getValue(), Product_Price[2]);
         });
         ProductButton[3] = new JButton("Add");
         ProductButton[3].addActionListener((ActionEvent e) -> {
-             addRowtoTable("test4", (Integer)Product_Spinner[3].getValue(), 15.0 );
+             addRowtoTable("Roreal Paris Hair Spray", (Integer)Product_Spinner[3].getValue(), Product_Price[3]);
         });
  
         
-        Product_Price[0] = 5.50;
-        Product_Price[1] = 10.90;
-        Product_Price[2] = 10.90;
-        Product_Price[3] = 10.90;
+        
         
         File path2 = new File("ProductsImg");
         File[] allFiles2 = path2.listFiles();
@@ -313,7 +314,7 @@ public class MainMenu{
                 
                 allImages2[i] = ImageIO.read(allFiles2[i]);
                 Image2[i] = new JLabel();
-                ImageIcon icon2 = new ImageIcon(allImages2[i]);
+                ImageIcon icon2 = new ImageIcon(allImages2[i].getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
                 Image2[i].setIcon(icon2);
                 
                 
@@ -326,7 +327,7 @@ public class MainMenu{
                   gbc2.gridy = 0;
                 }
                 
-                Image2[i].setPreferredSize(new Dimension(80,80));
+                
                 //gridx is for row
   
                 
