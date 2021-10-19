@@ -198,7 +198,6 @@ public class MainMenu{
         Service_Price[2] = 10.90;
         Service_Price[3] = 10.90;
     
-
         File path = new File("ServicesImg");
         File[] allFiles = path.listFiles();
         allImages = new BufferedImage[allFiles.length];
