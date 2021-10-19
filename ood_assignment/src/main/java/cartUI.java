@@ -16,7 +16,8 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.JScrollPane;
-
+import javax.swing.table.TableColumn;
+        
 public class cartUI {
     
     ArrayList<cartItem> cartItemArray  = new ArrayList<>();
@@ -62,9 +63,24 @@ public class cartUI {
         frame.add(TextTotalP);
         frame.setSize(900,400);
         frame.setVisible(true);
-      
+        table.setRowHeight(40);
+         setJTableColumnsWidth(table, 480, 35, 15, 15, 15 ,20);
           ButtonColumn buttonColumn = new ButtonColumn(table, delete, 4);
         }
+    
+    public static void setJTableColumnsWidth(JTable table, int tablePreferredWidth,
+        double... percentages) {
+    double total = 0;
+    for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
+        total += percentages[i];
+    }
+ 
+    for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
+        TableColumn column = table.getColumnModel().getColumn(i);
+        column.setPreferredWidth((int)
+                (tablePreferredWidth * (percentages[i] / total)));
+    }
+    }
      
  //delete button
  Action delete = new AbstractAction()
