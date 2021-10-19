@@ -1,6 +1,10 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.File;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 /**
  * @author Alex Cheow
  **/
@@ -13,10 +17,14 @@ public class Login extends JFrame
     JPasswordField Password_Input;
     JButton Login_Button;
     JOptionPane Message;
+
+    
+    
     
     public static void main(String[] args) 
     {
         new Login();
+        
         
     }
     
@@ -26,27 +34,21 @@ public class Login extends JFrame
         
         Font Design_1 = new Font("TimesRoman", Font.PLAIN, 20);
         Font Design_2 = new Font("Courier", Font.PLAIN, 30);
-        
         //Title (Shop Name)  
         Welcome_Title = new JLabel("WELCOME TO WAVY HAIR SALON");
         Welcome_Title.setFont(Design_2);
-        
-         //Allow Admin To Enter The Username      
+        //Allow Admin To Enter The Username      
         Username = new JLabel();
         Username.setText("Username: ");
         Username.setFont(Design_1);
         Username_Input = new JTextField();
         Username_Input.setPreferredSize(new Dimension(160, 18));
-
-        
         //Allow Admin To Enter Password
         Password = new JLabel();
         Password.setText("Password: ");
         Password.setFont(Design_1);
         Password_Input = new JPasswordField();
         Password_Input.setPreferredSize(new Dimension(160, 18));
-
-        
         //Login
         Login_Button = new JButton("Login");
         
@@ -75,7 +77,9 @@ public class Login extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         
+        
     }
+   
     public void actionPerformed(ActionEvent e)         
     {
         String Input_Username = Username_Input.getText();
