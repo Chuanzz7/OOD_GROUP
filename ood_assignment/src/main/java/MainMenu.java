@@ -139,9 +139,11 @@ public class MainMenu{
             {
                 
                 String total_Price = cart1.TextTotalP.getText();
-                Checkout ck = new Checkout();
-                ck.Checkout(total_Price , cart1.exportTabletoArray());
-                frame.dispose();
+                
+                    Checkout ck = new Checkout();
+                    ck.Checkout(total_Price , cart1.exportTabletoArray());
+                    frame.dispose();
+
             }
     });
         
@@ -193,10 +195,7 @@ public class MainMenu{
 
               
 
-        Service_Price[0] = 5.50;
-        Service_Price[1] = 10.90;
-        Service_Price[2] = 10.90;
-        Service_Price[3] = 10.90;
+        
     
         File path = new File("ServicesImg");
         File[] allFiles = path.listFiles();
