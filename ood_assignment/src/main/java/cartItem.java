@@ -13,14 +13,29 @@ public class cartItem {
     private int itemQuantity;
     private double itemTotal;
     
-    public cartItem(String _itemName , double _itemPrice , int _itemQuantity){
+    public cartItem(String _itemName , int _itemQuantity, double _itemPrice , double _itemTotal){
         this.itemName= _itemName;
         this.itemPrice = _itemPrice;
         this.itemQuantity = _itemQuantity;
+        this.itemTotal = _itemTotal;
     }
-
+    
+    public String getName(){
+        return itemName;
+    }
+    public int getQuantity(){
+        return itemQuantity;
+    }
+    public double getUnitPrice(){
+        return itemPrice;
+    }
+    public double getTotal(){
+        return itemTotal;
+    }
+    
+    
    
-    public void addQuantiy(cartItem sameItem){
+   /* public void addQuantiy(cartItem sameItem){
         this.itemQuantity = this.itemQuantity + sameItem.itemQuantity;
     }
     
@@ -32,16 +47,11 @@ public class cartItem {
         itemTotal = this.itemQuantity * this.itemPrice;
         return itemTotal;
     }
-     
+     */
     public String[] getArray(){
         String[] data = {itemName, Integer.toString(itemQuantity),Integer.toString(itemQuantity)};
         return data;
     }
-
-     public String toString()
-     {
-      return this.itemName + " " + this.itemQuantity + " "  + calculateTotalItem();
-     }
      
      protected void finalize(){;}  
     

@@ -10,6 +10,7 @@ import java.io.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
+import java.util.ArrayList;
 
 
 
@@ -47,7 +48,10 @@ public class Checkout extends JFrame implements ActionListener
     
    
     
-    public void Checkout(String TP){
+    public void Checkout(String TP , ArrayList<cartItem> cartItemArray){
+        
+        //U CIBAI THIS IS THE SAMPLE
+        //System.out.println(cartItemArray.get(0).getName() + cartItemArray.get(0).getQuantity()+ cartItemArray.get(0).getUnitPrice() + cartItemArray.get(0).getTotal());
         
         //construct components
         confirm = new JButton ("Confirm");
@@ -61,7 +65,6 @@ public class Checkout extends JFrame implements ActionListener
         receipt = new JCheckBox ("Save Receipt");
         checkout = new JLabel ("Checkout");
         done = new JButton ("Done");
-
         //disable txtbox
         totalTxt.setEnabled (false);
         changeTxt.setEnabled (false);

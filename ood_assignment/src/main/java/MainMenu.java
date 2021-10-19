@@ -137,9 +137,10 @@ public class MainMenu{
         button_Checkout.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
+                
                 String total_Price = cart1.TextTotalP.getText();
                 Checkout ck = new Checkout();
-                ck.Checkout(total_Price);
+                ck.Checkout(total_Price , cart1.exportTabletoArray());
                 frame.dispose();
             }
     });
@@ -189,24 +190,23 @@ public class MainMenu{
         });
  
         
-        
-        
-       
-        
-        
-        
-        
-        
+
+              
+
+        Service_Price[0] = 5.50;
+        Service_Price[1] = 10.90;
+        Service_Price[2] = 10.90;
+        Service_Price[3] = 10.90;
+    
+
         File path = new File("ServicesImg");
         File[] allFiles = path.listFiles();
         allImages = new BufferedImage[allFiles.length];
         JLabel Image[] = new JLabel[allFiles.length];
         
         for(int i = 0; i < allFiles.length; i ++)
-        {
-            
-            try{
-                
+        {       
+            try{       
                 allImages[i] = ImageIO.read(allFiles[i]);
                 Image[i] = new JLabel();
                 ImageIcon icon = new ImageIcon(allImages[i].getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
@@ -391,6 +391,7 @@ public class MainMenu{
      frame.setVisible(true);
     }
     
+    //adding row into the table 
     public void addRowtoTable(String _itemName, int _itemQuantity, double _unitPrice){
         if(_itemQuantity >0){
             int tableRowsNum = cart1.table.getRowCount();
