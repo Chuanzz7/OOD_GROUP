@@ -33,21 +33,6 @@ public class cartItem {
         return itemTotal;
     }
     
-    
-   
-   /* public void addQuantiy(cartItem sameItem){
-        this.itemQuantity = this.itemQuantity + sameItem.itemQuantity;
-    }
-    
-     public void minusQuantiy(cartItem sameItem){
-        this.itemQuantity = this.itemQuantity - sameItem.itemQuantity;
-    }
-     
-     public double calculateTotalItem(){
-        itemTotal = this.itemQuantity * this.itemPrice;
-        return itemTotal;
-    }
-     */
     public String[] getArray(){
         String[] data = {itemName, Integer.toString(itemQuantity),Integer.toString(itemQuantity)};
         return data;

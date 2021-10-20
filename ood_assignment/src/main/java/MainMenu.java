@@ -56,6 +56,7 @@ public class MainMenu{
     double Total_Service_Price;
     
     private JButton button_Checkout;
+    private JButton button_EmptyCart;
         
         
     
@@ -77,8 +78,6 @@ public class MainMenu{
         Exit_Btn = new JButton();
         
         cart1.frame.setBounds(1400, 100, 500, 500);
-      
-        button_Checkout = new JButton();
         
         JPanel Category = new JPanel();
         Category.setBackground(Color.BLACK);
@@ -103,10 +102,7 @@ public class MainMenu{
         NavTitle1.setForeground(Color.WHITE);
         NavTitle2.setForeground(Color.WHITE);
         
-        
-        
-        
-        
+      
         NavTitle.setBounds(50, 50, 160, 50);
         NavTitle1.setBounds(60, 80, 160, 50);
         NavTitle2.setBounds(25, 110, 160, 50);
@@ -152,6 +148,20 @@ public class MainMenu{
              
             }
         });
+        
+        button_EmptyCart = new JButton("Empty Cart");
+        button_EmptyCart.setFont(new Font("TimesRoman", Font.PLAIN, 24));
+        button_EmptyCart.setBounds(1600, 800, 185,70);
+        button_EmptyCart.setVisible(true);
+        frame.add(button_EmptyCart);
+        button_EmptyCart.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+            cart1.model.setRowCount(0);
+            cart1.findTotal();
+            }
+        });
+        
         
         button_Checkout = new JButton("Checkout");
         button_Checkout.setFont(new Font("TimesRoman", Font.PLAIN, 24));
