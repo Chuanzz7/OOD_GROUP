@@ -25,6 +25,7 @@ public class MainMenu{
     BufferedImage [] allImages2;
     static private JFrame frame;
     static private JButton Product_Btn, Service_Btn, Exit_Btn;
+    static private JLabel NavTitle, NavTitle1, NavTitle2;
     //static private JTextField Text;
     //static private GridBagConstraints Grid; 
     //private JTable Table;
@@ -82,37 +83,61 @@ public class MainMenu{
         JPanel Category = new JPanel();
         Category.setBackground(Color.BLACK);
         Category.setBounds(0,0,200,1080);
-        //Category.setSize(45,500);
+        
+        
         frame.getContentPane().add(Category);
         
         
         
         Category.setLayout(null);
+
+        NavTitle = new JLabel("WAVY");
+        NavTitle1 = new JLabel("HAIR");
+        NavTitle2 = new JLabel("SALOON");
         
-        //Create Buttons
+        NavTitle.setFont(new Font("AR ESSENCE", Font.PLAIN, 35));
+        NavTitle1.setFont(new Font("AR ESSENCE", Font.PLAIN, 35));
+        NavTitle2.setFont(new Font("AR ESSENCE", Font.PLAIN, 35));
+        
+        NavTitle.setForeground(Color.WHITE);
+        NavTitle1.setForeground(Color.WHITE);
+        NavTitle2.setForeground(Color.WHITE);
+        
+        
+        
+        
+        
+        NavTitle.setBounds(50, 50, 160, 50);
+        NavTitle1.setBounds(60, 80, 160, 50);
+        NavTitle2.setBounds(25, 110, 160, 50);
+        
+        Category.add(NavTitle);
+        Category.add(NavTitle1);
+        Category.add(NavTitle2);
+        
+        //Create Buttons and Add It Into Navigation Bar
         Product_Btn = new JButton("Product");
-        Product_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 24));
+        Product_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 26));
         Product_Btn.setForeground(Color.WHITE);
         Product_Btn.setBackground(Color.BLACK);
-        Product_Btn.setBounds(30, 235, 160, 50);     
+        Product_Btn.setBounds(28, 320, 160, 50);     
         Service_Btn = new JButton("Service");
         Category.add(Product_Btn);
         Product_Btn.setVisible(true);
         
-        Service_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 24));
+        Service_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 26));
         Service_Btn.setForeground(Color.WHITE);
         Service_Btn.setBackground(Color.BLACK);
-        Service_Btn.setBounds(30, 420, 160, 50);
+        Service_Btn.setBounds(28, 580, 160, 50);
         Category.add(Service_Btn);
         Service_Btn.setVisible(true);
         
         
-        
-        Exit_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 24));
         Exit_Btn = new JButton("Exit");
+        Exit_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 26));
         Exit_Btn.setForeground(Color.WHITE);
         Exit_Btn.setBackground(Color.BLACK);
-	Exit_Btn.setBounds(30, 600, 160, 50);
+	Exit_Btn.setBounds(28, 980, 160, 50);
         Category.add(Exit_Btn);
         Exit_Btn.setVisible(true);
 	
