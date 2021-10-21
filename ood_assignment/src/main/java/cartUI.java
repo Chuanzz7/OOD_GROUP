@@ -44,7 +44,7 @@ public class cartUI {
     };
     
     private Object[] columns = {"Name","Quantity","Unit Price", "Price", "Button"};
-    private Object[] row = new Object[5];
+    protected Object[] row = new Object[5];
     
     JScrollPane panel = new JScrollPane(table);
     
