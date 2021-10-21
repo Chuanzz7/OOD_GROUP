@@ -177,15 +177,17 @@ public class MainMenu{
         
         
         //Create Services 
-        //JPanel panel_1 = new JPanel(new GridBagLayout());
-        JPanel panel_1 = new JPanel();
+        JPanel panel_1 = new JPanel(new GridBagLayout());
+        //JPanel panel_1 = new JPanel();
+        //panel_1.setSize(Services, Services);
         panel_1.setBackground(Color.GRAY);
         panel_1.setBounds(300, 120,1000,800);
+
         
         //Hide the Panel
         panel_1.setVisible(false);
-        //GridBagConstraints gbc1 = new GridBagConstraints();  
-        //gbc1.insets = new Insets(10, 10, 0, 0);
+        GridBagConstraints gbc1 = new GridBagConstraints();  
+        gbc1.insets = new Insets(10, 10, 0, 0);
         Service_Label = new JLabel[Services];
         Service_Spinner = new JSpinner[Services];
         ServiceButton = new JButton[Services];
@@ -236,7 +238,8 @@ public class MainMenu{
             try{       
                 allImages[i] = ImageIO.read(allFiles[i]);
                 Image[i] = new JLabel();
-                ImageIcon icon = new ImageIcon(allImages[i].getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
+                ImageIcon icon = new ImageIcon(allImages[i].getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
+                //ImageIcon icon = new ImageIcon(allImages[i]);
                 Image[i].setIcon(icon);
                 
                 
@@ -252,8 +255,8 @@ public class MainMenu{
                   //gbc1.gridy = 0;
                 //}
                 
-                Image[0].setBounds(500, 200, 200, 200);
                 
+                //Image[0].setBounds(200, 150);
                 //gridx is for row
   
                 
@@ -277,34 +280,70 @@ public class MainMenu{
             }
         }
         
-        
+        //JPanel ImagePanel = new JPanel();
+        //ImagePanel.setBounds(350, 180, 600, 600);
         //Image[1].setBounds(Services, Services, Services, Services);
         //Image[2].setBounds(Services, Services, Services, Services);
         //Image[3].setBounds(Services, Services, Services, Services);
         
+        //ImagePanel.add(Image[0]);
         
         
         
-        panel_1.add(Image[0]);
+        gbc1.weightx = 0.5;
+        gbc1.gridx = 0;
+        gbc1.gridy = 0;
+        panel_1.add(Image[0], gbc1);
+        gbc1.gridy = 2;
+        panel_1.add(Service_Label[0], gbc1);
+        gbc1.gridy = 4;
+        panel_1.add(Service_Spinner[0], gbc1);
+        gbc1.gridy = 5;
+        panel_1.add(ServiceButton[0], gbc1);
         
-        //panel_1.add(Service_Label[0]);
-        //panel_1.add(Service_Spinner[0]);
-        //panel_1.add(ServiceButton[0]);
-        //panel_1.add(Image[1]);
-        //panel_1.add(Service_Label[1]);
-        //panel_1.add(Service_Spinner[1]);
-        //panel_1.add(ServiceButton[1]);
-        //panel_1.add(Image[2]);
-        //panel_1.add(Service_Label[2]);
-        //panel_1.add(Service_Spinner[2]);
-        //panel_1.add(ServiceButton[2]);
-        //panel_1.add(Image[3]);
-        //panel_1.add(Service_Label[3]);
-        //panel_1.add(ServiceButton[3]);
+        
+        
+        
+        gbc1.weightx = 0.5;
+        gbc1.gridx = 1;
+        gbc1.gridy = 0;
+        panel_1.add(Image[1], gbc1);
+        gbc1.gridy = 2;
+        panel_1.add(Service_Label[1], gbc1);
+        gbc1.gridy = 4;
+        panel_1.add(Service_Spinner[1], gbc1);
+        gbc1.gridy = 5;
+        panel_1.add(ServiceButton[1], gbc1);
+        
+        
+        
+        gbc1.weightx = 0.5;
+        gbc1.gridx = 0;
+        gbc1.gridy = 6;
+        panel_1.add(Image[2], gbc1);
+        gbc1.gridy = 8;
+        panel_1.add(Service_Label[2], gbc1);
+        gbc1.gridy = 10;
+        panel_1.add(Service_Spinner[2], gbc1);
+        gbc1.gridy = 11;
+        panel_1.add(ServiceButton[2], gbc1);
+        
+        
+        
+        gbc1.weightx = 0.5;
+        gbc1.gridx = 1;
+        gbc1.gridy = 6;
+        panel_1.add(Image[3], gbc1);
+        gbc1.gridy = 8;
+        panel_1.add(Service_Label[3], gbc1);
+        gbc1.gridy = 10;
+        panel_1.add(Service_Spinner[3], gbc1);
+        gbc1.gridy = 11;
+        panel_1.add(ServiceButton[3], gbc1);
+        //frame.add(panel_1);
+        
+           
         frame.add(panel_1);
-        
-    
-        
         
         
         
