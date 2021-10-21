@@ -43,6 +43,8 @@ public class cartUI {
            
     };
     
+    Font font1 = new Font("SansSerif", Font.BOLD, 30);
+    Font font2 = new Font("SansSerif", Font.BOLD, 20);
     private Object[] columns = {"Name","Quantity","Unit Price", "Price", "Button"};
     protected Object[] row = new Object[5];
     
@@ -57,7 +59,11 @@ public class cartUI {
         table.setForeground(Color.black);
         
         frame.setSize(1000,800);
-       TextTotalP.setEditable(false);
+        TextTotalP.setEditable(false);
+        lb_TotalPrice.setFont(font2);
+        TextTotalP.setFont(font1);
+        TextTotalP.setHorizontalAlignment(JTextField.RIGHT);
+
         frame.add(panel);
         frame.add(lb_TotalPrice);
         frame.add(TextTotalP);
