@@ -119,7 +119,6 @@ public class Checkout extends JFrame implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e){
         
-        
         if(e.getSource() == confirm)
         {
         //take input
