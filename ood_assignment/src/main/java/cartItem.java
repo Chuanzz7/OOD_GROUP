@@ -13,6 +13,7 @@ public class cartItem {
     private int itemQuantity;
     private double itemTotal;
     
+    //create object
     public cartItem(String _itemName , int _itemQuantity, double _itemPrice , double _itemTotal){
         this.itemName= _itemName;
         this.itemPrice = _itemPrice;

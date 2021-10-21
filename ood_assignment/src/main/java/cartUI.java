@@ -8,7 +8,6 @@
  * @author chngk
  */
 
-
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import javax.swing.*;
@@ -44,10 +43,10 @@ public class cartUI {
            
     };
     
-    Object[] columns = {"Name","Quantity","Unit Price", "Price", "Button"};
-    Object[] row = new Object[5];
+    private Object[] columns = {"Name","Quantity","Unit Price", "Price", "Button"};
+    private Object[] row = new Object[5];
     
-    JScrollPane panel = new  JScrollPane(table);
+    JScrollPane panel = new JScrollPane(table);
     
     public cartUI(){
       
@@ -72,38 +71,38 @@ public class cartUI {
     //Set the table row and columns size by percentage
     public static void setJTableColumnsWidth(JTable table, int tablePreferredWidth,
         double... percentages) {
-    double total = 0;
-    for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
-        total += percentages[i];
-    }
- 
-    for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
-        TableColumn column = table.getColumnModel().getColumn(i);
-        column.setPreferredWidth((int)
-                (tablePreferredWidth * (percentages[i] / total)));
-    }
+        double total = 0;
+        for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
+            total += percentages[i];
+        }
+
+        for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
+            TableColumn column = table.getColumnModel().getColumn(i);
+            column.setPreferredWidth((int)
+                    (tablePreferredWidth * (percentages[i] / total)));
+        }
     }
      
  //delete button
- Action delete = new AbstractAction()
-{
-    public void actionPerformed(ActionEvent e)
-    {
+    Action delete = new AbstractAction()
+   {
+       public void actionPerformed(ActionEvent e)
+       {
 
-        JTable table1 = (JTable)e.getSource();
-        int modelRow = Integer.valueOf( e.getActionCommand() );
-        int quantity = Integer.parseInt(table1.getValueAt(modelRow, 1).toString());
-        if(quantity == 1){
-        ((DefaultTableModel)table1.getModel()).removeRow(modelRow);
-        findTotal();
-        }
-        else {
-        table.setValueAt(quantity-1,modelRow,1);
-        table.setValueAt(Double.parseDouble(table.getValueAt(modelRow, 1).toString()) * Double.parseDouble(table.getValueAt(modelRow, 2).toString()),modelRow,3);
-        findTotal();
-        }
-    }
-};
+           JTable table1 = (JTable)e.getSource();
+           int modelRow = Integer.valueOf( e.getActionCommand() );
+           int quantity = Integer.parseInt(table1.getValueAt(modelRow, 1).toString());
+           if(quantity == 1){
+           ((DefaultTableModel)table1.getModel()).removeRow(modelRow);
+           findTotal();
+           }
+           else {
+           table.setValueAt(quantity-1,modelRow,1);
+           table.setValueAt(Double.parseDouble(table.getValueAt(modelRow, 1).toString()) * Double.parseDouble(table.getValueAt(modelRow, 2).toString()),modelRow,3);
+           findTotal();
+           }
+       }
+   };
  
  //update grant total
   public void findTotal(){
@@ -123,7 +122,7 @@ public class cartUI {
        for(int i = 0 ; i < tableRowsNum ; i++){
             cartItemArray.add(new cartItem(table.getValueAt(i, 0).toString() ,Integer.parseInt(table.getValueAt(i, 1).toString()), Double.parseDouble(table.getValueAt(i, 2).toString()),  Double.parseDouble(table.getValueAt(i, 3).toString())));            
             }   
-  return cartItemArray;
+    return cartItemArray;
   }
     
  }
