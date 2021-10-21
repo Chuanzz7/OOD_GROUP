@@ -19,18 +19,19 @@ import javax.swing.JScrollPane;
 import javax.swing.table.TableColumn;
         
 public class cartUI {
-    
+    //array to hold object item
     ArrayList<cartItem> cartItemArray  = new ArrayList<>();
      
-    int time = 0;
     Panel frame = new Panel();
     JLabel lb_TotalPrice = new JLabel("Total Price: RM ");
     JLabel lb_ItemList = new JLabel("Item list:");
     JTextField TextTotalP = new JTextField(10);
     
     JTable table = new JTable();
+    
     DefaultTableModel model = new DefaultTableModel()
         {
+            //make the table uneditable except the delete button
         public boolean isCellEditable(int row, int column)
         {
          switch (column) {
@@ -68,6 +69,7 @@ public class cartUI {
           ButtonColumn buttonColumn = new ButtonColumn(table, delete, 4);
         }
     
+    //Set the table row and columns size by percentage
     public static void setJTableColumnsWidth(JTable table, int tablePreferredWidth,
         double... percentages) {
     double total = 0;
@@ -113,6 +115,7 @@ public class cartUI {
     TextTotalP.setText(String.valueOf(total));
   }
   
+  //export all the item from table into object and pass it to checkout
   public ArrayList exportTabletoArray(){
       int tableRowsNum = table.getRowCount();
       cartItemArray.clear();
