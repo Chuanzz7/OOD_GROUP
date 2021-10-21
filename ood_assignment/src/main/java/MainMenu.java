@@ -50,9 +50,7 @@ public class MainMenu{
     private JButton button_Checkout;
     private JButton button_EmptyCart;
         
-        
-    
-    
+
     public void GUI()
     {
         

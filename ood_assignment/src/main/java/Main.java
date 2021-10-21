@@ -13,9 +13,9 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-         Login login1 = new Login();
-        
-        
+         //Login login1 = new Login();
+         MainMenu start = new MainMenu();
+        start.GUI();
         
   
   
