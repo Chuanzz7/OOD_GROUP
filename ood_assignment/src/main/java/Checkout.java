@@ -17,8 +17,7 @@ import java.util.ArrayList;
 
 public class Checkout extends JFrame implements ActionListener
 {
-    
-    
+      
     private JButton confirm;
     private JButton cancel;
     private JTextField totalTxt;
@@ -32,21 +31,6 @@ public class Checkout extends JFrame implements ActionListener
     private JButton done;
 
     private NumberFormat totalAmount;
-    
-    
-    
-
-    
-    public class Popup
-    {
-        public void box(String error, String titleBar)
-        {
-            JOptionPane.showMessageDialog(null, error, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
-    
-    
-   
     
     public void Checkout(String TP , ArrayList<cartItem> cartItemArray){
         
