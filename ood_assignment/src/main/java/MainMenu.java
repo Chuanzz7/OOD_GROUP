@@ -32,9 +32,6 @@ public class MainMenu{
     DefaultTableModel dtm;
     double[] Service_Price;
     double[] Product_Price;
-    double[] Total_Price;
-    double Service_Price_1, Service_Price_2;
-    double Product_Price_1, Product_Price_2;
     
     
     private JSpinner[] Service_Spinner;
@@ -48,12 +45,7 @@ public class MainMenu{
     //Make it only available within the class and does not allow the variable to be changed
     private static final int Services = 4;
     private static final int Products = 4;
-    double Sum = 0;
-    double Product_Sum_1, Product_Sum_2;
-    double Service_Sum_1, Service_Sum_2;
     
-    double Total_Product_Price;
-    double Total_Service_Price;
     
     private JButton button_Checkout;
     private JButton button_EmptyCart;
@@ -71,6 +63,7 @@ public class MainMenu{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.getContentPane().setLayout(null);
 	frame.setLocationRelativeTo(null);
+        frame.getContentPane().setBackground(Color.LIGHT_GRAY);
         frame.setVisible(true);
        
         Product_Btn = new JButton();
@@ -184,14 +177,15 @@ public class MainMenu{
         
         
         //Create Services 
-        JPanel panel_1 = new JPanel(new GridBagLayout());
-        panel_1.setBackground(Color.yellow);
+        //JPanel panel_1 = new JPanel(new GridBagLayout());
+        JPanel panel_1 = new JPanel();
+        panel_1.setBackground(Color.GRAY);
         panel_1.setBounds(300, 120,1000,800);
         
         //Hide the Panel
         panel_1.setVisible(false);
-        GridBagConstraints gbc1 = new GridBagConstraints();  
-        gbc1.insets = new Insets(10, 10, 0, 0);
+        //GridBagConstraints gbc1 = new GridBagConstraints();  
+        //gbc1.insets = new Insets(10, 10, 0, 0);
         Service_Label = new JLabel[Services];
         Service_Spinner = new JSpinner[Services];
         ServiceButton = new JButton[Services];
@@ -252,36 +246,61 @@ public class MainMenu{
                 
 
                 
-                if(i % 3 == 0)
-                {
-                  gbc1.gridx += 2;
-                  gbc1.gridy = 0;
-                }
+                //if(i % 3 == 0)
+                //{
+                  //gbc1.gridx += 2;
+                  //gbc1.gridy = 0;
+                //}
                 
-                
+                Image[0].setBounds(500, 200, 200, 200);
                 
                 //gridx is for row
   
                 
                 //gridy is for column
 
-                panel_1.add(Image[i], gbc1);
-                gbc1.gridy++;  // add one row for              
-                panel_1.add(Service_Label[i], gbc1);               
-                gbc1.gridy--; // remove row
-                gbc1.gridx++; // move to next column  
+                //panel_1.add(Image[i], gbc1);
+                //gbc1.gridy++;  // add one row for              
+                //panel_1.add(Service_Label[i], gbc1);               
+                //gbc1.gridy--; // remove row
+                //gbc1.gridx++; // move to next column  
                 
-                panel_1.add(Service_Spinner[i], gbc1);
-                gbc1.gridx++;
+               //panel_1.add(Service_Spinner[i], gbc1);
+                //gbc1.gridy--;
+                //gbc1.gridx++;        
+                //panel_1.add(ServiceButton[i], gbc1);
+                //gbc1.gridy--;
+                //gbc1.gridx++;
                 
-                panel_1.add(ServiceButton[i], gbc1);
-                gbc1.gridx++;
-
             }catch (IOException e){
                 System.out.println(e);
             }
         }
-           
+        
+        
+        //Image[1].setBounds(Services, Services, Services, Services);
+        //Image[2].setBounds(Services, Services, Services, Services);
+        //Image[3].setBounds(Services, Services, Services, Services);
+        
+        
+        
+        
+        panel_1.add(Image[0]);
+        
+        //panel_1.add(Service_Label[0]);
+        //panel_1.add(Service_Spinner[0]);
+        //panel_1.add(ServiceButton[0]);
+        //panel_1.add(Image[1]);
+        //panel_1.add(Service_Label[1]);
+        //panel_1.add(Service_Spinner[1]);
+        //panel_1.add(ServiceButton[1]);
+        //panel_1.add(Image[2]);
+        //panel_1.add(Service_Label[2]);
+        //panel_1.add(Service_Spinner[2]);
+        //panel_1.add(ServiceButton[2]);
+        //panel_1.add(Image[3]);
+        //panel_1.add(Service_Label[3]);
+        //panel_1.add(ServiceButton[3]);
         frame.add(panel_1);
         
     
@@ -293,7 +312,7 @@ public class MainMenu{
         
         //Create Products
         JPanel panel_2 = new JPanel(new GridBagLayout());
-        panel_2.setBackground(Color.GREEN);
+        panel_2.setBackground(Color.GRAY);
         panel_2.setBounds(300, 120,1000,800);
         //Set it to Visible
         panel_2.setVisible(false);
