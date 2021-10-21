@@ -32,12 +32,7 @@ public class cartItem {
     public double getTotal(){
         return itemTotal;
     }
-    
-    public String[] getArray(){
-        String[] data = {itemName, Integer.toString(itemQuantity),Integer.toString(itemQuantity)};
-        return data;
-    }
      
-     protected void finalize(){;}  
+    protected void finalize(){;}  
     
 }
