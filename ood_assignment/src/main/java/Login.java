@@ -11,23 +11,14 @@ import javax.imageio.ImageIO;
 public class Login extends JFrame
         implements ActionListener
 {
-
+    private  String Input_Username;
+    private String Input_Password;
     JLabel Welcome_Title, Username, Password;
     JTextField Username_Input;
     JPasswordField Password_Input;
     JButton Login_Button;
     JOptionPane Message;
 
-    
-    
-    
-    public static void main(String[] args) 
-    {
-        new Login();
-        
-        
-    }
-    
     public Login()
     {
         
@@ -82,8 +73,8 @@ public class Login extends JFrame
    
     public void actionPerformed(ActionEvent e)         
     {
-        String Input_Username = Username_Input.getText();
-        String Input_Password = Password_Input.getText();
+         Input_Username = Username_Input.getText();
+         Input_Password = Password_Input.getText();
         
         if(Input_Username.equals("Admin01") && Input_Password.equals("abc123"))
         {

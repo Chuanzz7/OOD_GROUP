@@ -13,8 +13,7 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-         MainMenu Proceed = new MainMenu();
-            Proceed.GUI();
+         Login login1 = new Login();
         
         
         
