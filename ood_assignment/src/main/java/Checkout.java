@@ -116,6 +116,7 @@ public class Checkout extends JFrame implements ActionListener
         setVisible(true);
     }
     
+    @Override
     public void actionPerformed(ActionEvent e){
         
         
@@ -212,12 +213,7 @@ public class Checkout extends JFrame implements ActionListener
             setVisible(false);
             MainMenu menu = new MainMenu();
             menu.GUI();
-        }
-        
-        
-        
-        
-        
+        }        
     }
     
     public void CreateFile(String absolute, String timeStamp) {
@@ -231,8 +227,7 @@ public class Checkout extends JFrame implements ActionListener
               
             }
         }catch (IOException e)
-        {
-            
+        {           
             e.printStackTrace();
         }
 }
