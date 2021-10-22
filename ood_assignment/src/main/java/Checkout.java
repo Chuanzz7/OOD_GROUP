@@ -26,12 +26,11 @@ public class Checkout extends JFrame implements ActionListener
     private JCheckBox receipt;
     private JLabel checkout;
     private JButton done;
+    ArrayList<cartItem> productReceipt = new ArrayList<>();
+    
+    
     
     public void Checkout(String TP , ArrayList<cartItem> cartItemArray){
-        
-        //U CIBAI THIS IS THE SAMPLE
-        //System.out.println(cartItemArray.get(0).getName() + cartItemArray.get(0).getQuantity()+ cartItemArray.get(0).getUnitPrice() + cartItemArray.get(0).getTotal());
-        
         //construct components
         confirm = new JButton ("Confirm");
         cancel = new JButton ("Cancel");
@@ -44,6 +43,9 @@ public class Checkout extends JFrame implements ActionListener
         receipt = new JCheckBox ("Save Receipt");
         checkout = new JLabel ("Checkout");
         done = new JButton ("Done");
+        
+        productReceipt = cartItemArray;
+        
         //disable txtbox
         totalTxt.setEnabled (false);
         changeTxt.setEnabled (false);
@@ -67,7 +69,6 @@ public class Checkout extends JFrame implements ActionListener
         add (checkout);
         add (done);
        
-       
         //positioning for components
         confirm.setBounds (200, 315, 120, 40);
         cancel.setBounds (445, 315, 120, 40);
@@ -80,7 +81,6 @@ public class Checkout extends JFrame implements ActionListener
         receipt.setBounds (450, 250, 185, 35);
         checkout.setBounds (260, 15, 185, 70);
         done.setBounds(325, 315, 120, 40);
-        
         done.setVisible(false);
         receipt.setVisible(false);
 
@@ -89,10 +89,7 @@ public class Checkout extends JFrame implements ActionListener
         Font Design_2 = new Font("Courier", Font.PLAIN, 36);
         Font Design_3 = new Font("TimesRoman", Font.PLAIN, 30);
         Font Design_4 = new Font("TimesRoman", Font.PLAIN, 16);
-        
-        //set color
-        
-        
+
         //set font
         confirm.setFont(Design_1);
         cancel.setFont(Design_1);
@@ -109,10 +106,6 @@ public class Checkout extends JFrame implements ActionListener
         confirm.addActionListener(this);
         cancel.addActionListener(this);
         done.addActionListener(this);
-
-        
-        
-        
         setVisible(true);
     }
     
@@ -127,45 +120,32 @@ public class Checkout extends JFrame implements ActionListener
         double DoublePayment = Double.parseDouble(payment);
         //two decimal place
         double FinalDoublePayment = Math.round(DoublePayment*100.0)/100.0;
-
         String totalCost = totalTxt.getText();
-        
         double cost = Double.parseDouble(totalCost);
-        
         double TOTALCOST = Math.round(cost*100.0)/100.0;
-
         double FinalChange = TOTALCOST - FinalDoublePayment;
-        
         double FinalRoundChange = Math.round(FinalChange*100.0)/100.0;
-        
         double PositiveChange = FinalRoundChange * -1;
-        
         System.out.println(TOTALCOST);
         System.out.println(FinalDoublePayment);
         System.out.println(FinalRoundChange);
         
         if(FinalRoundChange < 0 || FinalRoundChange == 0)
         {
-            
             String FRC = String.valueOf(PositiveChange); 
            changeTxt.setText(FRC);
-           
            confirm.setVisible(false);
            cancel.setVisible(false);
            done.setVisible(true);
            receipt.setVisible(true);
-           
         }
         else
         {
            showMessageDialog(null, "Please input a valid amount");
         }
- 
         }
-        
         else if (e.getSource() == cancel)
         {
-            
             this.dispose();
             setVisible(false);
             MainMenu menu = new MainMenu();
@@ -175,39 +155,30 @@ public class Checkout extends JFrame implements ActionListener
         {
             if(receipt.isSelected())
             {
-                
-                
                 File f = new File("Saloon_Receipt");
                 //search for folder if exists
                 String absolute = f.getAbsolutePath();
                 String timeStamp = new SimpleDateFormat("yyy.MM.dd.HH.mm.ss").format(new Date());
                 System.out.println(timeStamp);
-                
                 if(f.exists())
                 {
                     System.out.println(absolute);
-                    
-                    CreateFile(absolute, timeStamp);
-                    WriteFile(absolute, timeStamp);
-                    
+                    CreateFile(absolute, timeStamp, productReceipt);
+                    WriteFile(absolute, timeStamp, productReceipt);
                 }
                 else
                 {
                     System.out.println(absolute);
                     File f1 = new File(absolute);
                     f1.mkdir();
-                    CreateFile(absolute, timeStamp);
-                    WriteFile(absolute, timeStamp);
-                    
+                    CreateFile(absolute, timeStamp, productReceipt);
+                    WriteFile(absolute, timeStamp, productReceipt);
                 }
-                
             }
             else
             {
                 System.out.println("");
             }
-
-           
             this.dispose();
             setVisible(false);
             MainMenu menu = new MainMenu();
@@ -215,15 +186,13 @@ public class Checkout extends JFrame implements ActionListener
         }        
     }
     
-    public void CreateFile(String absolute, String timeStamp) {
+    public void CreateFile(String absolute, String timeStamp, ArrayList<cartItem> productReceipt) {
     
         try{
-            
             File createFile = new File( absolute + "\\Receipt " + timeStamp + ".txt"); //input file 
             if(createFile.createNewFile()){
                 System.out.println(createFile.getName());
             }else{
-              
             }
         }catch (IOException e)
         {           
@@ -231,23 +200,20 @@ public class Checkout extends JFrame implements ActionListener
         }
 }
  
-public void WriteFile(String absolute, String timeStamp){
+public void WriteFile(String absolute, String timeStamp, ArrayList<cartItem> productReceipt){
     try{
         FileWriter writeFile = new FileWriter( absolute + "\\Receipt " + timeStamp + ".txt"); //find and write file
         writeFile.write("                   INVOICE                 \n=================================================\n");
-        writeFile.write("Item                   Quantity            Price");
+        writeFile.write("Item                       Quantity           Price/Unit            Total");
         writeFile.write("\n=================================================\n");
+        writeFile.write(productReceipt.get(0).getName() + "           " +productReceipt.get(0).getQuantity()+ "            " +productReceipt.get(0).getUnitPrice()+ "            " + productReceipt.get(0).getTotal()+ "\n");
         writeFile.write("Total                                      " + totalTxt.getText() + "\n");
         writeFile.write("Paid                                       " + paidTxt.getText() + "\n");
         writeFile.write("Change                                     " + changeTxt.getText() + "\n");
         writeFile.close();
-        
-        
     }catch(IOException e)
     {
         e.printStackTrace(); 
    }
-}
-    
-    
+}   
 }
