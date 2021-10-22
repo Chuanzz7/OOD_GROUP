@@ -107,14 +107,18 @@ public class MainMenu{
         Product_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 26));
         Product_Btn.setForeground(Color.WHITE);
         Product_Btn.setBackground(Color.BLACK);
-        Product_Btn.setBounds(28, 320, 160, 50);     
-        Service_Btn = new JButton("Service");
+        Product_Btn.setBounds(28, 320, 160, 50); 
         Category.add(Product_Btn);
         Product_Btn.setVisible(true);
         
+        
+        
+                
+        Service_Btn = new JButton("Service"); 
         Service_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 26));
         Service_Btn.setForeground(Color.WHITE);
         Service_Btn.setBackground(Color.BLACK);
+        
         Service_Btn.setBounds(28, 580, 160, 50);
         Category.add(Service_Btn);
         Service_Btn.setVisible(true);
