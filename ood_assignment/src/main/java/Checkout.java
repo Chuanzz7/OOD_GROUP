@@ -27,10 +27,11 @@ public class Checkout extends JFrame implements ActionListener
     private JLabel checkout;
     private JButton done;
     ArrayList<cartItem> productReceipt = new ArrayList<>();
+    private int contentRow;
     
     
     
-    public void Checkout(String TP , ArrayList<cartItem> cartItemArray){
+    public void Checkout(String TP , ArrayList<cartItem> cartItemArray, int cartRow){
         //construct components
         confirm = new JButton ("Confirm");
         cancel = new JButton ("Cancel");
@@ -43,6 +44,8 @@ public class Checkout extends JFrame implements ActionListener
         receipt = new JCheckBox ("Save Receipt");
         checkout = new JLabel ("Checkout");
         done = new JButton ("Done");
+        
+        contentRow = cartRow;
         
         productReceipt = cartItemArray;
         
@@ -163,16 +166,16 @@ public class Checkout extends JFrame implements ActionListener
                 if(f.exists())
                 {
                     System.out.println(absolute);
-                    CreateFile(absolute, timeStamp, productReceipt);
-                    WriteFile(absolute, timeStamp, productReceipt);
+                    CreateFile(absolute, timeStamp, productReceipt, contentRow);
+                    WriteFile(absolute, timeStamp, productReceipt, contentRow);
                 }
                 else
                 {
                     System.out.println(absolute);
                     File f1 = new File(absolute);
                     f1.mkdir();
-                    CreateFile(absolute, timeStamp, productReceipt);
-                    WriteFile(absolute, timeStamp, productReceipt);
+                    CreateFile(absolute, timeStamp, productReceipt, contentRow);
+                    WriteFile(absolute, timeStamp, productReceipt, contentRow);
                 }
             }
             else
@@ -186,7 +189,7 @@ public class Checkout extends JFrame implements ActionListener
         }        
     }
     
-    public void CreateFile(String absolute, String timeStamp, ArrayList<cartItem> productReceipt) {
+    public void CreateFile(String absolute, String timeStamp, ArrayList<cartItem> productReceipt, int contentRow) {
     
         try{
             File createFile = new File( absolute + "\\Receipt " + timeStamp + ".txt"); //input file 
@@ -200,16 +203,20 @@ public class Checkout extends JFrame implements ActionListener
         }
 }
  
-public void WriteFile(String absolute, String timeStamp, ArrayList<cartItem> productReceipt){
+public void WriteFile(String absolute, String timeStamp, ArrayList<cartItem> productReceipt, int contentRow){
     try{
+        int row = contentRow;
         FileWriter writeFile = new FileWriter( absolute + "\\Receipt " + timeStamp + ".txt"); //find and write file
-        writeFile.write("                   INVOICE                 \n=================================================\n");
-        writeFile.write("Item                       Quantity           Price/Unit            Total");
-        writeFile.write("\n=================================================\n");
-        writeFile.write(productReceipt.get(0).getName() + "           " +productReceipt.get(0).getQuantity()+ "            " +productReceipt.get(0).getUnitPrice()+ "            " + productReceipt.get(0).getTotal()+ "\n");
-        writeFile.write("Total                                      " + totalTxt.getText() + "\n");
-        writeFile.write("Paid                                       " + paidTxt.getText() + "\n");
-        writeFile.write("Change                                     " + changeTxt.getText() + "\n");
+        writeFile.write("                   INVOICE                 \n======================================================================\n");
+        writeFile.write("Item                       Quantity           Price/Unit         Total");
+        writeFile.write("\n======================================================================\n");
+        for(int i=0; i<row; i++ )
+        {
+            writeFile.write(productReceipt.get(i).getName() + "           " +productReceipt.get(i).getQuantity()+ "            " +productReceipt.get(i).getUnitPrice()+ "               " + productReceipt.get(i).getTotal()+ "\n");
+        }
+        writeFile.write("Total                                                          " + totalTxt.getText() + "\n");
+        writeFile.write("Paid                                                           " + paidTxt.getText() + "\n");
+        writeFile.write("Change                                                         " + changeTxt.getText() + "\n");
         writeFile.close();
     }catch(IOException e)
     {
