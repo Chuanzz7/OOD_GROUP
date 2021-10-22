@@ -12,6 +12,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.io.File;
 import java.util.ArrayList;
+import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.JScrollPane;
 
@@ -163,12 +164,21 @@ public class MainMenu{
         button_Checkout.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
+                int row = cart1.table.getRowCount();
                 
-                String total_Price = cart1.TextTotalP.getText();
+                if(row > 0)
+                {
+                    String total_Price = cart1.TextTotalP.getText();
                 
                     Checkout ck = new Checkout();
                     ck.Checkout(total_Price , cart1.exportTabletoArray());
                     frame.dispose();
+                }
+                else
+                {
+                    showMessageDialog(null, "Please select a product");
+                }
+                
 
             }
     });
