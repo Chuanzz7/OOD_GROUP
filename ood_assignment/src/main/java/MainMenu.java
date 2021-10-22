@@ -178,7 +178,7 @@ public class MainMenu{
         JPanel panel_1 = new JPanel(new GridBagLayout());
         //JPanel panel_1 = new JPanel();
         //panel_1.setSize(Services, Services);
-        panel_1.setBackground(Color.GRAY);
+        panel_1.setBackground(Color.ORANGE);
         panel_1.setBounds(300, 120,1000,800);
 
         
@@ -236,58 +236,21 @@ public class MainMenu{
             try{       
                 allImages[i] = ImageIO.read(allFiles[i]);
                 Image[i] = new JLabel();
-                ImageIcon icon = new ImageIcon(allImages[i].getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
+                ImageIcon icon = new ImageIcon(allImages[i].getScaledInstance(220, 220, java.awt.Image.SCALE_SMOOTH));
                 //ImageIcon icon = new ImageIcon(allImages[i]);
                 Image[i].setIcon(icon);
                 
                 
                 SpinnerNumberModel spnummodel = new SpinnerNumberModel(1,0,10,1);
                 Service_Spinner[i] = new JSpinner(spnummodel);
+                Service_Label[i].setFont(new Font("Courier New", Font.PLAIN, 18));
                 
-                
-
-                
-                //if(i % 3 == 0)
-                //{
-                  //gbc1.gridx += 2;
-                  //gbc1.gridy = 0;
-                //}
-                
-                
-                //Image[0].setBounds(200, 150);
-                //gridx is for row
-  
-                
-                //gridy is for column
-
-                //panel_1.add(Image[i], gbc1);
-                //gbc1.gridy++;  // add one row for              
-                //panel_1.add(Service_Label[i], gbc1);               
-                //gbc1.gridy--; // remove row
-                //gbc1.gridx++; // move to next column  
-                
-               //panel_1.add(Service_Spinner[i], gbc1);
-                //gbc1.gridy--;
-                //gbc1.gridx++;        
-                //panel_1.add(ServiceButton[i], gbc1);
-                //gbc1.gridy--;
-                //gbc1.gridx++;
                 
             }catch (IOException e){
                 System.out.println(e);
             }
         }
-        
-        //JPanel ImagePanel = new JPanel();
-        //ImagePanel.setBounds(350, 180, 600, 600);
-        //Image[1].setBounds(Services, Services, Services, Services);
-        //Image[2].setBounds(Services, Services, Services, Services);
-        //Image[3].setBounds(Services, Services, Services, Services);
-        
-        //ImagePanel.add(Image[0]);
-        
-        
-        
+            
         gbc1.weightx = 0.5;
         gbc1.gridx = 0;
         gbc1.gridy = 0;
@@ -338,7 +301,7 @@ public class MainMenu{
         panel_1.add(Service_Spinner[3], gbc1);
         gbc1.gridy = 11;
         panel_1.add(ServiceButton[3], gbc1);
-        //frame.add(panel_1);
+        
         
            
         frame.add(panel_1);
@@ -349,7 +312,7 @@ public class MainMenu{
         
         //Create Products
         JPanel panel_2 = new JPanel(new GridBagLayout());
-        panel_2.setBackground(Color.GRAY);
+        panel_2.setBackground(Color.ORANGE);
         panel_2.setBounds(300, 120,1000,800);
         //Set it to Visible
         panel_2.setVisible(false);
@@ -403,42 +366,73 @@ public class MainMenu{
                 
                 allImages2[i] = ImageIO.read(allFiles2[i]);
                 Image2[i] = new JLabel();
-                ImageIcon icon2 = new ImageIcon(allImages2[i].getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
+                ImageIcon icon2 = new ImageIcon(allImages2[i].getScaledInstance(220, 220, java.awt.Image.SCALE_SMOOTH));
                 Image2[i].setIcon(icon2);
                 
                 
                 SpinnerNumberModel spnummodel2 = new SpinnerNumberModel(1,0,10,1);
-                Product_Spinner[i] = new JSpinner(spnummodel2);
-                        
-                if(i % 3 == 0)
-                {
-                  gbc2.gridx += 2;
-                  gbc2.gridy = 0;
-                }
+                Product_Spinner[i] = new JSpinner(spnummodel2);     
+                Product_Label[i].setFont(new Font("Courier New", Font.PLAIN, 18));
                 
-                
-                //gridx is for row
-  
-                
-                //gridy is for column
-                gbc1.weightx = 0.5;
-                panel_2.add(Image2[i], gbc2);
-                gbc2.gridy++;  // add one row for              
-                panel_2.add(Product_Label[i], gbc2);               
-                gbc2.gridy--; // remove row
-                gbc2.gridx++; // move to next column  
-                
-                panel_2.add(Product_Spinner[i], gbc2);
-                gbc2.gridx++;
-                
-                panel_2.add(ProductButton[i], gbc2);
-                gbc2.gridx++;
-
             }catch (IOException ex){
                 System.out.println(ex);
             }
         }
              
+        gbc2.weightx = 0.5;
+        gbc2.gridx = 0;
+        gbc2.gridy = 0;
+        panel_2.add(Image2[0], gbc2);
+        gbc2.gridy = 2;
+        panel_2.add(Product_Label[0], gbc2);
+        gbc2.gridy = 4;
+        panel_2.add(Product_Spinner[0], gbc2);
+        gbc2.gridy = 5;
+        panel_2.add(ProductButton[0], gbc2);
+        
+        
+        
+        
+        gbc2.weightx = 0.5;
+        gbc2.gridx = 1;
+        gbc2.gridy = 0;
+        panel_2.add(Image2[1], gbc2);
+        gbc2.gridy = 2;
+        panel_2.add(Product_Label[1], gbc2);
+        gbc2.gridy = 4;
+        panel_2.add(Product_Spinner[1], gbc2);
+        gbc2.gridy = 5;
+        panel_2.add(ProductButton[1], gbc2);
+        
+        
+        
+        gbc2.weightx = 0.5;
+        gbc2.gridx = 0;
+        gbc2.gridy = 6;
+        panel_2.add(Image2[2], gbc2);
+        gbc2.gridy = 8;
+        panel_2.add(Product_Label[2], gbc2);
+        gbc2.gridy = 10;
+        panel_2.add(Product_Spinner[2], gbc2);
+        gbc2.gridy = 11;
+        panel_2.add(ProductButton[2], gbc2);
+        
+        
+        
+        gbc2.weightx = 0.5;
+        gbc2.gridx = 1;
+        gbc2.gridy = 6;
+        panel_2.add(Image2[3], gbc2);
+        gbc2.gridy = 8;
+        panel_2.add(Product_Label[3], gbc2);
+        gbc2.gridy = 10;
+        panel_2.add(Product_Spinner[3], gbc2);
+        gbc2.gridy = 11;
+        panel_2.add(ProductButton[3], gbc2);
+        
+        
+        
+        
         
         frame.add(panel_2);
         
