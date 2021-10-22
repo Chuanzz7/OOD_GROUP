@@ -5,9 +5,14 @@ import java.io.File;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 /**
  * @author Alex Cheow
  **/
+
 public class Login extends JFrame
         implements ActionListener
 {
@@ -18,10 +23,9 @@ public class Login extends JFrame
     JPasswordField Password_Input;
     JButton Login_Button;
     JOptionPane Message;
-
+    
     public Login()
     {
-        
         
         Font Design_1 = new Font("TimesRoman", Font.PLAIN, 20);
         Font Design_2 = new Font("Courier", Font.PLAIN, 30);
@@ -42,7 +46,7 @@ public class Login extends JFrame
         Password_Input.setPreferredSize(new Dimension(160, 18));
         //Login
         Login_Button = new JButton("Login");
-        
+        setContentPane(new JLabel(new ImageIcon("Background/LoginBackground.jpg")));
         add(Welcome_Title);
         add(Username);
         add(Username_Input);
