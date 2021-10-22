@@ -24,6 +24,7 @@ public class Login extends JFrame
     JButton Login_Button;
     JOptionPane Message;
     
+    
     public Login()
     {
         
@@ -46,7 +47,11 @@ public class Login extends JFrame
         Password_Input.setPreferredSize(new Dimension(160, 18));
         //Login
         Login_Button = new JButton("Login");
+        JFrame frame = new JFrame();
         setContentPane(new JLabel(new ImageIcon("Background/LoginBackground.jpg")));
+        
+        
+        
         add(Welcome_Title);
         add(Username);
         add(Username_Input);
@@ -54,18 +59,18 @@ public class Login extends JFrame
         add(Password_Input);
         add(Login_Button);
         
-        Username.setBounds(35, 60, 100, 30);
-        Username_Input.setBounds(125, 65, 200, 30);
-        Password.setBounds(35, 102, 100, 30);
-        Password_Input.setBounds(125, 105, 200, 30);
-        Login_Button.setBounds(155, 150, 100, 40);
+        Username.setBounds(50, 100, 100, 30);
+        Username_Input.setBounds(140, 105, 180, 30);
+        Password.setBounds(50, 142, 100, 30);
+        Password_Input.setBounds(140, 145, 180, 30);
+        Login_Button.setBounds(160, 190, 100, 40);
         
         
        
         Login_Button.addActionListener(this);
         setPreferredSize(new Dimension (425, 275));
         setLayout(null);
-        setSize(425,275);
+        setSize(425,310);
         setTitle("Login Page");
         //Center the Windows
         setLocationRelativeTo(null);
