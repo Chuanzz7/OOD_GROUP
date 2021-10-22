@@ -421,7 +421,7 @@ public class MainMenu{
   
                 
                 //gridy is for column
-
+                gbc1.weightx = 0.5;
                 panel_2.add(Image2[i], gbc2);
                 gbc2.gridy++;  // add one row for              
                 panel_2.add(Product_Label[i], gbc2);               
