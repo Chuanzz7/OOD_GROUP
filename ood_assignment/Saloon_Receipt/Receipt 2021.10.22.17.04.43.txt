@@ -1,0 +1,8 @@
+                   INVOICE                 
+=================================================
+Item                       Quantity           Price/Unit            Total
+=================================================
+JOICE Hair Conditioner           1            20.0            20.0
+Total                                      50.0
+Paid                                       100
+Change                                     50.0

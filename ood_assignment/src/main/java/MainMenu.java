@@ -250,7 +250,7 @@ public class MainMenu{
             try{       
                 allImages[i] = ImageIO.read(allFiles[i]);
                 Image[i] = new JLabel();
-                ImageIcon icon = new ImageIcon(allImages[i].getScaledInstance(220, 220, java.awt.Image.SCALE_SMOOTH));
+                ImageIcon icon = new ImageIcon(allImages[i].getScaledInstance(265, 265, java.awt.Image.SCALE_SMOOTH));
                 //ImageIcon icon = new ImageIcon(allImages[i]);
                 Image[i].setIcon(icon);
                 

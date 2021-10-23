@@ -1,0 +1,8 @@
+                   INVOICE                 
+=================================================
+Item                       Quantity           Price/Unit            Total
+=================================================
+Womens' Short Hair Cut           1            22.0            22.0
+Total                                      148.0
+Paid                                       150
+Change                                     2.0

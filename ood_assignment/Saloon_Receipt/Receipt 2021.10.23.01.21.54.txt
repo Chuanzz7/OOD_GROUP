@@ -1,0 +1,8 @@
+                   INVOICE                 
+=================================================
+Item                       Quantity           Price/Unit            Total
+=================================================
+Royal Spa Hair Shampoo           2            86.0            172.0
+Total                                      229.0
+Paid                                       250
+Change                                     21.0
