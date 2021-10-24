@@ -1,12 +1,9 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import javax.swing.event.*;
-import javax.swing.JOptionPane;
 import java.text.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 import java.io.File;
-import java.io.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
