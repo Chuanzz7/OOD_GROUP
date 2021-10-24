@@ -43,8 +43,7 @@ public class MainMenu{
         
 
     public void GUI()
-    {
-        
+    {    
         frame = new JFrame("Main Menu");
         frame.setSize(1920,1080);
         frame.setResizable(false);
@@ -52,13 +51,11 @@ public class MainMenu{
 	frame.getContentPane().setLayout(null);
 	frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(Color.LIGHT_GRAY);
-        frame.setVisible(true);
+        frame.setVisible(true);     
         
-        
-        
+        //Add Background Image to Frame
         frame.setContentPane(new JLabel(new ImageIcon("Background/MainBack.jpg")));
-        
-        
+               
         Title = new JTextField(12);
         Title = new JTextField("");
         Title.setSize(250, 100);
@@ -67,38 +64,34 @@ public class MainMenu{
         Title.setBorder(null);
         Title.setOpaque(false);
         Title.setLocation(700, 60);
-        
-        
-        Product_Btn = new JButton();
-        Service_Btn = new JButton();  
-        Exit_Btn = new JButton();
-        
+               
         cart1.frame.setBounds(1400, 100, 500, 500);
         
+        //Create a Penel for Navigation Bar
         JPanel Category = new JPanel();
         Category.setBackground(Color.BLACK);
         Category.setBounds(0,0,200,1080);
+        
+        //Add Logo into the Panel
+        //Try & Catch Methods is to tested the code and show the error when the code is not working
         try{
             SaloonLogo = ImageIO.read(new File("Logo/Logo.png"));
             
             JLabel Lgo = new JLabel(new ImageIcon(SaloonLogo.getScaledInstance(180, 130, Image.SCALE_SMOOTH)));
-            Lgo.setBounds(10, 10, 180, 145);
-            
+            Lgo.setBounds(10, 10, 180, 145);    
             Category.add(Lgo);
         }catch(IOException e){
             System.out.println(e);
         }
         
-        
         frame.getContentPane().add(Category);
-        
-        
-        
         Category.setLayout(null);
 
+        //Create 3 Buttons and add into the navigation bar panel
+        Product_Btn = new JButton();
+        Service_Btn = new JButton();  
+        Exit_Btn = new JButton();
         
-        
-
         Product_Btn = new JButton("PRODUCT");
         Product_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 25));
         Product_Btn.setForeground(Color.WHITE);
@@ -106,20 +99,15 @@ public class MainMenu{
         Product_Btn.setBounds(28, 320, 160, 50); 
         Category.add(Product_Btn);
         Product_Btn.setVisible(true);
-        
-        
-        
-                
+                       
         Service_Btn = new JButton("SERVICE"); 
         Service_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 25));
         Service_Btn.setForeground(Color.WHITE);
-        Service_Btn.setBackground(Color.BLACK);
-        
+        Service_Btn.setBackground(Color.BLACK);  
         Service_Btn.setBounds(28, 580, 160, 50);
         Category.add(Service_Btn);
         Service_Btn.setVisible(true);
-        
-        
+            
         Exit_Btn = new JButton("EXIT");
         Exit_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 26));
         Exit_Btn.setForeground(Color.WHITE);
@@ -137,7 +125,7 @@ public class MainMenu{
             }
         });
         
-        //button to empty cart
+        //Button to Empty the Cart
         button_EmptyCart = new JButton("Empty Cart");
         button_EmptyCart.setFont(new Font("TimesRoman", Font.PLAIN, 24));
         button_EmptyCart.setBounds(1600, 800, 185,70);
@@ -151,7 +139,7 @@ public class MainMenu{
             }
         });
         
-        //button to checkout the cart
+        //Button to checkout the cart
         button_Checkout = new JButton("Checkout");
         button_Checkout.setFont(new Font("TimesRoman", Font.PLAIN, 24));
         button_Checkout.setBounds(1600, 900, 185,70);
@@ -178,23 +166,21 @@ public class MainMenu{
             }
     });
         
-        
-        
-         
+        //Create a Penel for Services 
+        //Use the Gridbaglayout and use GridBagConstraints to arrange all the objects
         JPanel panel_1 = new JPanel(new GridBagLayout());
         panel_1.setBounds(300, 120,1000,800);
-        panel_1.setOpaque(false);
-        
-        
-        
+        //Set the panel background to invicible
+        panel_1.setOpaque(false);     
+        //Set it to Unseeable
         panel_1.setVisible(false);
         GridBagConstraints gbc1 = new GridBagConstraints();  
         gbc1.insets = new Insets(10, 10, 0, 0);
+        //Create the Service Labels, Service Spinners, Service Buttons and Services Price
+        //Use Array to store the information / data
         Service_Label = new JLabel[Services];
         Service_Spinner = new JSpinner[Services];
         ServiceButton = new JButton[Services];
-        
-
         Service_Price = new double[Services];
         Service_Price[0] = 30;
         Service_Price[1] = 22;
@@ -206,7 +192,7 @@ public class MainMenu{
         Service_Label[2] = new JLabel("Mens' Hair Cut - RM 15");
         Service_Label[3] = new JLabel("Children Hair Cut - RM 12");
   
-        
+        //When the user pressed Add Button, It will get the value from the spinner and add it into cart
         ServiceButton[0] = new JButton("Add");
         ServiceButton[0].addActionListener((ActionEvent e) -> {        
              addRowtoTable("Womens' Long Hair Cut",(Integer)Service_Spinner[0].getValue(), Service_Price[0]);
@@ -225,12 +211,13 @@ public class MainMenu{
         });
  
         
-        //import and display the image
+        //Detect the file and get the file path to run the Images
         File path = new File("ServicesImg");
         File[] allFiles = path.listFiles();
+        //Detect the number of images in the file and get the value
         allImages = new BufferedImage[allFiles.length];
         JLabel Image[] = new JLabel[allFiles.length];
-        
+        //Use loop to loop out all the images
         for(int i = 0; i < allFiles.length; i ++)
         {       
             try{       
@@ -238,8 +225,9 @@ public class MainMenu{
                 Image[i] = new JLabel();
                 ImageIcon icon = new ImageIcon(allImages[i].getScaledInstance(265, 265, java.awt.Image.SCALE_SMOOTH));
                 Image[i].setIcon(icon);
+                //In loop, Enable all the label background
                 Service_Label[i].setOpaque(true);
-                
+                //SipnnerNumberModel(1(Start with value 1),0(Min Value 0),10(Max Value 10),1(Step 1))
                 SpinnerNumberModel spnummodel = new SpinnerNumberModel(1,0,10,1);
                 Service_Spinner[i] = new JSpinner(spnummodel);
                 Service_Label[i].setFont(new Font("Courier New", Font.PLAIN, 18));
@@ -249,7 +237,7 @@ public class MainMenu{
                 System.out.println(e);
             }
         }
-            
+        //Arrange the position    
         gbc1.weightx = 0.5;
         gbc1.gridx = 0;
         gbc1.gridy = 0;
@@ -260,10 +248,7 @@ public class MainMenu{
         panel_1.add(Service_Spinner[0], gbc1);
         gbc1.gridy = 5;
         panel_1.add(ServiceButton[0], gbc1);
-        
-        
-        
-        
+                    
         gbc1.weightx = 0.5;
         gbc1.gridx = 1;
         gbc1.gridy = 0;
@@ -274,9 +259,7 @@ public class MainMenu{
         panel_1.add(Service_Spinner[1], gbc1);
         gbc1.gridy = 5;
         panel_1.add(ServiceButton[1], gbc1);
-        
-        
-        
+    
         gbc1.weightx = 0.5;
         gbc1.gridx = 0;
         gbc1.gridy = 6;
@@ -287,9 +270,7 @@ public class MainMenu{
         panel_1.add(Service_Spinner[2], gbc1);
         gbc1.gridy = 11;
         panel_1.add(ServiceButton[2], gbc1);
-        
-        
-        
+       
         gbc1.weightx = 0.5;
         gbc1.gridx = 1;
         gbc1.gridy = 6;
@@ -300,26 +281,26 @@ public class MainMenu{
         panel_1.add(Service_Spinner[3], gbc1);
         gbc1.gridy = 11;
         panel_1.add(ServiceButton[3], gbc1);
-        
-        
-           
+    
         frame.add(panel_1);
         
-        
-        
-   
-        
+        //Create Another Panel for Products
+        //Use the Gridbaglayout and use GridBagConstraints to arrange all the objects
         JPanel panel_2 = new JPanel(new GridBagLayout());
         panel_2.setBounds(300, 120,1000,800);
+        //Set the panel background to invicible
         panel_2.setOpaque(false);
+        //Set it to Unseeable
         panel_2.setVisible(false);
         GridBagConstraints gbc2 = new GridBagConstraints();  
         gbc2.insets = new Insets(10, 10, 0, 0);
+        //Create the Product Labels, Product Spinners, Product Buttons and Product Price
+        //Use Array to store the information / data
         Product_Label = new JLabel[Products];
         Product_Spinner = new JSpinner[Products];
-        ProductButton = new JButton[Products];
-        
+        ProductButton = new JButton[Products];      
         Product_Price = new double[Products];
+        
         Product_Price[0] = 86;
         Product_Price[1] = 30;
         Product_Price[2] = 20;
@@ -330,7 +311,7 @@ public class MainMenu{
         Product_Label[2] = new JLabel("JOICE Hair Conditioner - RM 20");
         Product_Label[3] = new JLabel("Roreal Paris Hair Spray - RM 16");
   
-        
+        //When the user pressed Add Button, It will get the value from the spinner and add it into cart
         ProductButton[0] = new JButton("Add");
         ProductButton[0].addActionListener((ActionEvent e) -> {        
              addRowtoTable("Royal Spa Hair Shampoo",(Integer)Product_Spinner[0].getValue(), Product_Price[0]);
@@ -351,12 +332,13 @@ public class MainMenu{
  
         
         
-        //import and display the product image
+         //Detect the file and get the file path to run the Images
         File path2 = new File("ProductsImg");
         File[] allFiles2 = path2.listFiles();
+        //Detect the number of images in the file and get the value
         allImages2 = new BufferedImage[allFiles2.length];
         JLabel Image2[] = new JLabel[allFiles2.length];
-        
+        //Use loop to loop out all the images
         for(int i = 0; i < allFiles2.length; i++)
         {
             try{
@@ -375,7 +357,8 @@ public class MainMenu{
                 System.out.println(ex);
             }
         }
-             
+        
+        //Arrange the position
         gbc2.weightx = 0.5;
         gbc2.gridx = 0;
         gbc2.gridy = 0;
@@ -385,10 +368,7 @@ public class MainMenu{
         gbc2.gridy = 4;
         panel_2.add(Product_Spinner[0], gbc2);
         gbc2.gridy = 5;
-        panel_2.add(ProductButton[0], gbc2);
-        
-        
-        
+        panel_2.add(ProductButton[0], gbc2);    
         
         gbc2.weightx = 0.5;
         gbc2.gridx = 1;
@@ -400,9 +380,7 @@ public class MainMenu{
         panel_2.add(Product_Spinner[1], gbc2);
         gbc2.gridy = 5;
         panel_2.add(ProductButton[1], gbc2);
-        
-        
-        
+      
         gbc2.weightx = 0.5;
         gbc2.gridx = 0;
         gbc2.gridy = 6;
@@ -412,9 +390,7 @@ public class MainMenu{
         gbc2.gridy = 10;
         panel_2.add(Product_Spinner[2], gbc2);
         gbc2.gridy = 11;
-        panel_2.add(ProductButton[2], gbc2);
-        
-        
+        panel_2.add(ProductButton[2], gbc2);     
         
         gbc2.weightx = 0.5;
         gbc2.gridx = 1;
@@ -430,7 +406,7 @@ public class MainMenu{
         frame.add(panel_2);
         frame.add(Title);
         
-     //display the service panel
+     //Display the service panel
      Service_Btn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
@@ -450,7 +426,7 @@ public class MainMenu{
             }
         });
      
-     //display the product panel
+     //Display the product panel
      Product_Btn.addActionListener (new ActionListener(){
         public void actionPerformed(ActionEvent e)
         {
@@ -473,7 +449,7 @@ public class MainMenu{
      frame.setVisible(true);
     }
     
-    //adding row into the cart table 
+    //Adding row into the cart table 
     public void addRowtoTable(String _itemName, int _itemQuantity, double _unitPrice){
         if(_itemQuantity >0){
             int tableRowsNum = cart1.table.getRowCount();
@@ -487,7 +463,7 @@ public class MainMenu{
                     cart1.findTotal();
                 }
                 else{
-                //if item is already in cart
+                //If item is already in cart
                     for(int i = 0 ; i < tableRowsNum ; i++){
                         if( _itemName  == cart1.table.getValueAt(i, 0).toString()){ 
                             int quantity = Integer.parseInt(cart1.table.getValueAt(i, 1).toString());
@@ -497,7 +473,7 @@ public class MainMenu{
                             break;
                         }
 
-                        // add row to the model
+                        //Add row to the model
                         else if(i == tableRowsNum-1){
                             cart1.model.addRow(cart1.row); 
                             cart1.findTotal();
