@@ -56,7 +56,7 @@ public class MainMenu{
         
         
         
-        frame.setContentPane(new JLabel(new ImageIcon("C:\\Users\\Alex Cheow\\Desktop\\SEM 5\\Object Oriented Development\\Assignment\\OOD_Assignment\\OOD_GROUP\\ood_assignment\\Background\\MainBack.jpg")));
+        frame.setContentPane(new JLabel(new ImageIcon("Background/MainBack.jpg")));
         
         
         Title = new JTextField(12);
@@ -79,7 +79,7 @@ public class MainMenu{
         Category.setBackground(Color.BLACK);
         Category.setBounds(0,0,200,1080);
         try{
-            SaloonLogo = ImageIO.read(new File("C:\\Users\\Alex Cheow\\Desktop\\SEM 5\\Object Oriented Development\\Assignment\\OOD_Assignment\\OOD_GROUP\\ood_assignment\\Logo\\Logo.png"));
+            SaloonLogo = ImageIO.read(new File("Logo/Logo.png"));
             
             JLabel Lgo = new JLabel(new ImageIcon(SaloonLogo.getScaledInstance(180, 130, Image.SCALE_SMOOTH)));
             Lgo.setBounds(10, 10, 180, 145);
