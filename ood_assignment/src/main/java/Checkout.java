@@ -109,6 +109,7 @@ public class Checkout extends JFrame implements ActionListener
         confirm.addActionListener(this);
         cancel.addActionListener(this);
         done.addActionListener(this);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
     
