@@ -13,7 +13,6 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import javax.swing.table.TableCellRenderer;
 import javax.swing.JScrollPane;
 import javax.swing.table.TableColumn;
         
@@ -31,6 +30,7 @@ public class cartUI {
     DefaultTableModel model = new DefaultTableModel()
         {
             //make the table uneditable except the delete button
+        @Override
         public boolean isCellEditable(int row, int column)
         {
          switch (column) {
@@ -45,7 +45,7 @@ public class cartUI {
     
     Font font1 = new Font("SansSerif", Font.BOLD, 30);
     Font font2 = new Font("SansSerif", Font.BOLD, 20);
-    private Object[] columns = {"Name","Quantity","Unit Price", "Price", "Button"};
+    private final Object[] columns = {"Name","Quantity","Unit Price", "Price", "Button"};
     protected Object[] row = new Object[5];
     
     JScrollPane panel = new JScrollPane(table);
@@ -92,6 +92,7 @@ public class cartUI {
  //delete button
     Action delete = new AbstractAction()
    {
+       @Override
        public void actionPerformed(ActionEvent e)
        {
 
