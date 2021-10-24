@@ -1,20 +1,13 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import javax.swing.table.DefaultTableModel;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.io.File;
-import java.util.ArrayList;
 import static javax.swing.JOptionPane.showMessageDialog;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.JScrollPane;
+
 
 /*
  * @author Alex Cheow
