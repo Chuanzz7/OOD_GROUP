@@ -145,6 +145,7 @@ public class MainMenu{
             }
         });
         
+        //button to empty cart
         button_EmptyCart = new JButton("Empty Cart");
         button_EmptyCart.setFont(new Font("TimesRoman", Font.PLAIN, 24));
         button_EmptyCart.setBounds(1600, 800, 185,70);
@@ -158,7 +159,7 @@ public class MainMenu{
             }
         });
         
-        
+        //button to checkout the cart
         button_Checkout = new JButton("Checkout");
         button_Checkout.setFont(new Font("TimesRoman", Font.PLAIN, 24));
         button_Checkout.setBounds(1600, 900, 185,70);
@@ -182,8 +183,6 @@ public class MainMenu{
                 {
                     showMessageDialog(null, "Please select a product");
                 }
-                
-
             }
     });
         
@@ -235,11 +234,7 @@ public class MainMenu{
         });
  
         
-
-              
-
-        
-    
+        //import and display the image
         File path = new File("ServicesImg");
         File[] allFiles = path.listFiles();
         allImages = new BufferedImage[allFiles.length];
@@ -368,7 +363,7 @@ public class MainMenu{
  
         
         
-        
+        //import and display the product image
         File path2 = new File("ProductsImg");
         File[] allFiles2 = path2.listFiles();
         allImages2 = new BufferedImage[allFiles2.length];
@@ -444,14 +439,10 @@ public class MainMenu{
         gbc2.gridy = 11;
         panel_2.add(ProductButton[3], gbc2);
         
-        
-        
-        
-        
         frame.add(panel_2);
         
         
-        
+     //display the service panel
      Service_Btn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
@@ -468,6 +459,8 @@ public class MainMenu{
             
             }
         });
+     
+     //display the product panel
      Product_Btn.addActionListener (new ActionListener(){
         public void actionPerformed(ActionEvent e)
         {
@@ -488,7 +481,7 @@ public class MainMenu{
      frame.setVisible(true);
     }
     
-    //adding row into the table 
+    //adding row into the cart table 
     public void addRowtoTable(String _itemName, int _itemQuantity, double _unitPrice){
         if(_itemQuantity >0){
             int tableRowsNum = cart1.table.getRowCount();
