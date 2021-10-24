@@ -20,7 +20,8 @@ public class cartUI {
     //array to hold object item
     ArrayList<cartItem> cartItemArray  = new ArrayList<>();
      
-    Panel frame = new Panel();
+    JPanel frame = new JPanel();
+   
     JLabel lb_TotalPrice = new JLabel("Total Price: RM ");
     JLabel lb_ItemList = new JLabel("Item list:");
     JTextField TextTotalP = new JTextField(10);
@@ -51,19 +52,18 @@ public class cartUI {
     JScrollPane panel = new JScrollPane(table);
     
     public cartUI(){
-      
+        frame.setOpaque(false);
         frame.setLayout(new FlowLayout());
         model.setColumnIdentifiers(columns);
         table.setModel(model);
-        table.setBackground(Color.LIGHT_GRAY);
-        table.setForeground(Color.black);
-        
+        table.setBackground(Color.WHITE);
+        table.setForeground(Color.black);     
         frame.setSize(1000,800);
         TextTotalP.setEditable(false);
         lb_TotalPrice.setFont(font2);
         TextTotalP.setFont(font1);
-        TextTotalP.setHorizontalAlignment(JTextField.RIGHT);
-
+        lb_TotalPrice.setForeground(Color.WHITE);
+        TextTotalP.setHorizontalAlignment(JTextField.RIGHT);      
         frame.add(panel);
         frame.add(lb_TotalPrice);
         frame.add(TextTotalP);
