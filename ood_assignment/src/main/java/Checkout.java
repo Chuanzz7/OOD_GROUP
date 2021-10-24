@@ -1,12 +1,9 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import javax.swing.event.*;
-import javax.swing.JOptionPane;
 import java.text.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 import java.io.File;
-import java.io.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
@@ -109,6 +106,7 @@ public class Checkout extends JFrame implements ActionListener
         confirm.addActionListener(this);
         cancel.addActionListener(this);
         done.addActionListener(this);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
     
@@ -207,17 +205,19 @@ public void WriteFile(String absolute, String timeStamp, ArrayList<cartItem> pro
     try{
         int row = contentRow;
         FileWriter writeFile = new FileWriter( absolute + "\\Receipt " + timeStamp + ".txt"); //find and write file
-        writeFile.write("                   INVOICE                 \n======================================================================\n");
-        writeFile.write("Item                       Quantity           Price/Unit         Total");
-        writeFile.write("\n======================================================================\n");
+        writeFile.write("                                       INVOICE                 \n===============================================================================================\n");
+        writeFile.write(String.format("%-25s %15s %20s %30s\n","Item", "Quantity" ,"Price/Unit", "Total"));
+        writeFile.write("\n===============================================================================================\n");
         for(int i=0; i<row; i++ )
         {
-            writeFile.write(productReceipt.get(i).getName() + "           " +productReceipt.get(i).getQuantity()+ "            " +productReceipt.get(i).getUnitPrice()+ "               " + productReceipt.get(i).getTotal()+ "\n");
+            writeFile.write(String.format("%-25.25s %15s %20s %30s\n",productReceipt.get(i).getName(),+productReceipt.get(i).getQuantity(),productReceipt.get(i).getUnitPrice(), productReceipt.get(i).getTotal()));
         }
-        writeFile.write("Total                                                          " + totalTxt.getText() + "\n");
-        writeFile.write("Paid                                                           " + paidTxt.getText() + "\n");
-        writeFile.write("Change                                                         " + changeTxt.getText() + "\n");
+        writeFile.write("\n===============================================================================================\n");
+        writeFile.write(String.format("%-25s %68s","\nTotal", totalTxt.getText()));
+        writeFile.write(String.format("%-25s %68s \n","\nPaid", paidTxt.getText()));
+        writeFile.write(String.format("%-25s %67s \n","Change", changeTxt.getText()));
         writeFile.close();
+        
     }catch(IOException e)
     {
         e.printStackTrace(); 

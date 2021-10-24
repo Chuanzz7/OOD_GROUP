@@ -457,7 +457,7 @@ public class MainMenu{
                 cart1.row[1] = _itemQuantity;
                 cart1.row[2] = _unitPrice;
                 cart1.row[3] = _itemQuantity * _unitPrice;
-                cart1.row[4] = "delete";
+                cart1.row[4] = "DELETE";
                 if (tableRowsNum == 0){
                     cart1.model.addRow(cart1.row); 
                     cart1.findTotal();

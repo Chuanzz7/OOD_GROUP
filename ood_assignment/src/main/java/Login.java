@@ -1,13 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.File;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 /**
  * @author Alex Cheow
