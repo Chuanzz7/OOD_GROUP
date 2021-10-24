@@ -1,8 +1,0 @@
-                   INVOICE                 
-=================================================
-Item                       Quantity           Price/Unit            Total
-=================================================
-Womens' Long Hair Cut           1            30.0            30.0
-Total                                      231.0
-Paid                                       300
-Change                                     69.0

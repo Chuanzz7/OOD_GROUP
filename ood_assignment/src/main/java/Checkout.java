@@ -207,13 +207,14 @@ public void WriteFile(String absolute, String timeStamp, ArrayList<cartItem> pro
     try{
         int row = contentRow;
         FileWriter writeFile = new FileWriter( absolute + "\\Receipt " + timeStamp + ".txt"); //find and write file
-        writeFile.write("                   INVOICE                 \n======================================================================\n");
+        writeFile.write("                                       INVOICE                 \n===============================================================================================\n");
         writeFile.write(String.format("%-25s %15s %20s %30s\n","Item", "Quantity" ,"Price/Unit", "Total"));
-        writeFile.write("\n======================================================================\n");
+        writeFile.write("\n===============================================================================================\n");
         for(int i=0; i<row; i++ )
         {
             writeFile.write(String.format("%-25.25s %15s %20s %30s\n",productReceipt.get(i).getName(),+productReceipt.get(i).getQuantity(),productReceipt.get(i).getUnitPrice(), productReceipt.get(i).getTotal()));
         }
+        writeFile.write("\n===============================================================================================\n");
         writeFile.write(String.format("%-25s %68s","\nTotal", totalTxt.getText()));
         writeFile.write(String.format("%-25s %68s \n","\nPaid", paidTxt.getText()));
         writeFile.write(String.format("%-25s %67s \n","Change", changeTxt.getText()));
