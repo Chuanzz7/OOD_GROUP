@@ -24,13 +24,11 @@ public class MainMenu{
     
     BufferedImage [] allImages;
     BufferedImage [] allImages2;
+    BufferedImage MainBackground;
+    BufferedImage SaloonLogo;
     static private JFrame frame;
     static private JButton Product_Btn, Service_Btn, Exit_Btn;
-    static private JLabel NavTitle, NavTitle1, NavTitle2;
-    //static private JTextField Text;
-    //static private GridBagConstraints Grid; 
-    //private JTable Table;
-    DefaultTableModel dtm;
+    static private JTextField Title;
     double[] Service_Price;
     double[] Product_Price;
     
@@ -43,7 +41,6 @@ public class MainMenu{
     static private JLabel[] Product_Label;
     static private JButton[] ProductButton;
     
-    //Make it only available within the class and does not allow the variable to be changed
     private static final int Services = 4;
     private static final int Products = 4;
     
@@ -56,7 +53,6 @@ public class MainMenu{
     {
         
         frame = new JFrame("Main Menu");
-        //frame.setBounds(100,100,750,550);
         frame.setSize(1920,1080);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,7 +60,22 @@ public class MainMenu{
 	frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(Color.LIGHT_GRAY);
         frame.setVisible(true);
-       
+        
+        
+        
+        frame.setContentPane(new JLabel(new ImageIcon("C:\\Users\\Alex Cheow\\Desktop\\SEM 5\\Object Oriented Development\\Assignment\\OOD_Assignment\\OOD_GROUP\\ood_assignment\\Background\\MainBack.jpg")));
+        
+        
+        Title = new JTextField(12);
+        Title = new JTextField("");
+        Title.setSize(250, 100);
+        Font TitleFont = new Font("Courier", Font.BOLD,45);
+        Title.setFont(TitleFont);
+        Title.setBorder(null);
+        Title.setOpaque(false);
+        Title.setLocation(700, 60);
+        
+        
         Product_Btn = new JButton();
         Service_Btn = new JButton();  
         Exit_Btn = new JButton();
@@ -74,6 +85,16 @@ public class MainMenu{
         JPanel Category = new JPanel();
         Category.setBackground(Color.BLACK);
         Category.setBounds(0,0,200,1080);
+        try{
+            SaloonLogo = ImageIO.read(new File("C:\\Users\\Alex Cheow\\Desktop\\SEM 5\\Object Oriented Development\\Assignment\\OOD_Assignment\\OOD_GROUP\\ood_assignment\\Logo\\Logo.png"));
+            
+            JLabel Lgo = new JLabel(new ImageIcon(SaloonLogo.getScaledInstance(180, 130, Image.SCALE_SMOOTH)));
+            Lgo.setBounds(10, 10, 180, 145);
+            
+            Category.add(Lgo);
+        }catch(IOException e){
+            System.out.println(e);
+        }
         
         
         frame.getContentPane().add(Category);
@@ -82,30 +103,11 @@ public class MainMenu{
         
         Category.setLayout(null);
 
-        NavTitle = new JLabel("WAVY");
-        NavTitle1 = new JLabel("HAIR");
-        NavTitle2 = new JLabel("SALOON");
         
-        NavTitle.setFont(new Font("AR ESSENCE", Font.PLAIN, 35));
-        NavTitle1.setFont(new Font("AR ESSENCE", Font.PLAIN, 35));
-        NavTitle2.setFont(new Font("AR ESSENCE", Font.PLAIN, 35));
         
-        NavTitle.setForeground(Color.WHITE);
-        NavTitle1.setForeground(Color.WHITE);
-        NavTitle2.setForeground(Color.WHITE);
-        
-      
-        NavTitle.setBounds(50, 50, 160, 50);
-        NavTitle1.setBounds(60, 80, 160, 50);
-        NavTitle2.setBounds(25, 110, 160, 50);
-        
-        Category.add(NavTitle);
-        Category.add(NavTitle1);
-        Category.add(NavTitle2);
-        
-        //Create Buttons and Add It Into Navigation Bar
-        Product_Btn = new JButton("Product");
-        Product_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 26));
+
+        Product_Btn = new JButton("PRODUCT");
+        Product_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 25));
         Product_Btn.setForeground(Color.WHITE);
         Product_Btn.setBackground(Color.BLACK);
         Product_Btn.setBounds(28, 320, 160, 50); 
@@ -115,8 +117,8 @@ public class MainMenu{
         
         
                 
-        Service_Btn = new JButton("Service"); 
-        Service_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 26));
+        Service_Btn = new JButton("SERVICE"); 
+        Service_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 25));
         Service_Btn.setForeground(Color.WHITE);
         Service_Btn.setBackground(Color.BLACK);
         
@@ -125,7 +127,7 @@ public class MainMenu{
         Service_Btn.setVisible(true);
         
         
-        Exit_Btn = new JButton("Exit");
+        Exit_Btn = new JButton("EXIT");
         Exit_Btn.setFont(new Font ("AR ESSENCE", Font.PLAIN, 26));
         Exit_Btn.setForeground(Color.WHITE);
         Exit_Btn.setBackground(Color.BLACK);
@@ -136,12 +138,9 @@ public class MainMenu{
         Exit_Btn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-                    //If the user click Exit Button, it will back to Login Page.
                     Login First_Page = new Login();
-                    //First_Page.main(header);
                     First_Page.setVisible(true);
-                    frame.dispose();
-             
+                    frame.dispose();      
             }
         });
         
@@ -188,15 +187,14 @@ public class MainMenu{
     });
         
         
-        //Create Services 
-        JPanel panel_1 = new JPanel(new GridBagLayout());
-        //JPanel panel_1 = new JPanel();
-        //panel_1.setSize(Services, Services);
-        panel_1.setBackground(Color.ORANGE);
-        panel_1.setBounds(300, 120,1000,800);
-
         
-        //Hide the Panel
+         
+        JPanel panel_1 = new JPanel(new GridBagLayout());
+        panel_1.setBounds(300, 120,1000,800);
+        panel_1.setOpaque(false);
+        
+        
+        
         panel_1.setVisible(false);
         GridBagConstraints gbc1 = new GridBagConstraints();  
         gbc1.insets = new Insets(10, 10, 0, 0);
@@ -204,7 +202,7 @@ public class MainMenu{
         Service_Spinner = new JSpinner[Services];
         ServiceButton = new JButton[Services];
         
-        //Create Prices and Store Them into Array
+
         Service_Price = new double[Services];
         Service_Price[0] = 30;
         Service_Price[1] = 22;
@@ -251,9 +249,8 @@ public class MainMenu{
                 allImages[i] = ImageIO.read(allFiles[i]);
                 Image[i] = new JLabel();
                 ImageIcon icon = new ImageIcon(allImages[i].getScaledInstance(265, 265, java.awt.Image.SCALE_SMOOTH));
-                //ImageIcon icon = new ImageIcon(allImages[i]);
                 Image[i].setIcon(icon);
-                
+                Service_Label[i].setOpaque(true);
                 
                 SpinnerNumberModel spnummodel = new SpinnerNumberModel(1,0,10,1);
                 Service_Spinner[i] = new JSpinner(spnummodel);
@@ -324,11 +321,9 @@ public class MainMenu{
         
    
         
-        //Create Products
         JPanel panel_2 = new JPanel(new GridBagLayout());
-        panel_2.setBackground(Color.ORANGE);
         panel_2.setBounds(300, 120,1000,800);
-        //Set it to Visible
+        panel_2.setOpaque(false);
         panel_2.setVisible(false);
         GridBagConstraints gbc2 = new GridBagConstraints();  
         gbc2.insets = new Insets(10, 10, 0, 0);
@@ -380,9 +375,9 @@ public class MainMenu{
                 
                 allImages2[i] = ImageIO.read(allFiles2[i]);
                 Image2[i] = new JLabel();
-                ImageIcon icon2 = new ImageIcon(allImages2[i].getScaledInstance(220, 220, java.awt.Image.SCALE_SMOOTH));
+                ImageIcon icon2 = new ImageIcon(allImages2[i].getScaledInstance(265, 265, java.awt.Image.SCALE_SMOOTH));
                 Image2[i].setIcon(icon2);
-                
+                Product_Label[i].setOpaque(true);
                 
                 SpinnerNumberModel spnummodel2 = new SpinnerNumberModel(1,0,10,1);
                 Product_Spinner[i] = new JSpinner(spnummodel2);     
@@ -449,7 +444,7 @@ public class MainMenu{
         
         
         frame.add(panel_2);
-        
+        frame.add(Title);
         
         
      Service_Btn.addActionListener(new ActionListener(){
@@ -459,11 +454,13 @@ public class MainMenu{
                 {
                     panel_2.setVisible(false);
                     panel_1.setVisible(true);
+                    Title.setText("SERVICES");
                 }
                 else if(panel_2.isEnabled())
                 {
                     panel_1.setVisible(false);
                     panel_2.setVisible(true);
+                    Title.setText("PRODUCTS");
                 }
             
             }
@@ -475,11 +472,13 @@ public class MainMenu{
             {
                 panel_1.setVisible(false);
                 panel_2.setVisible(true);
+                Title.setText("PRODUCTS");
             }
             else if(panel_1.isEnabled())
             {
                 panel_2.setVisible(false);
                 panel_1.setVisible(true);
+                Title.setText("SERVICES");
             }
 
         }
