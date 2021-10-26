@@ -22,6 +22,7 @@ public class MainMenu{
     static private JFrame frame;
     static private JButton Product_Btn, Service_Btn, Exit_Btn;
     static private JTextField Title;
+    static private int Exit;
     double[] Service_Price;
     double[] Product_Price;
     
@@ -119,9 +120,16 @@ public class MainMenu{
         Exit_Btn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
+                    //Pop out a Confirm Dialog Box and ask the Exit permission of the user again
+                    Exit = JOptionPane.showConfirmDialog(null, "Are you sure want to Exit?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+                    if(Exit == JOptionPane.YES_OPTION){
                     Login First_Page = new Login();
                     First_Page.setVisible(true);
-                    frame.dispose();      
+                    frame.dispose();
+                    }
+                    else{
+                        
+                    }                   
             }
         });
         
