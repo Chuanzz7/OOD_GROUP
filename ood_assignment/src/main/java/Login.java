@@ -43,6 +43,7 @@ public class Login extends JFrame
         //Login
         Login_Button = new JButton("Login");
         JFrame frame = new JFrame();
+        setResizable(false);
         setContentPane(new JLabel(new ImageIcon("Background/LoginBackground.jpg")));
             
         add(Welcome_Title);
